@@ -25,6 +25,6 @@
  *  });
  * ```
  */
-import "./style/index.scss";
+import "./styles/index.scss";
 import "normalize.css";
 import "./app";

@@ -22,6 +22,9 @@
           ".ts",
           ".tsx"
         ]
+      },
+      "webpack":{
+        "config": "webpack.renderer.config.js"
       }
     }
   }
