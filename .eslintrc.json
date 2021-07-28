@@ -12,6 +12,9 @@
     "plugin:import/warnings",
     "plugin:import/typescript"
   ],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  },
   "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {
@@ -23,7 +26,7 @@
           ".tsx"
         ]
       },
-      "webpack":{
+      "webpack": {
         "config": "webpack.renderer.config.js"
       }
     }

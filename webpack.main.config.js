@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require("path");
+
 module.exports = {
   /**
    * This is the main entry point for your application, it's the first file
@@ -19,5 +22,8 @@ module.exports = {
       ".scss",
       ".sass",
     ],
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
   },
 };

@@ -1,16 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-declare global {
-  interface Window {
-    electron: {
-      doThing(): void;
-    };
-  }
-}
+import { Main } from '@/components/main'
 
 function render() {
-  ReactDOM.render(<h2 className="red">Hello from React!</h2>, document.getElementById('root'));
+  ReactDOM.render(<Main />, document.getElementById('root'));
 }
 
 render();

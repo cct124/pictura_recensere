@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from "electron";
-import path from "path";
+import IpcMain from "@/scripts/ipc/Main";
+import { VALIDCHANNELS } from "@/config/ipcChannels";
 
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: any;
 
@@ -18,7 +19,7 @@ const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     height: 600,
-    width: 800,
+    width: 1280,
     webPreferences: {
       contextIsolation: true,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -30,6 +31,8 @@ const createWindow = (): void => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  new IpcMain({ channel: VALIDCHANNELS.toMain });
 };
 
 // This method will be called when Electron has finished
