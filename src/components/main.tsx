@@ -9,7 +9,7 @@ const ipcRenderer = new IpcRenderer({ ipc: window.ipcRenderer, channel: VALIDCHA
 export function Main() {
 
   // console.log(ipcRenderer);
-  ipcRenderer.getSysteamInfo('test');
+  ipcRenderer.getSysteamInfo();
 
   return <h2 >Hello from React!</h2>
 }

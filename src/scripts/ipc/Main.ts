@@ -21,8 +21,7 @@ export default class IpcMain {
     console.log(propKey);
   }
 
-  getSysteamInfo(str: string) {
-    console.log(str);
+  getSysteamInfo() {
     return Promise.resolve({
       platform: process.platform,
       versions: process.versions,
