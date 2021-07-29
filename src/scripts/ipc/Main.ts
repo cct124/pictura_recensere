@@ -10,15 +10,24 @@ export default class IpcMain {
   }
 
   listener(channel: VALIDCHANNELS) {
-    ipcMain.on(channel, this.listenerHandle);
+    ipcMain.on(channel, (...args: unknown[]) =>
+      // this.listenerHandle.apply(this, ...args)
+      Reflect.apply(this.listenerHandle, this, args)
+    );
   }
 
   listenerHandle(
     event: Electron.IpcMainEvent,
     propKey: string,
+    tempChannel: string,
     ...args: unknown[]
   ) {
-    console.log(propKey);
+    Reflect.get(
+      this,
+      propKey
+    )(...args).then((res: unknown) => {
+      event.reply(tempChannel, res);
+    });
   }
 
   getSysteamInfo() {

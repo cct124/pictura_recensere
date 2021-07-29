@@ -4,6 +4,7 @@ export interface _IpcRenderer {
     channel: VALIDCHANNELS,
     listener: (...args: unknown[]) => unknown
   ): () => void;
+  lisOnce(channel: string, listener: (...args: unknown[]) => unknown): void;
 }
 
 declare global {

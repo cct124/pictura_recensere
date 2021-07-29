@@ -20,4 +20,13 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
       };
     }
   },
+  once: (channel: VALIDCHANNELS, listener: (...args: unknown[]) => unknown) => {
+    if (VALIDCHANNELS[channel]) {
+      // Deliberately strip event as it includes `sender`
+      ipcRenderer.once(channel, (event, ...args) => listener(...args));
+    }
+  },
+  lisOnce: (channel: string, listener: (...args: unknown[]) => unknown) => {
+    ipcRenderer.once(channel, (event, ...args) => listener(event, ...args));
+  },
 });
