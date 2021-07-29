@@ -68,7 +68,7 @@ export namespace WindowManager {
     query?: {
       [key: string]: unknown;
     };
-    options: Electron.BrowserWindowConstructorOptions;
+    options?: Electron.BrowserWindowConstructorOptions;
   }
 }
 
