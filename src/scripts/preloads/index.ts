@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron";
-import { VALIDCHANNELS } from "@/config/ipcChannels";
+import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 
 contextBridge.exposeInMainWorld("ipcRenderer", {
   send: (channel: VALIDCHANNELS, ...args: unknown[]) => {
@@ -25,6 +25,9 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
       // Deliberately strip event as it includes `sender`
       ipcRenderer.once(channel, (event, ...args) => listener(...args));
     }
+  },
+  lisSend: (channel: VALIDCHANNELS, ...args: unknown[]) => {
+    ipcRenderer.send(channel, ...args);
   },
   lisOnce: (channel: string, listener: (...args: unknown[]) => unknown) => {
     ipcRenderer.once(channel, (event, ...args) => listener(event, ...args));

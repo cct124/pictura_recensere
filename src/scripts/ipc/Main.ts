@@ -1,22 +1,36 @@
-import os from "os";
-import { app, ipcMain } from "electron";
-import { VALIDCHANNELS } from "@/config/ipcChannels";
+import { ipcMain, WebContents } from "electron";
+import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 
 export default class IpcMain {
   private channel: VALIDCHANNELS;
+  private rendererMap: Map<number, WebContents>;
+
   constructor({ channel }: { channel: VALIDCHANNELS }) {
     this.channel = channel;
-    this.listener(this.channel);
+    this.rendererMap = new Map();
+    this.init();
   }
 
-  listener(channel: VALIDCHANNELS) {
+  private init() {
+    this.listener(this.channel);
+    this.ipcRendererInit(this.channel);
+  }
+
+  private listener(channel: VALIDCHANNELS) {
     ipcMain.on(channel, (...args: unknown[]) =>
       // this.listenerHandle.apply(this, ...args)
       Reflect.apply(this.listenerHandle, this, args)
     );
   }
 
-  listenerHandle(
+  private ipcRendererInit(channel: string) {
+    ipcMain.on(`${channel}-init`, (...args: unknown[]) =>
+      // this.listenerHandle.apply(this, ...args)
+      Reflect.apply(this.ipcRendererInitHandle, this, args)
+    );
+  }
+
+  private listenerHandle(
     event: Electron.IpcMainEvent,
     propKey: string,
     tempChannel: string,
@@ -30,14 +44,8 @@ export default class IpcMain {
     });
   }
 
-  getSysteamInfo() {
-    return Promise.resolve({
-      platform: process.platform,
-      versions: process.versions,
-      systemType: os.type(),
-      arch: os.arch(),
-      systemVersion: os.release(),
-      appVersion: app.getVersion(),
-    });
+  private ipcRendererInitHandle(event: Electron.IpcMainEvent) {
+    if (!this.rendererMap.has(event.frameId))
+      this.rendererMap.set(event.frameId, event.sender);
   }
 }

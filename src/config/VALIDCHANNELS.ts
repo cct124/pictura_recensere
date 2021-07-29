@@ -3,5 +3,5 @@
  * 有效的ipc频道
  */
 export enum VALIDCHANNELS {
-  systeamInfo = "systeamInfo",
+  SYSTEM = "SYSTEM",
 }

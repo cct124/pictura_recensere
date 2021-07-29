@@ -1,6 +1,5 @@
 import { app, BrowserWindow } from "electron";
-import IpcMain from "@/scripts/ipc/Main";
-import { VALIDCHANNELS } from "@/config/ipcChannels";
+import system from "@/scripts/models/system";
 
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
@@ -32,8 +31,13 @@ const createWindow = (): void => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  new IpcMain({
-    channel: VALIDCHANNELS.systeamInfo,
+  // console.log(system);
+  mainWindow.once("ready-to-show", () => {
+    setTimeout(() => {
+      system.run().then((res) => {
+        console.log(res);
+      });
+    }, 1000);
   });
 };
 

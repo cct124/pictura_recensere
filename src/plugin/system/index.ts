@@ -1,0 +1,22 @@
+import IpcRenderer from "@/scripts/ipc/Renderer";
+import { System as _System } from "@/scripts/models/system";
+import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
+import { _IpcRenderer } from "@/types/index.d";
+import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
+
+export class System extends IpcRenderer {
+  constructor({ ipc, channel }: { ipc: _IpcRenderer; channel: VALIDCHANNELS }) {
+    super({ ipc, channel });
+  }
+
+  run() {
+    return Promise.resolve("test");
+  }
+}
+
+export default proxyRenderer<System, _System>(
+  new System({
+    ipc: window.ipcRenderer,
+    channel: VALIDCHANNELS.SYSTEM,
+  })
+);
