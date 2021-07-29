@@ -43,21 +43,23 @@ class WindowManager {
 
           window.loadURL(windowConfig.loadURL + query);
 
-          if (
-            !windowConfig.dev ||
-            !windowConfig.dev.devTools ||
-            windowConfig.dev.devTools.open !== false
-          )
-            window.webContents.openDevTools(
-              windowConfig.dev &&
-                windowConfig.dev.devTools &&
-                windowConfig.dev.devTools.options
-            );
+          if (process.development === true) {
+            if (
+              !windowConfig.dev ||
+              !windowConfig.dev.devTools ||
+              windowConfig.dev.devTools.open !== false
+            )
+              window.webContents.openDevTools(
+                windowConfig.dev &&
+                  windowConfig.dev.devTools &&
+                  windowConfig.dev.devTools.options
+              );
 
-          if (!windowConfig.dev || windowConfig.dev.reload !== false)
-            window.webContents.on("before-input-event", (event, input) => {
-              if (input.key === "F5") window.webContents.reload();
-            });
+            if (!windowConfig.dev || windowConfig.dev.reload !== false)
+              window.webContents.on("before-input-event", (event, input) => {
+                if (input.key === "F5") window.webContents.reload();
+              });
+          }
 
           window.once("closed", () => {
             this.windowMap.delete(window.id);

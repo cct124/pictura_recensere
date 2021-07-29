@@ -80,4 +80,10 @@ declare global {
   interface ObjKey {
     [key: string]: unknown;
   }
+
+  namespace NodeJS {
+    interface Process {
+      development: boolean;
+    }
+  }
 }
