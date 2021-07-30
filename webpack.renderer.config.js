@@ -23,6 +23,7 @@ module.exports = {
       ".json",
       ".scss",
       ".sass",
+      ".svg",
     ],
     alias: {
       "@": path.resolve(__dirname, "src"),
