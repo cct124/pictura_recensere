@@ -36,10 +36,7 @@ export default class IpcMain {
     tempChannel: string,
     ...args: unknown[]
   ) {
-    Reflect.get(
-      this,
-      propKey
-    )(...args).then((res: unknown) => {
+    Reflect.get(this, propKey)(event, ...args).then((res: unknown) => {
       event.reply(tempChannel, res);
     });
   }

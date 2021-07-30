@@ -1,7 +1,14 @@
-@import "./variables.scss";
 @import "./public.scss";
 
 body {
   font-family: -apple-system, Arial, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, sans-serif;
+}
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }

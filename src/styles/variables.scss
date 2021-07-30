@@ -1,21 +1,61 @@
-// --- Gray Color ---
-$gray-1: hsl(0deg 0% 5%);
-$gray-2: hsl(0deg 0% 10%);
-$gray-3: hsl(0deg 0% 15%);
-$gray-4: hsl(0deg 0% 20%);
-$gray-5: hsl(0deg 0% 25%);
-$gray-6: hsl(0deg 0% 30%);
-$gray-7: hsl(0deg 0% 35%);
-$gray-8: hsl(0deg 0% 40%);
-$gray-9: hsl(0deg 0% 45%);
-$gray-10: hsl(0deg 0% 50%);
-$gray-11: hsl(0deg 0% 55%);
-$gray-12: hsl(0deg 0% 60%);
-$gray-13: hsl(0deg 0% 65%);
-$gray-14: hsl(0deg 0% 70%);
-$gray-15: hsl(0deg 0% 75%);
-$gray-16: hsl(0deg 0% 80%);
-$gray-17: hsl(0deg 0% 85%);
-$gray-18: hsl(0deg 0% 90%);
-$gray-19: hsl(0deg 0% 95%);
-$gray-20: hsl(0deg 0% 100%);
+/**
+ * ------ Gray Color ------
+ */
+@function gray($index) {
+  @return hsl(0deg 0% 5% * $index);
+}
+
+/**
+ * ------ Basic ------
+ */
+
+// -- Color --
+$frame-background-color: #e4e4e4;
+$bgc-basic-primary-color: #1184d1;
+$bgc-basic-danger-color: #e81123;
+
+// ---- Text ----
+$font-size-esm: 10px;
+$font-size-sm: 12px;
+$font-size-bs: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-elg: 20px;
+
+$text-basic-color: #666666;
+$text-basic-active-color: #3f3f3f;
+$text-basic-primary-color: #1492e6;
+$text-basic-danger-color: #f56c6c;
+
+/**
+ * ------ Frame ------
+ */
+// ---- Menus ----
+$menus-logo-size: 20px;
+$menus-height: 30px;
+$menus-background-color: #f5f5f5;
+// ---- Window Controls ----
+$menus-window-controls-size: 12px;
+
+$menus-window-controls-width: 40px;
+$menus-window-controls-height: $menus-height;
+
+$menus-window-controls-minimize: $menus-window-controls-size;
+$menus-window-controls-maximize: $menus-window-controls-size;
+$menus-window-controls-close: $menus-window-controls-size;
+
+$menus-window-controls-minimize-color: $text-basic-color;
+$menus-window-controls-maximize-color: $text-basic-color;
+$menus-window-controls-close-color: $text-basic-color;
+
+$menus-window-controls-minimize-active-color: $text-basic-active-color;
+$menus-window-controls-maximize-active-color: $text-basic-active-color;
+$menus-window-controls-close-active-color: white;
+
+$menus-window-controls-minimize-bgc: $menus-background-color;
+$menus-window-controls-maximize-bgc: $menus-background-color;
+$menus-window-controls-close-bgc: $menus-background-color;
+
+$menus-window-controls-minimize-active-bgc: #e7e7e7;
+$menus-window-controls-maximize-active-bgc: #e7e7e7;
+$menus-window-controls-close-active-bgc: $bgc-basic-danger-color;

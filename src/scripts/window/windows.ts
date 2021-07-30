@@ -1,5 +1,6 @@
 import WINDOWS from "@/config/WINDOWS";
 import { MainWindow } from "@/types/index.d";
+import system from "@/scripts/models/system";
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -52,13 +53,21 @@ export default new Windows([
     {
       loadURL: MAIN_WINDOW_WEBPACK_ENTRY,
       options: {
-        width: 1440,
-        height: 720,
+        width: 1200,
+        height: 675,
         frame: false,
         webPreferences: {
           contextIsolation: true,
           preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
         },
+      },
+      ready(window) {
+        window.on("maximize", () => {
+          system.setIsMaximizes(true);
+        });
+        window.on("unmaximize", () => {
+          system.setIsMaximizes(false);
+        });
       },
       dev: {
         devTools: {
@@ -67,7 +76,7 @@ export default new Windows([
             mode: "detach",
           },
         },
-      }
+      },
     },
   ],
 ]);

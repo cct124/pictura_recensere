@@ -1,0 +1,72 @@
+.frame-menus {
+  width: 100vw;
+  height: $menus-height;
+  background-color: $menus-background-color;
+  -webkit-app-region: drag;
+
+  .left {
+    .logo {
+      width: $menus-logo-size;
+      height: $menus-logo-size;
+    }
+  }
+
+  .middle {
+    height: 100%;
+  }
+
+  .right {
+    
+    -webkit-app-region: no-drag;
+    .minimize,
+    .maximize,
+    .close {
+      width: $menus-window-controls-width;
+      height: $menus-window-controls-height;
+    }
+    .minimize {
+      background-color: $menus-window-controls-minimize-bgc;
+      svg {
+        width: $menus-window-controls-minimize;
+        fill: $menus-window-controls-minimize-color;
+      }
+
+      &:hover {
+        svg {
+          fill: $menus-window-controls-minimize-active-color;
+        }
+        background-color: $menus-window-controls-minimize-active-bgc;
+      }
+    }
+
+    .maximize {
+      background-color: $menus-window-controls-maximize-bgc;
+      svg {
+        width: $menus-window-controls-maximize;
+        fill: $menus-window-controls-maximize-color;
+      }
+
+      &:hover {
+        svg {
+          fill: $menus-window-controls-maximize-active-color;
+        }
+        background-color: $menus-window-controls-maximize-active-bgc;
+      }
+    }
+
+    .close {
+      background-color: $menus-window-controls-minimize-bgc;
+      svg {
+        width: $menus-window-controls-minimize;
+        fill: $menus-window-controls-minimize-color;
+      }
+
+      &:hover {
+        svg {
+          fill: $menus-window-controls-close-active-color;
+        }
+        background-color: $menus-window-controls-close-active-bgc;
+      }
+    }
+  }
+}
