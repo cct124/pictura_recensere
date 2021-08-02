@@ -1,0 +1,14 @@
+.maximize {
+  background-color: $menus-window-controls-maximize-bgc;
+  svg {
+    width: $menus-window-controls-maximize;
+    fill: $menus-window-controls-maximize-color;
+  }
+
+  &:hover {
+    svg {
+      fill: $menus-window-controls-maximize-active-color;
+    }
+    background-color: $menus-window-controls-maximize-active-bgc;
+  }
+}

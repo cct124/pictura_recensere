@@ -3,7 +3,7 @@ import { System as _System } from "@/scripts/models/system";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import { _IpcRenderer } from "@/types/index.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
-import { setIsMaximizes } from "@/components/Frame/Menus";
+import { setIsMaximize } from "@/components/Frame/Menus/Control/Maximize";
 
 export class System extends IpcRenderer {
   constructor({ ipc, channel }: { ipc: _IpcRenderer; channel: VALIDCHANNELS }) {
@@ -15,7 +15,7 @@ export class System extends IpcRenderer {
   }
 
   setIsMaximizes(bool: boolean) {
-    setIsMaximizes(bool);
+    setIsMaximize(bool);
     return Promise.resolve(true);
   }
 }

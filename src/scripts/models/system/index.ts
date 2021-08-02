@@ -51,6 +51,16 @@ export class System extends IpcMain {
     windowManager.get(event.frameId).window.unmaximize();
     return Promise.resolve(true);
   }
+
+  /**
+   * 尝试关闭窗口。 该方法与用户手动单击窗口的关闭按钮效果相同。 但网页可能会取消这个关闭操作。
+   * @param event 
+   * @returns 
+   */
+  close(event?: Electron.IpcMainEvent) {
+    windowManager.get(event.frameId).window.close();
+    return Promise.resolve(true);
+  }
 }
 
 export default proxyMain<System, _System>(
