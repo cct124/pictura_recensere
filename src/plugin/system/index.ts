@@ -3,7 +3,7 @@ import { System as _System } from "@/scripts/models/system";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import { _IpcRenderer } from "@/types/index.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
-import { setIsMaximize } from "@/components/Frame/Menus/Control/Maximize";
+import { setIsMaximize } from "@/components/Frame/Titlebar/Control/Maximize";
 
 export class System extends IpcRenderer {
   constructor({ ipc, channel }: { ipc: _IpcRenderer; channel: VALIDCHANNELS }) {
