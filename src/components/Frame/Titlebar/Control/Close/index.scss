@@ -1,14 +1,14 @@
 .close {
-  background-color: $menus-window-controls-minimize-bgc;
+  background-color: $titlebar-window-controls-minimize-bgc;
   svg {
-    width: $menus-window-controls-minimize;
-    fill: $menus-window-controls-minimize-color;
+    width: $titlebar-window-controls-minimize;
+    fill: $titlebar-window-controls-minimize-color;
   }
 
   &:hover {
     svg {
-      fill: $menus-window-controls-close-active-color;
+      fill: $titlebar-window-controls-close-active-color;
     }
-    background-color: $menus-window-controls-close-active-bgc;
+    background-color: $titlebar-window-controls-close-active-bgc;
   }
 }

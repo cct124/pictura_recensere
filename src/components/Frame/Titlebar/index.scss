@@ -1,13 +1,13 @@
-.frame-menus {
+.frame-titlebar {
   width: 100vw;
-  height: $menus-height;
-  background-color: $menus-background-color;
+  height: $titlebar-height;
+  background-color: $titlebar-background-color;
   -webkit-app-region: drag;
 
   .left {
     .logo {
-      width: $menus-logo-size;
-      height: $menus-logo-size;
+      width: $titlebar-logo-size;
+      height: $titlebar-logo-size;
     }
   }
 
@@ -20,8 +20,8 @@
     .minimize,
     .maximize,
     .close {
-      width: $menus-window-controls-width;
-      height: $menus-window-controls-height;
+      width: $titlebar-window-controls-width;
+      height: $titlebar-window-controls-height;
     }
   }
 }

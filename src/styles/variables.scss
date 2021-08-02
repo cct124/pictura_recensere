@@ -31,31 +31,31 @@ $text-basic-danger-color: #f56c6c;
  * ------ Frame ------
  */
 // ---- Menus ----
-$menus-logo-size: 20px;
-$menus-height: 30px;
-$menus-background-color: #f5f5f5;
+$titlebar-logo-size: 20px;
+$titlebar-height: 30px;
+$titlebar-background-color: #f5f5f5;
 // ---- Window Controls ----
-$menus-window-controls-size: 12px;
+$titlebar-window-controls-size: 12px;
 
-$menus-window-controls-width: 40px;
-$menus-window-controls-height: $menus-height;
+$titlebar-window-controls-width: 40px;
+$titlebar-window-controls-height: $titlebar-height;
 
-$menus-window-controls-minimize: $menus-window-controls-size;
-$menus-window-controls-maximize: $menus-window-controls-size;
-$menus-window-controls-close: $menus-window-controls-size;
+$titlebar-window-controls-minimize: $titlebar-window-controls-size;
+$titlebar-window-controls-maximize: $titlebar-window-controls-size;
+$titlebar-window-controls-close: $titlebar-window-controls-size;
 
-$menus-window-controls-minimize-color: $text-basic-color;
-$menus-window-controls-maximize-color: $text-basic-color;
-$menus-window-controls-close-color: $text-basic-color;
+$titlebar-window-controls-minimize-color: $text-basic-color;
+$titlebar-window-controls-maximize-color: $text-basic-color;
+$titlebar-window-controls-close-color: $text-basic-color;
 
-$menus-window-controls-minimize-active-color: $text-basic-active-color;
-$menus-window-controls-maximize-active-color: $text-basic-active-color;
-$menus-window-controls-close-active-color: white;
+$titlebar-window-controls-minimize-active-color: $text-basic-active-color;
+$titlebar-window-controls-maximize-active-color: $text-basic-active-color;
+$titlebar-window-controls-close-active-color: white;
 
-$menus-window-controls-minimize-bgc: $menus-background-color;
-$menus-window-controls-maximize-bgc: $menus-background-color;
-$menus-window-controls-close-bgc: $menus-background-color;
+$titlebar-window-controls-minimize-bgc: $titlebar-background-color;
+$titlebar-window-controls-maximize-bgc: $titlebar-background-color;
+$titlebar-window-controls-close-bgc: $titlebar-background-color;
 
-$menus-window-controls-minimize-active-bgc: #e7e7e7;
-$menus-window-controls-maximize-active-bgc: #e7e7e7;
-$menus-window-controls-close-active-bgc: $bgc-basic-danger-color;
+$titlebar-window-controls-minimize-active-bgc: #e7e7e7;
+$titlebar-window-controls-maximize-active-bgc: #e7e7e7;
+$titlebar-window-controls-close-active-bgc: $bgc-basic-danger-color;

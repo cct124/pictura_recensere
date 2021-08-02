@@ -1,14 +1,14 @@
 .maximize {
-  background-color: $menus-window-controls-maximize-bgc;
+  background-color: $titlebar-window-controls-maximize-bgc;
   svg {
-    width: $menus-window-controls-maximize;
-    fill: $menus-window-controls-maximize-color;
+    width: $titlebar-window-controls-maximize;
+    fill: $titlebar-window-controls-maximize-color;
   }
 
   &:hover {
     svg {
-      fill: $menus-window-controls-maximize-active-color;
+      fill: $titlebar-window-controls-maximize-active-color;
     }
-    background-color: $menus-window-controls-maximize-active-bgc;
+    background-color: $titlebar-window-controls-maximize-active-bgc;
   }
 }

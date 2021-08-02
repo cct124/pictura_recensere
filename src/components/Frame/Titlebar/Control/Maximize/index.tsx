@@ -7,7 +7,7 @@ import MaximizeSvg from '@/assets/svg/maximize.svg';
 export let setIsMaximize: React.Dispatch<React.SetStateAction<boolean>>;
 
 /**
- * 最大化窗口
+ * 最大化窗口或取消窗口最大化
  * @returns 
  */
 export default function Maximize() {
