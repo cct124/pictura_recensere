@@ -87,3 +87,13 @@ declare global {
     }
   }
 }
+
+/**
+ * Menubar
+ */
+export interface MenubarItem {
+  title?: string;
+  type?: "separator";
+  onClick?: () => unknown;
+  children?: MenubarItem[];
+}

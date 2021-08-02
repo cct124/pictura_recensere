@@ -1,7 +1,6 @@
 import React from "react";
 import system from '@/plugin/system';
 import CloseSvg from '@/assets/svg/close.svg';
-import './index.scss';
 
 /**
  * 关闭窗口

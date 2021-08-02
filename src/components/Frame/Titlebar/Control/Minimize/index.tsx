@@ -1,6 +1,5 @@
 import React from "react";
 import system from '@/plugin/system';
-import './index.scss';
 import HorizontalLineSvg from '@/assets/svg/horizontal_line.svg';
 
 /**

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import './index.scss';
 import system from '@/plugin/system';
 import MaximizeNormalSvg from '@/assets/svg/maximize_normal.svg';
 import MaximizeSvg from '@/assets/svg/maximize.svg';

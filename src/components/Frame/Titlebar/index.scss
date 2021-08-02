@@ -13,6 +13,9 @@
 
   .middle {
     height: 100%;
+    .menubar {
+      height: $titlebar-height;
+    }
   }
 
   .right {
@@ -22,6 +25,51 @@
     .close {
       width: $titlebar-window-controls-width;
       height: $titlebar-window-controls-height;
+    }
+
+    .minimize {
+      background-color: $titlebar-window-controls-minimize-bgc;
+      svg {
+        width: $titlebar-window-controls-minimize;
+        fill: $titlebar-window-controls-minimize-color;
+      }
+
+      &:hover {
+        svg {
+          fill: $titlebar-window-controls-minimize-active-color;
+        }
+        background-color: $titlebar-window-controls-minimize-active-bgc;
+      }
+    }
+
+    .maximize {
+      background-color: $titlebar-window-controls-maximize-bgc;
+      svg {
+        width: $titlebar-window-controls-maximize;
+        fill: $titlebar-window-controls-maximize-color;
+      }
+
+      &:hover {
+        svg {
+          fill: $titlebar-window-controls-maximize-active-color;
+        }
+        background-color: $titlebar-window-controls-maximize-active-bgc;
+      }
+    }
+
+    .close {
+      background-color: $titlebar-window-controls-minimize-bgc;
+      svg {
+        width: $titlebar-window-controls-minimize;
+        fill: $titlebar-window-controls-minimize-color;
+      }
+
+      &:hover {
+        svg {
+          fill: $titlebar-window-controls-close-active-color;
+        }
+        background-color: $titlebar-window-controls-close-active-bgc;
+      }
     }
   }
 }
