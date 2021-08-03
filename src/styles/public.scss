@@ -1,4 +1,18 @@
 /**
+ * ---- Display ----
+ */
+ .block {
+  display: block;
+}
+
+/**
+ * ---- Text ----
+ */
+.nowrap {
+  white-space: nowrap;
+}
+
+/**
  * ---- Flex ----
  */
 .flex {
@@ -98,6 +112,13 @@
   }
 }
 
+/**
+ * ---- margin ----
+ */
+.mar {
+  margin: 0;
+}
+
 @for $i from 1 through 10 {
   .mar-#{$i * 5} {
     margin: $i * 5px;
@@ -120,4 +141,11 @@
   .w-#{$i * 5} {
     width: $i * 5px;
   }
+}
+
+/**
+ * ---- position ----
+ */
+.relative {
+  position: relative;
 }

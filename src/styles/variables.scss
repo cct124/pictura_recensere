@@ -62,3 +62,19 @@ $titlebar-window-controls-close-active-bgc: $bgc-basic-danger-color;
 
 // ---- Menubar ----
 $menubar-title-size: 14px;
+$menubar-title-padding: 2px 8px;
+$menubar-title-color: $text-basic-color;
+$menubar-title-active-color: $text-basic-active-color;
+$menubar-title-bgc: transparent;
+$menubar-title-active-bgc: hsl(0, 0%, 92%);
+
+// ---- Menubar Children ----
+$menubar-children-title-size: 13px;
+$menubar-menu-children-padding: 5px 0px;
+$menubar-menu-children-bgc: #fff;
+$menubar-menu-children-title-padding: 4px 15px;
+$menubar-menu-children-title-color: $text-basic-color;
+$menubar-menu-children-title-bgc: transparent;
+$menubar-menu-children-title-active-bgc: #f3f3f3;
+
+$menubar-menu-children-separator-margin: 4px 8px;
