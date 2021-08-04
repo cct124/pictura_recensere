@@ -1,5 +1,5 @@
 import WINDOWS from "@/config/WINDOWS";
-import { MainWindow } from "@/types/index.d";
+import { MainWindow } from "@/types/type.d";
 import system from "@/scripts/models/system";
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;

@@ -1,5 +1,5 @@
 import React from "react";
-import { MenubarItem } from '@/types/index.d'
+import { MenubarItem } from '@/types/type.d'
 import { Ev } from './index'
 import Style from './index.modules.scss';
 

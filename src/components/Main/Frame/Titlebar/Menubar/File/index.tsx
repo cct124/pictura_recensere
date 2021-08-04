@@ -1,4 +1,4 @@
-import { MenubarItem } from '@/types/index.d'
+import { MenubarItem } from '@/types/type.d';
 
 export default function File(): MenubarItem {
 

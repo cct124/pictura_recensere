@@ -1,4 +1,4 @@
-import { _IpcRenderer } from "@/types/index.d";
+import { _IpcRenderer } from "@/types/type.d";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 
 export default class IpcRenderer {

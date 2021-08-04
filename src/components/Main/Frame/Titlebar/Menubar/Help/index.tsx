@@ -1,4 +1,4 @@
-import { MenubarItem } from '@/types/index.d'
+import { MenubarItem } from '@/types/type.d'
 import system from '@/plugin/system';
 
 export default function Help(): MenubarItem {

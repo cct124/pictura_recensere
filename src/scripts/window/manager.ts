@@ -2,7 +2,7 @@ import { BrowserWindow } from "electron";
 import WINDOWS from "@/config/WINDOWS";
 import windows from "@/scripts/window/windows";
 import { queryParams } from "@/utils/tool";
-import { MainWindow, WindowManager } from "@/types/index.d";
+import { MainWindow, WindowManager } from "@/types/type.d";
 
 class WindowManager {
   private windowMap: Map<number, MainWindow.WindowMapValue> = new Map();
@@ -41,7 +41,7 @@ class WindowManager {
 
           if (options.query) query = "?" + queryParams(options.query);
 
-          window.loadURL(windowConfig.loadURL + query);
+          window.loadURL(MAIN_WINDOW_WEBPACK_ENTRY + query);
 
           if (process.development === true) {
             if (

@@ -1,7 +1,7 @@
 import IpcRenderer from "@/scripts/ipc/Renderer";
 import { System as _System } from "@/scripts/models/system";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
-import { _IpcRenderer } from "@/types/index.d";
+import { _IpcRenderer } from "@/types/type.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
 import { setIsMaximize } from "@/components/Main/Frame/Titlebar/Control/Maximize";
 import { closeAllMenusChild } from "@/components/Main/Frame/Titlebar/Menubar/menu";
