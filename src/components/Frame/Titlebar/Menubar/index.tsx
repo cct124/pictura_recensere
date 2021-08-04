@@ -4,7 +4,7 @@ import file from '@/components/Frame/Titlebar/Menubar/File';
 import help from '@/components/Frame/Titlebar/Menubar/Help';
 import Style from './index.modules.scss';
 
-interface Ev {
+export interface Ev {
   menus?: true
 }
 
@@ -12,11 +12,15 @@ export default function Menubar() {
 
   const menus = [file, help];
 
-  const control = new Map<string, [boolean, React.Dispatch<React.SetStateAction<boolean>>]>();
+  const menusControl = menus.map((m, i) => ({ name: i, childView: false }));
+
+  const [control, setControl] = useState(menusControl)
+
 
   function registered(ev: MouseEvent) {
     if (!(ev as Ev).menus) {
-      hiddenAll();
+      control.forEach(m => m.childView = false);
+      setControl([...control]);
     }
   }
 
@@ -27,40 +31,10 @@ export default function Menubar() {
     }
   })
 
-  /**
-   * 关闭所有打开的选项卡 
-   */
-  function hiddenAll() {
-    control.forEach(([view, setView]) => {
-      if (view) setView(false)
-    })
-  }
-
-  /**
-   * 当有选项卡打开时移动到标题上打开选项卡
-   * @param name 
-   * @returns 
-   */
-  function mouseOver(name: string) {
-    for (const [, [view,]] of control) {
-      if (view) {
-        hiddenAll();
-        control.get(name)[1](true)
-        return
-      }
-    }
-  }
-
-  function changeChildren([, setView]: [boolean, React.Dispatch<React.SetStateAction<boolean>>]) {
-    setView(true);
-  }
-
-  const Menus = menus.map(menu => {
-    const state = useState(false);
-    control.set(menu.name, state);
-    return <Menu menu={menu} key={menu.name} changeChildren={changeChildren} mouseOver={mouseOver} state={state} />
+  const Menus = menus.map((menu, i) => {
+    return <Menu menu={menu} key={i} name={i} control={control} setControl={setControl} />
   })
-  
+
   return <div className={Style['menubar'] + ' flex-jcfs-aic'}>
     {Menus}
   </div>

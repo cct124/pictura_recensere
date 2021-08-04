@@ -1,11 +1,24 @@
 import React from "react";
 import { MenubarItem } from '@/types/index.d'
+import { Ev } from './index'
 import Style from './index.modules.scss';
 
-export default function Menu({ menu, state, mouseOver, changeChildren }: { menu: () => MenubarItem, mouseOver: (name: string) => void, changeChildren: (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]) => void, state: [boolean, React.Dispatch<React.SetStateAction<boolean>>] }) {
+export default function Menu({ menu, name, control, setControl }: {
+  menu: () => MenubarItem,
+  name: number,
+  control: {
+    name: number;
+    childView: boolean;
+  }[],
+  setControl: React.Dispatch<React.SetStateAction<{
+    name: number;
+    childView: boolean;
+  }[]>>
+}) {
 
-  const [childrenView] = state;
+  const targer = control.find(m => m.name === name);
 
+  const childView = targer.childView;
   const item = menu();
 
   const Children = (
@@ -16,16 +29,29 @@ export default function Menu({ menu, state, mouseOver, changeChildren }: { menu:
     </div>
   )
 
-  function changeChildrenView() {
-    changeChildren(state)
+  function onClick(ev: React.MouseEvent) {
+    (ev.nativeEvent as Ev).menus = true
+    targer.childView = !targer.childView
+    console.log(control);
+
+    setControl([...control]);
   }
 
   function onMouseOver() {
-    mouseOver(menu.name)
+    const active = control.find(m => m.childView);
+
+    if (active && active.name !== name) {
+      control.forEach(m => {
+        m.childView = m.name === name
+      });
+
+      setControl([...control])
+    }
+
   }
 
   return <div className={Style['menubar-menu-button'] + ' relative flex-center'}>
-    <div className={childrenView ? (Style['menubar-menu-title'] + ' ' + Style['menubar-menu-active']) : Style['menubar-menu-title']} onClick={changeChildrenView} onMouseOver={onMouseOver}>{item.title}</div>
-    {childrenView ? Children : ""}
+    <div className={childView ? (Style['menubar-menu-title'] + ' ' + Style['menubar-menu-active']) : Style['menubar-menu-title']} onClick={onClick} onMouseOver={onMouseOver}>{item.title}</div>
+    {childView ? Children : ""}
   </div>
 }
