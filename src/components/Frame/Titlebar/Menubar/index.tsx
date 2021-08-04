@@ -52,7 +52,6 @@ export default function Menubar() {
   }
 
   function changeChildren([, setView]: [boolean, React.Dispatch<React.SetStateAction<boolean>>]) {
-    console.log(setView);
     setView(true);
   }
 
@@ -61,8 +60,6 @@ export default function Menubar() {
     control.set(menu.name, state);
     return <Menu menu={menu} key={menu.name} changeChildren={changeChildren} mouseOver={mouseOver} state={state} />
   })
-
-  console.log(control);
   
   return <div className={Style['menubar'] + ' flex-jcfs-aic'}>
     {Menus}

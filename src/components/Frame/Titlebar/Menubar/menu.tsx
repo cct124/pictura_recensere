@@ -17,12 +17,10 @@ export default function Menu({ menu, state, mouseOver, changeChildren }: { menu:
   )
 
   function changeChildrenView() {
-    console.log('click');
     changeChildren(state)
   }
 
   function onMouseOver() {
-    console.log('onMouseOver');
     mouseOver(menu.name)
   }
 

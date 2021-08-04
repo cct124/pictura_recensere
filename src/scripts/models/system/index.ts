@@ -64,11 +64,21 @@ export class System extends IpcMain {
 
   /**
    * 打开chrome调试工具
-   * @param event 
-   * @returns 
+   * @param event
+   * @returns
    */
   openDeveloperTools(event?: Electron.IpcMainEvent) {
     windowManager.get(event.frameId).window.webContents.openDevTools();
+    return Promise.resolve(true);
+  }
+
+  /**
+   * 刷新当前页面
+   * @param event
+   * @returns
+   */
+  reload(event?: Electron.IpcMainEvent) {
+    windowManager.get(event.frameId).window.webContents.reload();
     return Promise.resolve(true);
   }
 }
