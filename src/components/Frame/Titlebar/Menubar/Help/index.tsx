@@ -1,9 +1,10 @@
 import { MenubarItem } from '@/types/index.d'
+import system from '@/plugin/system';
 
 export default function Help(): MenubarItem {
 
   function openDeveloperTools() {
-    console.log('Open Developer Tools');
+    system.openDeveloperTools();
   }
 
   return {

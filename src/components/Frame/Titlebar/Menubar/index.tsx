@@ -62,6 +62,8 @@ export default function Menubar() {
     return <Menu menu={menu} key={menu.name} changeChildren={changeChildren} mouseOver={mouseOver} state={state} />
   })
 
+  console.log(control);
+  
   return <div className={Style['menubar'] + ' flex-jcfs-aic'}>
     {Menus}
   </div>
