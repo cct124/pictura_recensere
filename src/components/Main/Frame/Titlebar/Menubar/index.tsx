@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Menu from '@/components/Frame/Titlebar/Menubar/menu';
-import file from '@/components/Frame/Titlebar/Menubar/File';
-import help from '@/components/Frame/Titlebar/Menubar/Help';
+import Menu from '@/components/Main/Frame/Titlebar/Menubar/menu';
+import file from '@/components/Main/Frame/Titlebar/Menubar/File';
+import help from '@/components/Main/Frame/Titlebar/Menubar/Help';
 import Style from './index.modules.scss';
 
 export interface Ev {
