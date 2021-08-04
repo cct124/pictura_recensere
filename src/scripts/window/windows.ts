@@ -2,9 +2,6 @@ import WINDOWS from "@/config/WINDOWS";
 import { MainWindow } from "@/types/type.d";
 import system from "@/scripts/models/system";
 
-declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
-declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
-
 /**
  * 窗口列表类
  */
@@ -51,7 +48,7 @@ export default new Windows([
   [
     WINDOWS.MAIN,
     {
-      loadURL: MAIN_WINDOW_WEBPACK_ENTRY,
+      loadURL: "",
       options: {
         width: 1400,
         height: 675,

@@ -41,7 +41,9 @@ class WindowManager {
 
           if (options.query) query = "?" + queryParams(options.query);
 
-          window.loadURL(MAIN_WINDOW_WEBPACK_ENTRY + query);
+          window.loadURL(
+            MAIN_WINDOW_WEBPACK_ENTRY + windowConfig.loadURL + query
+          );
 
           if (process.development === true) {
             if (
