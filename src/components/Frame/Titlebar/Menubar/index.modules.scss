@@ -1,6 +1,7 @@
 .menubar {
   user-select: none;
   height: $titlebar-height;
+  -webkit-app-region: no-drag;
 }
 
 .menubar-menu-button {

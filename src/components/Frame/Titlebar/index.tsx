@@ -11,7 +11,7 @@ import Menubar from '@/components/Frame/Titlebar/Menubar';
 export default function Titlebar() {
   return <div className={Style['frame-titlebar'] + " flex-jcsb-aic"}>
     <div className={Style['left']}><div className={Style['logo'] + " pad-5"}><PicturaRecensereLogo /></div></div>
-    <div className={Style['middle'] + ' grow'}>
+    <div className={Style['middle'] + ' flex-jcfs-aic grow'}>
       <Menubar />
     </div>
     <div className={Style['right'] + ' flex'}>

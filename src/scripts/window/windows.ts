@@ -68,6 +68,9 @@ export default new Windows([
         window.on("unmaximize", () => {
           system.setIsMaximizes(false);
         });
+        window.on("blur", () => {
+          system.windowBlur();
+        });
       },
       dev: {
         devTools: {

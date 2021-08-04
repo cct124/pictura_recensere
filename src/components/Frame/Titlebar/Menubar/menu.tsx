@@ -3,6 +3,8 @@ import { MenubarItem } from '@/types/index.d'
 import { Ev } from './index'
 import Style from './index.modules.scss';
 
+export let closeAllMenusChild: () => void
+
 export default function Menu({ menu, name, control, setControl }: {
   menu: () => MenubarItem,
   name: number,
@@ -30,10 +32,8 @@ export default function Menu({ menu, name, control, setControl }: {
   )
 
   function onClick(ev: React.MouseEvent) {
-    (ev.nativeEvent as Ev).menus = true
-    targer.childView = !targer.childView
-    console.log(control);
-
+    (ev.nativeEvent as Ev).menus = true;
+    targer.childView = !targer.childView;
     setControl([...control]);
   }
 
@@ -48,6 +48,13 @@ export default function Menu({ menu, name, control, setControl }: {
       setControl([...control])
     }
 
+  }
+
+  closeAllMenusChild = () => {
+    control.forEach(m => {
+      m.childView = false
+    });
+    setControl([...control])
   }
 
   return <div className={Style['menubar-menu-button'] + ' relative flex-center'}>

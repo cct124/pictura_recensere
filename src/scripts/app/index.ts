@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from "electron";
-import installExtension, {
-  REACT_DEVELOPER_TOOLS,
-} from "electron-devtools-installer";
+// import installExtension, {
+//   REACT_DEVELOPER_TOOLS,
+// } from "electron-devtools-installer";
 import windowManager from "@/scripts/window/manager";
 import WINDOW from "@/config/WINDOWS";
 import APP from "@/config/APP";
@@ -49,18 +49,18 @@ export default class App {
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
     app.whenReady().then(async () => {
-      if (process.development) {
-        // Install Vue Devtools
-        try {
-          await installExtension(REACT_DEVELOPER_TOOLS)
-            .then((name) => {
-              console.log(`Added Extension:  ${name}`);
-            })
-            .catch((err) => console.log("An error occurred: ", err));
-        } catch (e) {
-          console.error("Vue Devtools failed to install:", e.toString());
-        }
-      }
+      // if (process.development) {
+      //   // Install Vue Devtools
+      //   try {
+      //     await installExtension(REACT_DEVELOPER_TOOLS)
+      //       .then((name) => {
+      //         console.log(`Added Extension:  ${name}`);
+      //       })
+      //       .catch((err) => console.log("An error occurred: ", err));
+      //   } catch (e) {
+      //     console.error("Vue Devtools failed to install:", e.toString());
+      //   }
+      // }
       windowManager.createWindow(WINDOW.MAIN);
     });
 

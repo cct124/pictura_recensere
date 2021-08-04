@@ -2,7 +2,7 @@
   width: 100vw;
   height: $titlebar-height;
   background-color: $titlebar-background-color;
-  // -webkit-app-region: drag;
+  -webkit-app-region: drag;
 
   .left {
     .logo {
