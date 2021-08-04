@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { MenubarItem } from '@/types/index.d'
 import Style from './index.modules.scss';
 
 export default function Menu({ menu, state, mouseOver, changeChildren }: { menu: () => MenubarItem, mouseOver: (name: string) => void, changeChildren: (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]) => void, state: [boolean, React.Dispatch<React.SetStateAction<boolean>>] }) {
 
-  const [childrenView, setChildrenView] = state;
+  const [childrenView] = state;
 
   const item = menu();
 

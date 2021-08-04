@@ -52,6 +52,7 @@ export default function Menubar() {
   }
 
   function changeChildren([, setView]: [boolean, React.Dispatch<React.SetStateAction<boolean>>]) {
+    console.log(setView);
     setView(true);
   }
 
