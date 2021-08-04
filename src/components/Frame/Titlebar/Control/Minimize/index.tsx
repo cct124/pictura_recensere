@@ -1,6 +1,7 @@
 import React from "react";
 import system from '@/plugin/system';
 import HorizontalLineSvg from '@/assets/svg/horizontal_line.svg';
+import Style from '../index.modules.scss';
 
 /**
  * 最小化窗口
@@ -13,7 +14,7 @@ export default function Minimize() {
   }
 
   return (
-    <div className="minimize flex-center" onClick={minimize}>
+    <div className={Style['minimize'] + ' flex-center'} onClick={minimize}>
       <HorizontalLineSvg />
     </div>
   );

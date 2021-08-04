@@ -13,49 +13,6 @@
 
   .middle {
     height: 100%;
-    .menubar {
-      user-select: none;
-      height: $titlebar-height;
-
-      .menubar-menu-button {
-        height: $titlebar-height;
-        .menubar-menu-title {
-          font-size: $menubar-title-size;
-          padding: $menubar-title-padding;
-          color: $menubar-title-color;
-          background-color: $menubar-title-bgc;
-
-          &:hover {
-            color: $menubar-title-active-color;
-            background-color: $menubar-title-active-bgc;
-          }
-        }
-
-        .menubar-menu-children {
-          position: absolute;
-          top: $titlebar-height;
-          left: 0;
-          padding: $menubar-menu-children-padding;
-          background-color: $menubar-menu-children-bgc;
-
-          .menubar-menu-children-title {
-            font-size: $menubar-children-title-size;
-            padding: $menubar-menu-children-title-padding;
-            color: $menubar-menu-children-title-color;
-            background-color: $menubar-menu-children-title-bgc;
-
-            &:hover {
-              background-color: $menubar-menu-children-title-active-bgc;
-            }
-          }
-
-          .menubar-menu-children-separator {
-            border-bottom: 1px solid #ccc;
-            margin: $menubar-menu-children-separator-margin;
-          }
-        }
-      }
-    }
   }
 
   .right {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+import Style from './index.modules.scss';
 
 import PicturaRecensereLogo from '@/assets/svg/pictura_recensere_logo.svg';
 
@@ -9,12 +9,12 @@ import Close from '@/components/Frame/Titlebar/Control/Close';
 import Menubar from '@/components/Frame/Titlebar/Menubar';
 
 export default function Titlebar() {
-  return <div className="frame-titlebar flex-jcsb-aic">
-    <div className="left"><div className="logo pad-5"><PicturaRecensereLogo /></div></div>
-    <div className="middle grow">
+  return <div className={Style['frame-titlebar'] + " flex-jcsb-aic"}>
+    <div className={Style['left']}><div className={Style['logo'] + " pad-5"}><PicturaRecensereLogo /></div></div>
+    <div className={Style['middle'] + ' grow'}>
       <Menubar />
     </div>
-    <div className="right flex">
+    <div className={Style['right'] + ' flex'}>
       <Minimize />
       <Maximize />
       <Close />

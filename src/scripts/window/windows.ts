@@ -53,7 +53,7 @@ export default new Windows([
     {
       loadURL: MAIN_WINDOW_WEBPACK_ENTRY,
       options: {
-        width: 1200,
+        width: 1400,
         height: 675,
         frame: false,
         webPreferences: {
@@ -72,9 +72,6 @@ export default new Windows([
       dev: {
         devTools: {
           open: true,
-          options: {
-            mode: "detach",
-          },
         },
       },
     },

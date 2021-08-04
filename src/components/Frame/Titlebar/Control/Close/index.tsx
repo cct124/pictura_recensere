@@ -1,6 +1,7 @@
 import React from "react";
 import system from '@/plugin/system';
 import CloseSvg from '@/assets/svg/close.svg';
+import Style from '../index.modules.scss';
 
 /**
  * 关闭窗口
@@ -11,6 +12,6 @@ export default function Close() {
     system.close()
   }
 
-  return <div className="close flex-center" onClick={close}><CloseSvg /></div>
+  return <div className={Style['close'] + ' flex-center'} onClick={close} > <CloseSvg /></div >
 
 }

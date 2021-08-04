@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import system from '@/plugin/system';
 import MaximizeNormalSvg from '@/assets/svg/maximize_normal.svg';
 import MaximizeSvg from '@/assets/svg/maximize.svg';
+import Style from '../index.modules.scss';
 
 export let setIsMaximize: React.Dispatch<React.SetStateAction<boolean>>;
 
@@ -19,7 +20,6 @@ export default function Maximize() {
   }
 
   return (
-    <div className="maximize flex-center" onClick={maximize}>{isMaximize ? <MaximizeSvg /> : <MaximizeNormalSvg />}</div>
-
+    <div className={Style['maximize'] + ' flex-center'} onClick={maximize}>{isMaximize ? <MaximizeSvg /> : <MaximizeNormalSvg />}</div>
   );
 }
