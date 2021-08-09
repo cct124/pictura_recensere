@@ -18,7 +18,6 @@ export namespace MainWindow {
    * 开发环境相关配置
    */
   interface DevConfig {
-    hash?: string;
     devTools?: {
       open?: boolean;
       options?: Electron.OpenDevToolsOptions;

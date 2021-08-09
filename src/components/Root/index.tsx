@@ -7,16 +7,15 @@ import Main from '@/components/Main'
 import CreateCanvas from '@/components/CreateCanvas'
 
 export default function Root() {
-  // return <div className="frame-main">
-  //   <Titlebar />
-  // </div>
-  console.log(window.location);
-
   return (
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/one" component={CreateCanvas} />
+        <Route exact path="/">
+          <Main />
+        </Route>
+        <Route exact path="/CreateCanvas">
+          <CreateCanvas />
+        </Route>
       </Switch>
     </HashRouter>
   )

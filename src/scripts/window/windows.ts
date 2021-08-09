@@ -76,4 +76,33 @@ export default new Windows([
       },
     },
   ],
+  [
+    WINDOWS.CREATE_CANVAS,
+    {
+      loadURL: "/#/CreateCanvas",
+      options: {
+        width: 330,
+        height: 380,
+        modal: true,
+        resizable: false,
+        minimizable: false,
+        maximizable: false,
+        frame: false,
+        fullscreenable: false,
+        title: "新建画布",
+        webPreferences: {
+          contextIsolation: true,
+          preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+        },
+      },
+      dev: {
+        devTools: {
+          open: false,
+          options: {
+            mode: "detach",
+          },
+        },
+      },
+    },
+  ],
 ]);

@@ -1,9 +1,10 @@
 import { MenubarItem } from '@/types/type.d';
+import system from '@/plugin/system';
 
 export default function File(): MenubarItem {
 
   function create() {
-    console.log('create');
+    system.createCanvas()
   }
 
   function quit() {
