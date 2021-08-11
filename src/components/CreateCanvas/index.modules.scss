@@ -1,3 +1,10 @@
 .createCanvas {
-  background-color: #ccc;
+  box-sizing: border-box;
+  background-color: $create-canvas-bgc;
+  -webkit-app-region: drag;
+  padding: 20px 30px;
 }
+
+// .createCanvasName {
+//   width: 240px;
+// }

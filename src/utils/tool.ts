@@ -176,3 +176,7 @@ export function encode(val: string) {
     .replace(/%5B/gi, "[")
     .replace(/%5D/gi, "]");
 }
+
+export function classNames(...args: unknown[]) {
+  return args.join(" ");
+}

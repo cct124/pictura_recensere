@@ -1,7 +1,7 @@
 /**
  * ---- Display ----
  */
- .block {
+.block {
   display: block;
 }
 
@@ -148,4 +148,51 @@
  */
 .relative {
   position: relative;
+}
+
+/**
+ * ---- width ----
+ */
+
+.w-100vw {
+  width: 100vw;
+}
+
+.w-100p {
+  width: 100%;
+}
+
+/**
+ * ---- height ----
+ */
+
+.h-100vh {
+  height: 100vh;
+}
+
+/**
+ * ---- font ----
+ */
+.ft-esm {
+  font-size: $font-size-esm;
+}
+
+.ft-sm {
+  font-size: $font-size-sm;
+}
+
+.ft-bs {
+  font-size: $font-size-bs;
+}
+
+.ft-md {
+  font-size: $font-size-md;
+}
+
+.ft-lg {
+  font-size: $font-size-lg;
+}
+
+.ft-elg {
+  font-size: $font-size-elg;
 }

@@ -63,7 +63,7 @@ class WindowManager {
               });
           }
 
-          window.once("closed", () => {
+          window.once("close", () => {
             this.windowMap.delete(window.id);
           });
 

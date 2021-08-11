@@ -87,7 +87,6 @@ export default new Windows([
         resizable: false,
         minimizable: false,
         maximizable: false,
-        frame: false,
         fullscreenable: false,
         title: "新建画布",
         webPreferences: {
@@ -97,7 +96,7 @@ export default new Windows([
       },
       dev: {
         devTools: {
-          open: false,
+          open: true,
           options: {
             mode: "detach",
           },

@@ -1,0 +1,27 @@
+.input {
+  border: none;
+  border-bottom: $UI-form-input-border;
+  background-color: transparent;
+  transition: $UI-form-input-transition;
+  box-sizing: border-box;
+  // border-radius: $UI-form-input-border-radius;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: $UI-form-input-focus-border;
+  }
+}
+
+.mini {
+  font-size: $UI-form-input-font-size;
+  padding: $UI-form-input-font-padding;
+}
+
+.default {
+  font-size: $UI-form-input-font-size;
+  padding: $UI-form-input-font-padding;
+}

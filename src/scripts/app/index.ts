@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu } from "electron";
 // import installExtension, {
 //   REACT_DEVELOPER_TOOLS,
 // } from "electron-devtools-installer";
@@ -26,6 +26,7 @@ export default class App {
 
   private beforeReady() {
     app.setName(APP.name);
+    Menu.setApplicationMenu(null);
   }
 
   private ready() {
