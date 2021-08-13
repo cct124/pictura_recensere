@@ -49,6 +49,7 @@ module.exports = [
       context: "src", // set relative working folder to src
     },
   },
+  // SVG 处理器 能够将 SVG 文件转化成 React 能够识别的组件
   {
     test: /\.svg$/,
     use: ["@svgr/webpack"],

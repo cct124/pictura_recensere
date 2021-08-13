@@ -44,27 +44,37 @@ class Windows {
   }
 }
 
+/**
+ * 窗口定义实例
+ */
 export default new Windows([
+  // 主窗口的定义
   [
     WINDOWS.MAIN,
     {
+      // 进入首页
       loadURL: "",
       options: {
         width: 1400,
         height: 675,
+        // 无框窗口
         frame: false,
         webPreferences: {
           contextIsolation: true,
+          //预加载脚本
           preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
         },
       },
       ready(window) {
+        // 最大化窗口事件
         window.on("maximize", () => {
           system.setIsMaximizes(true);
         });
+        // 取消最大化窗口事件
         window.on("unmaximize", () => {
           system.setIsMaximizes(false);
         });
+        // 窗口失去焦点事件
         window.on("blur", () => {
           system.windowBlur();
         });
@@ -76,18 +86,25 @@ export default new Windows([
       },
     },
   ],
+  
+  // 创建画布窗口定义
   [
     WINDOWS.CREATE_CANVAS,
     {
       loadURL: "/#/CreateCanvas",
       options: {
-        width: 330,
+        width: 340,
         height: 380,
+        // 模态窗口
         modal: true,
         resizable: false,
         minimizable: false,
         maximizable: false,
+        // 窗口是否可以进入全屏模式。
         fullscreenable: false,
+        frame: false,
+        // 背景透明
+        transparent: true,
         title: "新建画布",
         webPreferences: {
           contextIsolation: true,

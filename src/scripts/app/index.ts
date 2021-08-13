@@ -8,15 +8,18 @@ import APP from "@/config/APP";
 import "@/scripts/models/system";
 
 /**
- * electron app
+ * Electron App
  */
 export default class App {
+  /**
+   * 实例化 APP
+   */
   constructor() {
     this.init();
   }
 
   /**
-   * 生命周期初始化
+   * APP 初始化
    */
   private init() {
     process.development = process.env.NODE_ENV === "development";
@@ -24,11 +27,17 @@ export default class App {
     this.ready();
   }
 
+  /**
+   * ready 之前
+   */
   private beforeReady() {
     app.setName(APP.name);
     Menu.setApplicationMenu(null);
   }
 
+  /**
+   * ready
+   */
   private ready() {
     // Quit when all windows are closed.
     app.on("window-all-closed", () => {
@@ -62,6 +71,8 @@ export default class App {
       //     console.error("Vue Devtools failed to install:", e.toString());
       //   }
       // }
+
+      // 创建主窗口
       windowManager.createWindow(WINDOW.MAIN);
     });
 

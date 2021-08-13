@@ -1,6 +1,11 @@
+/**
+ * 预加载脚本，此脚本用于主进程和渲染进程的通信
+ * 在此定义的对象将暴露到渲染进程中
+ */
 import { contextBridge, ipcRenderer } from "electron";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 
+// 将 ipcRenderer 对象暴露到渲染进程
 contextBridge.exposeInMainWorld("ipcRenderer", {
   send: (channel: VALIDCHANNELS, ...args: unknown[]) => {
     if (VALIDCHANNELS[channel]) {

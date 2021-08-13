@@ -1,8 +1,22 @@
+.createCanvasBody{
+  padding: $create-canvas-body-padding;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: $create-canvas-container-padding;
+}
+
 .createCanvas {
   box-sizing: border-box;
   background-color: $create-canvas-bgc;
+  box-shadow: $create-canvas-shadow;
+  border-radius: $create-canvas-radius;
+}
+
+.frame {
   -webkit-app-region: drag;
-  padding: 20px 30px;
+  height: $create-canvas-frame-height;
 }
 
 // .createCanvasName {

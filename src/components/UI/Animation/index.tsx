@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 
 /**
- * 动画 Hook 适用于显示和隐藏组件的控制
+ * # Animation
+ * 动画 Hook组件 用于显示和隐藏组件的动画过渡控制
+ * 
+ * ## Example
+ * ```tsx
+ * <Animation className={classNames(Style.options, 'absolute w-100p')} show={optionsOpen} inClass={classNames(Style.optionsIn)} outClass={classNames(Style.optionsOut)} duration={160}>
+ *   <div></div>
+ * </Animation>
+ * ```
  * @param param.inClass  开始 Animation ClassName
  * @param param.outClass  结束 Animation ClassName
  * @param param.show  控制开始和结束

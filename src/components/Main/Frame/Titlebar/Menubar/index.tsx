@@ -8,6 +8,10 @@ export interface Ev {
   menus?: true
 }
 
+/**
+ * 窗口顶部菜单
+ * @returns 
+ */
 export default function Menubar() {
 
   const menus = [file, help];

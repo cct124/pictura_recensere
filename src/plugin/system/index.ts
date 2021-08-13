@@ -36,7 +36,7 @@ export class System extends IpcRenderer {
 }
 
 /**
- * 系统控制
+ * 用于主窗口和主进程的通信
  */
 export default proxyRenderer<System, _System>(
   new System({

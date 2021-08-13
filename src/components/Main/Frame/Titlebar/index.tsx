@@ -8,6 +8,10 @@ import Maximize from '@/components/Main/Frame/Titlebar/Control/Maximize';
 import Close from '@/components/Main/Frame/Titlebar/Control/Close';
 import Menubar from '@/components/Main/Frame/Titlebar/Menubar';
 
+/**
+ * 主窗口顶部控制栏
+ * @returns 
+ */
 export default function Titlebar() {
   return <div className={Style['frame-titlebar'] + " flex-jcsb-aic"}>
     <div className={Style['left']}><div className={Style['logo'] + " pad-5"}><PicturaRecensereLogo /></div></div>
