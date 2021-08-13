@@ -21,6 +21,10 @@ export default function CreateCanvas() {
     createCanvas.close();
   }
 
+  function onClickHandle() {
+    console.log(title, width, height, sizeUnit);
+  }
+
   return (
     <div className={classNames(Style.createCanvasBody, 'w-100vw h-100vh')}>
       <div className={classNames(Style.createCanvas, 'w-100p h-100p')}>
@@ -42,13 +46,13 @@ export default function CreateCanvas() {
               </Select>
             </div>
           </div>
-          <div className={classNames(Style.height, 'mar-b-20')}>
+          <div className={classNames(Style.height, 'mar-b-50')}>
             <p className={classNames('mar ft-sm mar-b-5')}>高度</p>
             <Input className={classNames('w-100')} value={height} setValue={setHeight} placeholder="请输入宽度" type="number" />
           </div>
-          <div>
-            <Button type="primary">
-              关闭
+          <div className={classNames('flex-jcfe-aic')}>
+            <Button className={classNames('w-100')} type="primary" onClick={onClickHandle}>
+              确定
             </Button>
           </div>
         </div>

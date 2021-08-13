@@ -1,5 +1,5 @@
 import os from "os";
-import { app } from "electron";
+import { app, BrowserWindow } from "electron";
 import IpcMain from "@/scripts/ipc/Main";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import proxyMain from "@/scripts/ipc/ProxyMain";
@@ -14,7 +14,7 @@ export class System extends IpcMain {
 
   /**
    * 获取系统信息
-   * @returns 
+   * @returns
    */
   getSysteamInfo() {
     return Promise.resolve({
@@ -33,7 +33,7 @@ export class System extends IpcMain {
    * @returns
    */
   minimize(event?: Electron.IpcMainEvent) {
-    windowManager.get(event.frameId).window.minimize();
+    BrowserWindow.fromWebContents(event.sender).minimize();
     return Promise.resolve(true);
   }
 
@@ -43,7 +43,7 @@ export class System extends IpcMain {
    * @returns
    */
   maximize(event?: Electron.IpcMainEvent) {
-    windowManager.get(event.frameId).window.maximize();
+    BrowserWindow.fromWebContents(event.sender).maximize();
     return Promise.resolve(true);
   }
 
@@ -53,7 +53,7 @@ export class System extends IpcMain {
    * @returns
    */
   unmaximize(event?: Electron.IpcMainEvent) {
-    windowManager.get(event.frameId).window.unmaximize();
+    BrowserWindow.fromWebContents(event.sender).unmaximize();
     return Promise.resolve(true);
   }
 
@@ -63,7 +63,7 @@ export class System extends IpcMain {
    * @returns
    */
   close(event?: Electron.IpcMainEvent) {
-    windowManager.get(event.frameId).window.close();
+    BrowserWindow.fromWebContents(event.sender).close();
     return Promise.resolve(true);
   }
 
@@ -73,7 +73,7 @@ export class System extends IpcMain {
    * @returns
    */
   openDeveloperTools(event?: Electron.IpcMainEvent) {
-    windowManager.get(event.frameId).window.webContents.openDevTools();
+    event.sender.openDevTools();
     return Promise.resolve(true);
   }
 
@@ -83,7 +83,7 @@ export class System extends IpcMain {
    * @returns
    */
   reload(event?: Electron.IpcMainEvent) {
-    windowManager.get(event.frameId).window.webContents.reload();
+    event.sender.reload();
     return Promise.resolve(true);
   }
 
@@ -92,7 +92,7 @@ export class System extends IpcMain {
    * @returns
    */
   createCanvas(event?: Electron.IpcMainEvent) {
-    const parent = windowManager.get(event.frameId).window;
+    const parent = BrowserWindow.fromWebContents(event.sender);
     windowManager.createWindow(WINDOWS.CREATE_CANVAS, {
       options: { parent },
     });

@@ -21,7 +21,7 @@ export function Input({ size, type, className, placeholder, value, setValue, onB
 
   function onChangeHandle(ev: React.ChangeEvent<HTMLInputElement>) {
     setValue(ev.target.value);
-    onChange(ev);
+    if(onChange) onChange(ev);
   }
 
   return (
