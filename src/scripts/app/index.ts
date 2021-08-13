@@ -6,6 +6,7 @@ import windowManager from "@/scripts/window/manager";
 import WINDOW from "@/config/WINDOWS";
 import APP from "@/config/APP";
 import "@/scripts/models/system";
+// import "@/scripts/models/createCanvas";
 
 /**
  * Electron App

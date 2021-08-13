@@ -4,4 +4,9 @@
  */
 export enum VALIDCHANNELS {
   SYSTEM = "SYSTEM",
+  
+  /**
+   *创建画布
+   */
+  CREATE_CANVAS = "CREATE_CANVAS",
 }

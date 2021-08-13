@@ -1,4 +1,4 @@
-.createCanvasBody{
+.createCanvasBody {
   padding: $create-canvas-body-padding;
   box-sizing: border-box;
 }
@@ -17,6 +17,13 @@
 .frame {
   -webkit-app-region: drag;
   height: $create-canvas-frame-height;
+  padding: 5px 10px;
+  border-bottom: 1px solid #e6e6e6;
+
+  .frameClose {
+    -webkit-app-region: none;
+    width: 12px;
+  }
 }
 
 // .createCanvasName {

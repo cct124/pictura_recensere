@@ -66,6 +66,7 @@ export default new Windows([
         },
       },
       ready(window) {
+        window.webContents.openDevTools({ mode: "detach" });
         // 最大化窗口事件
         window.on("maximize", () => {
           system.setIsMaximizes(true);
@@ -86,7 +87,7 @@ export default new Windows([
       },
     },
   ],
-  
+
   // 创建画布窗口定义
   [
     WINDOWS.CREATE_CANVAS,
@@ -104,16 +105,19 @@ export default new Windows([
         fullscreenable: false,
         frame: false,
         // 背景透明
-        transparent: true,
+        // transparent: true,
         title: "新建画布",
         webPreferences: {
           contextIsolation: true,
           preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
         },
       },
+      ready(window) {
+        window.webContents.openDevTools({ mode: "detach" });
+      },
       dev: {
         devTools: {
-          open: true,
+          open: false,
           options: {
             mode: "detach",
           },

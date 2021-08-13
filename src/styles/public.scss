@@ -224,3 +224,16 @@
 .pointer {
   cursor: pointer;
 }
+
+/**
+ * ---- transition ----
+ */
+
+.tsn-dark-svg {
+  svg {
+    fill: $text-basic-color;
+    &:hover {
+      fill: $text-basic-active-color;
+    }
+  }
+}

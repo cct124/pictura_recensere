@@ -12,6 +12,10 @@ export class System extends IpcMain {
     super({ channel });
   }
 
+  /**
+   * 获取系统信息
+   * @returns 
+   */
   getSysteamInfo() {
     return Promise.resolve({
       platform: process.platform,

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Input, Select, Option } from "@/components/UI";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
+// import createCanvas from '@/plugin/createCanvas';
+
+import CloseSvg from '@/assets/svg/close.svg';
 
 /**
  * 创建画布窗口组件
@@ -14,11 +17,18 @@ export default function CreateCanvas() {
   const [height, setHeight] = useState(300);
   const [sizeUnit, setSizeUnit] = useState('px');
 
+  function onClick() {
+    // createCanvas.close();
+  }
+
   return (
     <div className={classNames(Style.createCanvasBody, 'w-100vw h-100vh')}>
       <div className={classNames(Style.createCanvas, 'w-100p h-100p')}>
-        <div className={classNames(Style.frame)}></div>
-        <div className={classNames(Style.container, 'h-100p')}>
+        <div className={classNames(Style.frame, 'flex-jcsb-aic')}>
+          <div className={classNames('ft-bs')}>创建画布</div>
+          <div className={classNames(Style.frameClose, 'tsn-dark-svg')} onClick={onClick}><CloseSvg /></div>
+        </div>
+        <div className={classNames(Style.container)}>
           <div className={classNames('flex-center mar-b-20')}>
             <Input className={classNames('w-100p')} value={title} setValue={setTitle} placeholder="标题" />
           </div>

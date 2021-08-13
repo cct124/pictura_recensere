@@ -133,6 +133,6 @@ export function Option({ label, value, active, i }: { i?: number, active?: boole
   }
 
   return (
-    <div className={classNames(Style.option, 'pointer', active ? `${Style.optionActive} bold` : '')} onClick={onClick}>{label}</div>
+    <div className={classNames(Style.option, 'pointer', active ? Style.optionActive : '')} onClick={onClick}>{label}</div>
   )
 }
