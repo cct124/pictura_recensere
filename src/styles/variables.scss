@@ -25,8 +25,8 @@ $font-size-lg: 18px;
 $font-size-elg: 20px;
 
 $text-basic-color: #666666;
-$text-basic-active-color: #3f3f3f;
-$text-basic-primary-color: #1284cf;
+$text-basic-active-color: #2e2e2e;
+$text-basic-primary-color: #1b96e9;
 $text-basic-danger-color: #f56c6c;
 
 /**
@@ -46,13 +46,23 @@ $UI-form-input-font-padding: 5px;
 $UI-form-input-font-size: $font-size-bs;
 $UI-form-input-font-padding: 8px;
 
+// --- Select ---
+$UI-form-select-options-shadow: 0px 0px 8px 0px #e6e6e6;
+$UI-form-select-options-padding: 5px 0;
+$UI-form-select-options-font-size: $font-size-bs;
+$UI-form-select-options-font-color: $text-basic-color;
+
+$UI-form-select-option-padding: 8px 10px;
+$UI-form-select-option-active-font-color: $text-basic-active-color;
+$UI-form-select-option-active-bgc: #f5f7fa;
+
 /**
  * ------ Frame ------
  */
 // ---- Menus ----
 $titlebar-logo-size: 20px;
 $titlebar-height: 30px;
-$titlebar-background-color: #fff;
+$titlebar-background-color: #f5f5f5;
 // ---- Window Controls ----
 $titlebar-window-controls-size: 12px;
 

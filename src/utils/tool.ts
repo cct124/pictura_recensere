@@ -177,6 +177,11 @@ export function encode(val: string) {
     .replace(/%5D/gi, "]");
 }
 
+/**
+ * 将 css class 名合并以空格分隔输出
+ * @param args
+ * @returns
+ */
 export function classNames(...args: unknown[]) {
   return args.join(" ");
 }

@@ -5,6 +5,10 @@
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 /**
  * ---- Text ----
  */
@@ -137,9 +141,15 @@
   }
 }
 
-@for $i from 1 through 10 {
+@for $i from 1 through 9 {
   .w-#{$i * 5} {
     width: $i * 5px;
+  }
+}
+
+@for $i from 1 through 10 {
+  .w-#{$i * 50} {
+    width: $i * 50px;
   }
 }
 
@@ -148,6 +158,10 @@
  */
 .relative {
   position: relative;
+}
+
+.absolute {
+  position: absolute;
 }
 
 /**
@@ -195,4 +209,15 @@
 
 .ft-elg {
   font-size: $font-size-elg;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/**
+ * ---- cursor ----
+ */
+.pointer {
+  cursor: pointer;
 }

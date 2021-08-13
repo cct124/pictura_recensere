@@ -1,0 +1,19 @@
+@keyframes zoomYInDown {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes zoomYOutDown {
+  from {
+    transform: scaleY(1);
+  }
+
+  to {
+    transform: scaleY(0);
+  }
+}

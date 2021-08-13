@@ -1,0 +1,29 @@
+@import "~/src/styles/animation.scss";
+
+.options {
+  box-shadow: $UI-form-select-options-shadow;
+  padding: $UI-form-select-options-padding;
+  font-size: $UI-form-select-options-font-size;
+  color: $UI-form-select-options-font-color;
+  transform-origin: top;
+}
+
+.optionsIn {
+  animation: 0.16s ease-in zoomYInDown;
+}
+
+.optionsOut {
+  animation: 0.16s ease-in forwards zoomYOutDown;
+}
+
+.option {
+  padding: $UI-form-select-option-padding;
+  &:hover {
+    color: $UI-form-select-option-active-font-color;
+    background-color: $UI-form-select-option-active-bgc;
+  }
+
+  &.optionActive {
+    color: $text-basic-primary-color;
+  }
+}
