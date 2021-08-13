@@ -1,0 +1,40 @@
+.button {
+  border: initial;
+  background-color: initial;
+  padding: initial;
+  border-radius: $UI-basic-button-defType-radius;
+  color: $text-basic-color;
+}
+
+.defType {
+  border: $UI-basic-button-defType-border;
+  background-color: $UI-basic-button-defType-bgc;
+  &:hover {
+    color: $UI-basic-button-defType-hover-font-color;
+    border: $UI-basic-button-defType-hover-border;
+  }
+
+  &:active {
+    border: $UI-basic-button-defType-active-border;
+  }
+}
+
+.primary {
+  border: $UI-basic-button-primary-border;
+  background-color: $UI-basic-button-primary-bgc;
+  color: $UI-basic-button-primary-font-color;
+  border: $UI-basic-button-primary-border;
+
+  &:hover {
+    background-color: $UI-basic-button-primary-hover-bgc;
+  }
+
+  &:active {
+    background-color: $UI-basic-button-primary-active-bgc;
+  }
+}
+
+.defSize {
+  font-size: $UI-basic-button-defSize-font-size;
+  padding: $UI-basic-button-defSize-padding;
+}

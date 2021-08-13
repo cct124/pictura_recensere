@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Input, Select, Option } from "@/components/UI";
+import { Input, Select, Option, Button } from "@/components/UI";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
-// import createCanvas from '@/plugin/createCanvas';
+import createCanvas from '@/plugin/createCanvas';
 
 import CloseSvg from '@/assets/svg/close.svg';
 
@@ -18,7 +18,7 @@ export default function CreateCanvas() {
   const [sizeUnit, setSizeUnit] = useState('px');
 
   function onClick() {
-    // createCanvas.close();
+    createCanvas.close();
   }
 
   return (
@@ -38,12 +38,18 @@ export default function CreateCanvas() {
               <Input className={classNames('w-100')} value={width} setValue={setWidth} placeholder="请输入宽度" type="number" />
               <Select className={classNames('mar-l-5')} value={sizeUnit} setValue={setSizeUnit}>
                 <Option label="像素" value={'px'} />
+                <Option label="毫米" value={'mm'} />
               </Select>
             </div>
           </div>
-          <div className={classNames(Style.height)}>
+          <div className={classNames(Style.height, 'mar-b-20')}>
             <p className={classNames('mar ft-sm mar-b-5')}>高度</p>
             <Input className={classNames('w-100')} value={height} setValue={setHeight} placeholder="请输入宽度" type="number" />
+          </div>
+          <div>
+            <Button type="primary">
+              关闭
+            </Button>
           </div>
         </div>
       </div>

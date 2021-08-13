@@ -178,10 +178,12 @@ export function encode(val: string) {
 }
 
 /**
- * 将 css class 名合并以空格分隔输出
+ * 将 css class 名合并以空格分隔的形式输出
  * @param args
  * @returns
  */
 export function classNames(...args: unknown[]) {
-  return args.join(" ");
+  return args.every((str) => str === undefined)
+    ? undefined
+    : args.filter((str) => typeof str === "string").join(" ");
 }

@@ -19,8 +19,7 @@
 .option {
   padding: $UI-form-select-option-padding;
   &:hover {
-    color: $UI-form-select-option-active-font-color;
-    background-color: $UI-form-select-option-active-bgc;
+    background-color: $UI-form-select-option-hover-bgc;
   }
 
   &.optionActive {

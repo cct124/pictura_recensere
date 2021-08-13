@@ -229,11 +229,22 @@
  * ---- transition ----
  */
 
+.tsn-normal {
+  transition: $transition-normal;
+}
+
 .tsn-dark-svg {
   svg {
-    fill: $text-basic-color;
+    fill: $text-basic-passive-color;
     &:hover {
-      fill: $text-basic-active-color;
+      fill: $text-basic-color;
     }
+  }
+}
+
+.tsn-dark {
+  color: $text-basic-passive-color;
+  &:hover {
+    color: $text-basic-color;
   }
 }

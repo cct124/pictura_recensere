@@ -11,7 +11,7 @@
 
 // -- Color --
 $frame-background-color: #e4e4e4;
-$bgc-basic-primary-color: #1184d1;
+$bgc-basic-primary-color: #0c98f5;
 $bgc-basic-danger-color: #e81123;
 
 $placeholder-color: #b7bdc0;
@@ -24,21 +24,62 @@ $font-size-md: 16px;
 $font-size-lg: 18px;
 $font-size-elg: 20px;
 
-$text-basic-color: #666666;
-$text-basic-active-color: #2e2e2e;
+$text-basic-color: gray(6);
+$text-basic-passive-color: gray(10);
+$text-basic-active-color: gray(4);
 $text-basic-primary-color: #1b96e9;
 $text-basic-danger-color: #f56c6c;
 
 /**
+ * ------ transition ------
+ */
+$transition-normal: all 0.16s;
+
+/**
  * ------ UI ------
  */
+
+// ---- Basic ----
+
+// --- button ---
+
+$UI-basic-button-defType-radius: 4px;
+
+//defType
+$UI-basic-button-defType-border: 1px solid #cdd1db;
+$UI-basic-button-defType-bgc: #fff;
+$UI-basic-button-defType-hover-border: 1px solid #c2c5cc;
+$UI-basic-button-defType-hover-font-color: $text-basic-active-color;
+$UI-basic-button-defType-active-border: 1px solid #999ba1;
+
+//primary
+$UI-basic-button-primary-border: 1px solid #cdd1db;
+$UI-basic-button-primary-bgc: $bgc-basic-primary-color;
+$UI-basic-button-primary-font-color: #fff;
+$UI-basic-button-primary-border: 1px solid $bgc-basic-primary-color;
+$UI-basic-button-primary-hover-bgc: scale-color(
+  $bgc-basic-primary-color,
+  $lightness: +14%
+);
+$UI-basic-button-primary-active-bgc: scale-color(
+  $bgc-basic-primary-color,
+  $lightness: -4%
+);
+
+//defSize
+$UI-basic-button-defSize-font-size: $font-size-bs;
+$UI-basic-button-defSize-padding: 10px 20px;
+
 // ---- Form ----
+
 // --- input ---
 $UI-form-input-bgc: transparent;
-$UI-form-input-border: 1px solid #b9beca;
-$UI-form-input-focus-border: 1px solid #13c0f5;
+$UI-form-input-border: 1px solid gray(15);
+$UI-form-input-focus-border: 1px solid
+  scale-color($bgc-basic-primary-color, $lightness: +20%);
 $UI-form-input-transition: all 0.25s;
 $UI-form-input-border-radius: 3px;
+
 // mini
 $UI-form-input-font-size: $font-size-sm;
 $UI-form-input-font-padding: 5px;
@@ -53,8 +94,7 @@ $UI-form-select-options-font-size: $font-size-bs;
 $UI-form-select-options-font-color: $text-basic-color;
 
 $UI-form-select-option-padding: 8px 10px;
-$UI-form-select-option-active-font-color: $text-basic-active-color;
-$UI-form-select-option-active-bgc: #f5f7fa;
+$UI-form-select-option-hover-bgc: gray(19.2);
 
 /**
  * ------ Frame ------
@@ -119,5 +159,4 @@ $create-canvas-radius: 2px;
 
 $create-canvas-frame-height: 30px;
 
-$create-canvas-container-padding:20px 30px;
-
+$create-canvas-container-padding: 20px 30px;

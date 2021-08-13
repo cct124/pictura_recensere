@@ -2,6 +2,7 @@ import React from "react";
 import { MenubarItem } from '@/types/type.d'
 import { Ev } from './index'
 import Style from './index.modules.scss';
+import { classNames } from '@/utils/tool';
 
 export let closeAllMenusChild: () => void
 
@@ -57,8 +58,8 @@ export default function Menu({ menu, name, control, setControl }: {
     setControl([...control])
   }
 
-  return <div className={Style['menubar-menu-button'] + ' relative flex-center'}>
-    <div className={childView ? (Style['menubar-menu-title'] + ' ' + Style['menubar-menu-active']) : Style['menubar-menu-title']} onClick={onClick} onMouseOver={onMouseOver}>{item.title}</div>
+  return <div className={classNames(Style['menubar-menu-button'], 'relative flex-center')}>
+    <div className={classNames(childView ? classNames(Style['menubar-menu-title'], Style['menubar-menu-active']) : Style['menubar-menu-title'])} onClick={onClick} onMouseOver={onMouseOver}>{item.title}</div>
     {childView ? Children : ""}
   </div>
 }

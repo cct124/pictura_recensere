@@ -4,7 +4,7 @@
   background-color: transparent;
   transition: $UI-form-input-transition;
   box-sizing: border-box;
-  // border-radius: $UI-form-input-border-radius;
+  color: $text-basic-color;
 
   &::placeholder {
     color: $placeholder-color;

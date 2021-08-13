@@ -49,12 +49,12 @@ class WindowManager {
           if (windowConfig.ready) windowConfig.ready(window);
 
           // 带上定义时配置的 query 参数到 URL 中
-          let query = "";
-          if (options.query) query = "?" + queryParams(options.query);
+          let query = "?";
+          if (options.query) query = query + queryParams(options.query);
 
           // 窗口加载的网页 url
           window.loadURL(
-            MAIN_WINDOW_WEBPACK_ENTRY + windowConfig.loadURL + query
+            MAIN_WINDOW_WEBPACK_ENTRY + query + windowConfig.loadURL
           );
 
           // 开发环境配置对应的调试工具
