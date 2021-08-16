@@ -4,7 +4,8 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import './index.scss';
 
 import Main from '@/components/Main'
-import CreateCanvas from '@/components/CreateCanvas'
+import CreateCanvas from '@/components/CreateCanvas';
+import ColorPicker from '@/components/ColorPicker'
 
 /**
  * 页面根组件 用于 react-router 的控制
@@ -19,6 +20,9 @@ export default function Root() {
         </Route>
         <Route exact path="/CreateCanvas">
           <CreateCanvas />
+        </Route>
+        <Route exact path="/ColorPicker">
+          <ColorPicker />
         </Route>
       </Switch>
     </HashRouter>

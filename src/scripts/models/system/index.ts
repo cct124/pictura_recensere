@@ -99,6 +99,20 @@ export class System extends IpcMain {
 
     return Promise.resolve(true);
   }
+
+  /**
+   * 打开拾色器窗口
+   * @param event
+   * @returns
+   */
+  openColorPickerWindow(event?: Electron.IpcMainEvent) {
+    const parent = BrowserWindow.fromWebContents(event.sender);
+    windowManager.createWindow(WINDOWS.COLOR_PICKER, {
+      options: { parent },
+    });
+
+    return Promise.resolve(true);
+  }
 }
 
 export default proxyMain<System, _System>(

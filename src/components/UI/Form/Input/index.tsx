@@ -16,15 +16,15 @@ import { classNames } from '@/utils/tool';
  * @param param0.setValue 绑定的 setValue
  * @returns 
  */
-export function Input({ size, type, className, placeholder, value, setValue, onBlur, onFocus, onChange }: { onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void, onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void, onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void, value: string | number, setValue: React.Dispatch<React.SetStateAction<unknown>>, type?: string, size?: string, className?: string, placeholder?: string }) {
+export const Input = React.forwardRef(({ size, type, className, placeholder, value, setValue, onBlur, onFocus, onChange }: { onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void, onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void, onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void, value: string | number, setValue: React.Dispatch<React.SetStateAction<unknown>>, type?: string, size?: string, className?: string, placeholder?: string }, ref: React.LegacyRef<HTMLInputElement>) => {
   size = size || 'default';
 
   function onChangeHandle(ev: React.ChangeEvent<HTMLInputElement>) {
     setValue(ev.target.value);
-    if(onChange) onChange(ev);
+    if (onChange) onChange(ev);
   }
 
   return (
-    <input value={value} className={classNames(Style.input, Style[size], className)} placeholder={placeholder} type={type} onChange={onChangeHandle} onBlur={onBlur} onFocus={onFocus} />
+    <input ref={ref} value={value} className={classNames(Style.input, Style[size], className)} placeholder={placeholder} type={type} onChange={onChangeHandle} onBlur={onBlur} onFocus={onFocus} />
   )
-}
+})

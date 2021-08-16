@@ -111,6 +111,37 @@ export default new Windows([
           preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
         },
       },
+      unique: true,
+      dev: {
+        devTools: {
+          open: true,
+          options: {
+            mode: "detach",
+          },
+        },
+      },
+    },
+  ],
+
+  [
+    WINDOWS.COLOR_PICKER,
+    {
+      loadURL: "/#/ColorPicker",
+      unique: true,
+      options: {
+        width: 535,
+        height: 402,
+        modal: true,
+        resizable: false,
+        minimizable: false,
+        maximizable: false,
+        fullscreenable: false,
+        title: "拾色器",
+        webPreferences: {
+          contextIsolation: true,
+          preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+        },
+      },
       dev: {
         devTools: {
           open: true,

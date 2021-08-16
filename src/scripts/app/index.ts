@@ -3,7 +3,7 @@ import { app, BrowserWindow, Menu } from "electron";
 //   REACT_DEVELOPER_TOOLS,
 // } from "electron-devtools-installer";
 import windowManager from "@/scripts/window/manager";
-import WINDOW from "@/config/WINDOWS";
+import WINDOWS from "@/config/WINDOWS";
 import APP from "@/config/APP";
 import "@/scripts/models/system";
 import "@/scripts/models/createCanvas";
@@ -53,7 +53,7 @@ export default class App {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
       if (BrowserWindow.getAllWindows().length === 0)
-        windowManager.createWindow(WINDOW.MAIN);
+        windowManager.createWindow(WINDOWS.MAIN);
     });
 
     // This method will be called when Electron has finished
@@ -74,7 +74,11 @@ export default class App {
       // }
 
       // 创建主窗口
-      windowManager.createWindow(WINDOW.MAIN);
+      windowManager.createWindow(WINDOWS.MAIN).then((window) => {
+        windowManager.createWindow(WINDOWS.COLOR_PICKER, {
+          options: { parent: window.window },
+        });
+      });
     });
 
     // Exit cleanly on request from parent process in development mode.

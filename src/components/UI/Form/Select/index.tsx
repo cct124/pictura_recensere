@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Style from "./index.modules.scss";
 import { classNames, isArray } from '@/utils/tool';
 import { Input, Animation } from "@/components/UI";
@@ -38,6 +38,8 @@ export function Select({ className, value, setValue, placeholder, children }: { 
     value: null,
     i: null,
   });
+  const [inputDOM, setIputDOM] = useState<HTMLInputElement>(null);
+
 
   const childrenArr = (isArray(children) ? children : [children]) as JSX.Element[];
 
@@ -47,11 +49,12 @@ export function Select({ className, value, setValue, placeholder, children }: { 
 
   const [selectRadom,] = useState(Date.now() + Math.round(Math.random() * 10000));
 
-
+  // input 获取焦点时 打开Options选项列表
   function onFocus() {
     setOptionsOpen(true);
   }
 
+  // 监听 Options 选项列表点击事件 将点击的选项选中处理
   function onOptionsClick(ev: OptionEvent) {
     (ev.nativeEvent as SelectMouseEvent).selectEvent = selectRadom;
 
@@ -68,9 +71,23 @@ export function Select({ className, value, setValue, placeholder, children }: { 
 
   }
 
+  // 选项列表关闭处理
   function closeOptions(ev: SelectMouseEvent) {
-    if (ev.selectEvent !== selectRadom)
+    if (ev.selectEvent !== selectRadom && optionsOpen === true) {
+      if (childrenActiveControl.map(chil => chil.label).includes(inputValue.label) === false) {
+        if (inputValue.i !== null) childrenActiveControl[inputValue.i].active = false
+        setChildrenActiveControl([...childrenActiveControl]);
+
+        setInputValue({
+          label: '',
+          value: null,
+          i: null,
+        });
+
+      }
+      inputDOM.blur();
       setOptionsOpen(false);
+    }
   }
 
 
@@ -100,10 +117,23 @@ export function Select({ className, value, setValue, placeholder, children }: { 
     }
   }, [value]);
 
+  function setInputValueHandle(text: string) {
+    setInputValue({
+      ...inputValue,
+      label: text,
+    });
+  }
+
+  const inputRef = useCallback((node: HTMLInputElement) => {
+    if (node !== null) {
+      setIputDOM(node);
+    }
+  }, []);
+
   return (
     <div className={classNames('inline-block relative', className)} onClick={onOptionsClick}>
       <div className={classNames(Style.selectInputContainer, 'relative')}>
-        <Input className={classNames(Style.selectInput, 'w-100p')} value={inputValue.label} placeholder={placeholder} setValue={setInputValue} onFocus={onFocus} />
+        <Input ref={inputRef} className={classNames(Style.selectInput, 'w-100p')} value={inputValue.label} placeholder={placeholder} setValue={setInputValueHandle} onFocus={onFocus} />
         <div className={classNames(Style.arrow, optionsOpen ? Style.arrowOptionsOpen : Style.arrowOptionsClose)}>
           <ChevronLeftSvg />
         </div>
