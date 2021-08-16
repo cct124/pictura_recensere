@@ -24,15 +24,15 @@ export interface _IpcRenderer {
 
   /**
    * 发送IPC消息
-   * @param channel 
-   * @param args 
+   * @param channel
+   * @param args
    */
   lisSend(channel: string, ...args: unknown[]): void;
-  
+
   /**
    * 监听IPC消息，消息只监听一次
-   * @param channel 
-   * @param listener 
+   * @param channel
+   * @param listener
    */
   lisOnce(
     channel: string,
@@ -153,4 +153,11 @@ export interface MenubarItem {
    * 子级菜单 目前只支持二级
    */
   children?: MenubarItem[];
+}
+
+export interface CreateCanvasInfo {
+  title: string;
+  width: number;
+  height: number;
+  unit: string;
 }

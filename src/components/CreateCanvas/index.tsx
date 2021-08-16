@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Select, Option, Button } from "@/components/UI";
+import { Input, Select, Option, Button, ColorPicker } from "@/components/UI";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 import createCanvas from '@/plugin/createCanvas';
@@ -16,13 +16,14 @@ export default function CreateCanvas() {
   const [width, setWidth] = useState(300);
   const [height, setHeight] = useState(300);
   const [sizeUnit, setSizeUnit] = useState('px');
+  const [color, setColor] = useState('#ffffff');
 
   function onClick() {
     createCanvas.close();
   }
 
   function onClickHandle() {
-    console.log(title, width, height, sizeUnit);
+    createCanvas.forwardCreateCanvasInfo({ title, width, height, sizeUnit });
   }
 
   return (
@@ -33,10 +34,10 @@ export default function CreateCanvas() {
           <div className={classNames(Style.frameClose, 'tsn-dark-svg')} onClick={onClick}><CloseSvg /></div>
         </div>
         <div className={classNames(Style.container)}>
-          <div className={classNames('flex-center mar-b-20')}>
+          <div className={classNames('flex-center mar-b-15')}>
             <Input className={classNames('w-100p')} value={title} setValue={setTitle} placeholder="标题" />
           </div>
-          <div className={classNames(Style.width, 'mar-b-20')}>
+          <div className={classNames(Style.width, 'mar-b-15')}>
             <p className={classNames('mar ft-sm mar-b-5')}>宽度</p>
             <div className={classNames('flex-center')}>
               <Input className={classNames('w-100')} value={width} setValue={setWidth} placeholder="请输入宽度" type="number" />
@@ -46,9 +47,19 @@ export default function CreateCanvas() {
               </Select>
             </div>
           </div>
-          <div className={classNames(Style.height, 'mar-b-50')}>
+          <div className={classNames(Style.height, 'mar-b-15')}>
             <p className={classNames('mar ft-sm mar-b-5')}>高度</p>
             <Input className={classNames('w-100')} value={height} setValue={setHeight} placeholder="请输入宽度" type="number" />
+          </div>
+          <div className={classNames(Style.color, 'mar-b-30')}>
+            <p className={classNames('mar ft-sm mar-b-5')}>背景色</p>
+            <div className={classNames('flex-jcsb-aic')}>
+              <Select className={classNames(Style.select)} value={color} setValue={setColor}>
+                <Option label="白色" value={'#ffffff'} />
+                <Option label="黑色" value={'#000000'} />
+              </Select>
+              <ColorPicker />
+            </div>
           </div>
           <div className={classNames('flex-jcfe-aic')}>
             <Button className={classNames('w-100')} type="primary" onClick={onClickHandle}>

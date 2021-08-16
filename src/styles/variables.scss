@@ -92,9 +92,16 @@ $UI-form-select-options-shadow: 0px 0px 8px 0px #e6e6e6;
 $UI-form-select-options-padding: 5px 0;
 $UI-form-select-options-font-size: $font-size-bs;
 $UI-form-select-options-font-color: $text-basic-color;
-
+$UI-form-select-options-bgc: #ffffff;
 $UI-form-select-option-padding: 8px 10px;
 $UI-form-select-option-hover-bgc: gray(19.2);
+$UI-form-select-option-arrow-width: 6px;
+$UI-form-select-option-arrow-fill: gray(15);
+
+// --- ColorPicker ---
+$UI-form-colorPicker-def-size: 30px;
+$UI-form-colorPicker-radius: 2px;
+$UI-form-colorPicker-border: 1px solid gray(15);
 
 /**
  * ------ Frame ------

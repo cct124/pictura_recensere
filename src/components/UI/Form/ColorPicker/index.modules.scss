@@ -1,0 +1,10 @@
+.colorPicker {
+  display: inline-block;
+  border-radius: $UI-form-colorPicker-radius;
+  border: $UI-form-colorPicker-border;
+}
+
+.def {
+  width: $UI-form-colorPicker-def-size;
+  height: $UI-form-colorPicker-def-size;
+}

@@ -3,6 +3,7 @@ import Style from "./index.modules.scss";
 import { classNames, isArray } from '@/utils/tool';
 import { Input, Animation } from "@/components/UI";
 
+import ChevronLeftSvg from '@/assets/svg/chevron_left.svg'
 
 interface OptionEvent extends React.MouseEvent<HTMLDivElement, MouseEvent> {
   currentOption?: {
@@ -13,7 +14,7 @@ interface OptionEvent extends React.MouseEvent<HTMLDivElement, MouseEvent> {
 }
 
 interface SelectMouseEvent extends MouseEvent {
-  selectEvent?: boolean
+  selectEvent?: number
 }
 
 /**
@@ -44,13 +45,15 @@ export function Select({ className, value, setValue, placeholder, children }: { 
     return { label: e.props.label, value: e.props.value, active: false }
   }));
 
+  const [selectRadom,] = useState(Date.now() + Math.round(Math.random() * 10000));
+
 
   function onFocus() {
     setOptionsOpen(true);
   }
 
   function onOptionsClick(ev: OptionEvent) {
-    (ev.nativeEvent as SelectMouseEvent).selectEvent = true;
+    (ev.nativeEvent as SelectMouseEvent).selectEvent = selectRadom;
 
     if (ev.currentOption && inputValue.value !== ev.currentOption.value) {
       if (inputValue.i !== null) childrenActiveControl[inputValue.i].active = false
@@ -66,7 +69,7 @@ export function Select({ className, value, setValue, placeholder, children }: { 
   }
 
   function closeOptions(ev: SelectMouseEvent) {
-    if (!ev.selectEvent)
+    if (ev.selectEvent !== selectRadom)
       setOptionsOpen(false);
   }
 
@@ -99,7 +102,12 @@ export function Select({ className, value, setValue, placeholder, children }: { 
 
   return (
     <div className={classNames('inline-block relative', className)} onClick={onOptionsClick}>
-      <Input className={classNames('w-100p')} value={inputValue.label} placeholder={placeholder} setValue={setInputValue} onFocus={onFocus} />
+      <div className={classNames(Style.selectInputContainer, 'relative')}>
+        <Input className={classNames(Style.selectInput, 'w-100p')} value={inputValue.label} placeholder={placeholder} setValue={setInputValue} onFocus={onFocus} />
+        <div className={classNames(Style.arrow, optionsOpen ? Style.arrowOptionsOpen : Style.arrowOptionsClose)}>
+          <ChevronLeftSvg />
+        </div>
+      </div>
       <Animation className={classNames(Style.options, 'absolute w-100p')} show={optionsOpen} inClass={classNames(Style.optionsIn)} outClass={classNames(Style.optionsOut)} duration={160}>
         {
           childrenActiveControl.map((e, i) => <Option label={e.label} value={e.value} active={e.active} i={i} key={e.value} />)

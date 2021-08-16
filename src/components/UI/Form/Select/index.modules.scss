@@ -6,6 +6,7 @@
   font-size: $UI-form-select-options-font-size;
   color: $UI-form-select-options-font-color;
   transform-origin: top;
+  background-color: $UI-form-select-options-bgc;
 }
 
 .optionsIn {
@@ -25,4 +26,26 @@
   &.optionActive {
     color: $text-basic-primary-color;
   }
+}
+
+.selectInputContainer {
+  .selectInput {
+    padding-right: 20px;
+  }
+}
+
+.arrow {
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  width: $UI-form-select-option-arrow-width;
+  fill: $UI-form-select-option-arrow-fill;
+}
+
+.arrowOptionsOpen {
+  animation: 0.16s ease-in forwards RotatingEntrancesLeft;
+}
+
+.arrowOptionsClose {
+  animation: 0.16s ease-in RotatingEntrancesTop;
 }

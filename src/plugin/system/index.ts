@@ -1,18 +1,15 @@
 import IpcRenderer from "@/scripts/ipc/Renderer";
 import { System as _System } from "@/scripts/models/system";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
-import { _IpcRenderer } from "@/types/type.d";
+import { _IpcRenderer , CreateCanvasInfo } from "@/types/type.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
 import { setIsMaximize } from "@/components/Main/Frame/Titlebar/Control/Maximize";
 import { closeAllMenusChild } from "@/components/Main/Frame/Titlebar/Menubar/menu";
 
+
 export class System extends IpcRenderer {
   constructor({ ipc, channel }: { ipc: _IpcRenderer; channel: VALIDCHANNELS }) {
     super({ ipc, channel });
-  }
-
-  run() {
-    return Promise.resolve("test");
   }
 
   /**
@@ -31,6 +28,11 @@ export class System extends IpcRenderer {
    */
   windowBlur() {
     closeAllMenusChild();
+    return Promise.resolve(true);
+  }
+
+  onceCreateCanvasInfo(info: CreateCanvasInfo) {
+    console.log(info);
     return Promise.resolve(true);
   }
 }

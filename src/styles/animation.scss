@@ -17,3 +17,33 @@
     transform: scaleY(0);
   }
 }
+
+@keyframes zoomYOutDown {
+  from {
+    transform: scaleY(1);
+  }
+
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes RotatingEntrancesLeft {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(-92deg);
+  }
+}
+
+@keyframes RotatingEntrancesTop {
+  from {
+    transform: rotate(-92deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}

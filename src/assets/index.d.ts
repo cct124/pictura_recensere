@@ -3,7 +3,7 @@
  */
 
 declare module "*.svg" {
-  const svg: () => JSX.Element;
+  const svg: ({ classNames }: { classNames?: string }) => JSX.Element;
   export default svg;
 }
 

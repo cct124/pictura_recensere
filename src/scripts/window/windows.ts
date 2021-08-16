@@ -94,7 +94,7 @@ export default new Windows([
       loadURL: "/#/CreateCanvas",
       options: {
         width: 340,
-        height: 370,
+        height: 400,
         // 模态窗口
         modal: true,
         resizable: false,

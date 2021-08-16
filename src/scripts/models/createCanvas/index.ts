@@ -2,8 +2,9 @@ import { BrowserWindow } from "electron";
 import IpcMain from "@/scripts/ipc/Main";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import proxyMain from "@/scripts/ipc/ProxyMain";
+import system from "@/scripts/models/system";
 import { CreateCanvas as _CreateCanvas } from "@/plugin/createCanvas";
-
+import { CreateCanvasInfo } from "@/types/type.d";
 export class CreateCanvas extends IpcMain {
   constructor({ channel }: { channel: VALIDCHANNELS }) {
     super({ channel });
@@ -17,6 +18,19 @@ export class CreateCanvas extends IpcMain {
   close(event?: Electron.IpcMainEvent) {
     const window = BrowserWindow.fromWebContents(event.sender);
     window.close();
+    return Promise.resolve(true);
+  }
+
+  /**
+   * 转发创建画布信息到主渲染窗口
+   * @param event
+   * @returns
+   */
+  forwardCreateCanvasInfo(...args: unknown[]) {
+    const event = args[0] as Electron.IpcMainEvent;
+    const info = args[1] as CreateCanvasInfo;
+    BrowserWindow.fromWebContents(event.sender).close();
+    system.onceCreateCanvasInfo(info);
     return Promise.resolve(true);
   }
 }
