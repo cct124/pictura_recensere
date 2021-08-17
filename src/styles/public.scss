@@ -1,3 +1,7 @@
+.border-box {
+  box-sizing: border-box;
+}
+
 /**
  * ---- Display ----
  */
@@ -121,6 +125,25 @@
  */
 .mar {
   margin: 0;
+}
+
+@for $i from 1 through 5 {
+  .mar-#{$i} {
+    margin: #{$i}px;
+  }
+
+  .mar-l-#{$i} {
+    margin-left: #{$i}px;
+  }
+  .mar-r-#{$i} {
+    margin-right: #{$i}px;
+  }
+  .mar-t-#{$i} {
+    margin-top: #{$i}px;
+  }
+  .mar-b-#{$i} {
+    margin-bottom: #{$i}px;
+  }
 }
 
 @for $i from 1 through 10 {
