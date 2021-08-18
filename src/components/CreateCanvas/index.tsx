@@ -23,7 +23,7 @@ export default function CreateCanvas() {
   }
 
   function onClickHandle() {
-    createCanvas.forwardCreateCanvasInfo({ title, width, height, sizeUnit });
+    createCanvas.forwardCreateCanvasInfo({ title, width, height, sizeUnit, color });
   }
 
   return (
@@ -43,7 +43,6 @@ export default function CreateCanvas() {
               <Input className={classNames('w-100')} value={width} setValue={setWidth} placeholder="请输入宽度" type="number" />
               <Select className={classNames('mar-l-5')} value={sizeUnit} setValue={setSizeUnit}>
                 <Option label="像素" value={'px'} />
-                <Option label="毫米" value={'mm'} />
               </Select>
             </div>
           </div>

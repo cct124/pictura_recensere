@@ -31,7 +31,7 @@ interface SelectMouseEvent extends MouseEvent {
  * @param param0.setValue 绑定的 setValue
  * @returns 
  */
-export function Select({ className, value, setValue, placeholder, children }: { className?: string, placeholder?: string, value: string | number, setValue: React.Dispatch<unknown>, children: JSX.Element | JSX.Element[] }) {
+export function Select({ className, value, setValue, placeholder, children, strictMatch }: { strictMatch?: boolean, className?: string, placeholder?: string, value: string | number, setValue: React.Dispatch<unknown>, children: JSX.Element | JSX.Element[] }) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [inputValue, setInputValue] = useState({
     label: '',
@@ -112,6 +112,21 @@ export function Select({ className, value, setValue, placeholder, children }: { 
           setValue(iterator.value);
           setChildrenActiveControl([...childrenActiveControl]);
           return
+        }
+
+        if (!strictMatch) {
+          if (inputValue.i !== null) childrenActiveControl[inputValue.i].active = false
+
+          setInputValue({
+            label: value.toString(),
+            value: value,
+            i: null
+          });
+
+          setValue(value);
+
+          setChildrenActiveControl([...childrenActiveControl]);
+
         }
       }
     }

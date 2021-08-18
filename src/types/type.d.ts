@@ -160,4 +160,5 @@ export interface CreateCanvasInfo {
   width: number;
   height: number;
   unit: string;
+  color: string;
 }

@@ -31,8 +31,8 @@ export class System extends IpcRenderer {
     return Promise.resolve(true);
   }
 
-  onceCreateCanvasInfo(info: CreateCanvasInfo) {
-    console.log(info);
+  onceCreateCanvasInfo(canvasInfo: CreateCanvasInfo) {
+    console.log(canvasInfo);
     return Promise.resolve(true);
   }
 }
