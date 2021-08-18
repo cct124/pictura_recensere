@@ -3,11 +3,11 @@ import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 
 export default class IpcMain {
   private channel: VALIDCHANNELS;
-  private rendererMap: Map<number, WebContents>;
+  private rendererMap: Set<WebContents>;
 
   constructor({ channel }: { channel: VALIDCHANNELS }) {
     this.channel = channel;
-    this.rendererMap = new Map();
+    this.rendererMap = new Set();
     this.init();
   }
 
@@ -42,7 +42,6 @@ export default class IpcMain {
   }
 
   private ipcRendererInitHandle(event: Electron.IpcMainEvent) {
-    if (!this.rendererMap.has(event.frameId))
-      this.rendererMap.set(event.frameId, event.sender);
+    this.rendererMap.add(event.sender);
   }
 }

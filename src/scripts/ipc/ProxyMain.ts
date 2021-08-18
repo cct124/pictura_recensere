@@ -15,7 +15,7 @@ export default function proxyMain<T extends IpcMain, V>(IpcMainClass: T) {
             //     resolve(args);
             //   },
             // ]);
-            const map: Map<number, WebContents> = Reflect.get(
+            const map: Set<WebContents> = Reflect.get(
               target,
               "rendererMap",
               receiver
@@ -28,14 +28,19 @@ export default function proxyMain<T extends IpcMain, V>(IpcMainClass: T) {
               ipcMain.once(tempChannel, (event, args) => {
                 resolve(args);
               });
-              map
-                .get([...map.keys()][0])
-                .send(
-                  Reflect.get(target, "channel", receiver),
-                  propKey,
-                  tempChannel,
-                  ...args
-                );
+
+              map.forEach((sender) => {
+                if (!sender.isDestroyed()) {
+                  sender.send(
+                    Reflect.get(target, "channel", receiver),
+                    propKey,
+                    tempChannel,
+                    ...args
+                  );
+                } else {
+                  map.delete(sender);
+                }
+              });
             }
           } catch (error) {
             reject(error);

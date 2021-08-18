@@ -7,6 +7,7 @@ import WINDOWS from "@/config/WINDOWS";
 import APP from "@/config/APP";
 import "@/scripts/models/system";
 import "@/scripts/models/createCanvas";
+import "@/scripts/models/colorPicker";
 
 /**
  * Electron App
@@ -74,11 +75,7 @@ export default class App {
       // }
 
       // 创建主窗口
-      windowManager.createWindow(WINDOWS.MAIN).then((window) => {
-        windowManager.createWindow(WINDOWS.COLOR_PICKER, {
-          options: { parent: window.window },
-        });
-      });
+      windowManager.createWindow(WINDOWS.MAIN);
     });
 
     // Exit cleanly on request from parent process in development mode.

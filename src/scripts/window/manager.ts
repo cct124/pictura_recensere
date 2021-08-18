@@ -17,11 +17,9 @@ class WindowManager {
    * @returns
    */
   createWindow(key: WINDOWS, options: WindowManager.options = { options: {} }) {
-
     // 创建窗口是一个异步过程
     return new Promise<MainWindow.WindowMapValue | undefined>(
       (resolve, reject) => {
-
         // 是否有对应窗口的定义，没有则创建失败
         if (windows.has(key)) {
           const windowConfig = windows.get(key);
@@ -54,7 +52,7 @@ class WindowManager {
 
           // 窗口加载的网页 url
           window.loadURL(
-            MAIN_WINDOW_WEBPACK_ENTRY + query + windowConfig.loadURL
+            MAIN_WINDOW_WEBPACK_ENTRY + "?" + windowConfig.loadURL + query
           );
 
           // 开发环境配置对应的调试工具

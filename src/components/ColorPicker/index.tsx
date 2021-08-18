@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 import Block from "./Block";
 import Strip from "./Strip";
 import { Input, Button } from "@/components/UI";
+import colorPicker from "@/plugin/colorPicker";
+import { useLocation } from "react-router-dom";
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 export default function ColorPickerWindow() {
+  const color = useQuery().get('color')
 
   const blockSize = 300;
   const stripSize = {
@@ -18,6 +24,14 @@ export default function ColorPickerWindow() {
   const [stripColor, setStripColor] = useState('#ffffff');
   const [inputColor, setInputColor] = useState('#ffffff');
   const [currentColor,] = useState('#ffffff');
+
+  useEffect(() => {
+    setInputColor(color)
+  }, [])
+
+  function submitColor() {
+    colorPicker.closeColorPicker(blockColor)
+  }
 
   return (
     <div className={classNames(Style.ColorPicker, 'flex-jcfs-aic w-100vw h-100vh pad-15 border-box select-none')}>
@@ -34,7 +48,7 @@ export default function ColorPickerWindow() {
           <Input className={classNames('w-100')} value={blockColor} setValue={setInputColor} />
         </div>
         <div className={classNames('w-100p text-right border-box pad-r-10')}>
-          <Button type="primary">确定</Button>
+          <Button type="primary" onClick={submitColor}>确定</Button>
         </div>
       </div>
     </div >

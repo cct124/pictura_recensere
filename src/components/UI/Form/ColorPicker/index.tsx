@@ -3,14 +3,16 @@ import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 import system from '@/plugin/system';
 
-export function ColorPicker({ className, size }: { className?: string, size?: 'medium' | 'small' | 'mini' }) {
-  size = size || 'def' as 'mini';
+export let setBackgroundColor: React.Dispatch<React.SetStateAction<string>>;
 
-  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+export function ColorPicker({ value, setValue, className, size }: { value: string, setValue: React.Dispatch<React.SetStateAction<string>>, className?: string, size?: 'medium' | 'small' | 'mini' }) {
+  size = size || 'def' as 'mini';
+  
+  setBackgroundColor = setValue;
 
   function openColorPickerWindow() {
-    system.openColorPickerWindow();
+    system.openColorPickerWindow(value);
   }
 
-  return <div className={classNames(Style.colorPicker, Style[size], className)} style={{ backgroundColor }} onClick={openColorPickerWindow}></div>
+  return <div className={classNames(Style.colorPicker, Style[size], className)} style={{ backgroundColor: value }} onClick={openColorPickerWindow}></div>
 }

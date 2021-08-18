@@ -58,7 +58,7 @@ export default function CreateCanvas() {
                 <Option label="白色" value={'#ffffff'} />
                 <Option label="黑色" value={'#000000'} />
               </Select>
-              <ColorPicker />
+              <ColorPicker value={color} setValue={setColor} />
             </div>
           </div>
           <div className={classNames('flex-jcfe-aic')}>

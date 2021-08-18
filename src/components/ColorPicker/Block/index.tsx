@@ -80,7 +80,7 @@ export default function Block({ basicValue, value, setValue, width, height, clas
     ctx.fillStyle = grdWhite;
     ctx.fillRect(evenScore, evenScore, width, height);
 
-    const grdBlack = ctx.createLinearGradient(evenScore, evenScore, 0, height + evenScore);
+    const grdBlack = ctx.createLinearGradient(evenScore, evenScore, 0, height + 4);
     grdBlack.addColorStop(0, "rgba(0,0,0,0)");
     grdBlack.addColorStop(1, "rgba(0,0,0,1)");
     ctx.fillStyle = grdBlack;

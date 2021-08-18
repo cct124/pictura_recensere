@@ -3,10 +3,16 @@ import { ColorPicker as _ColorPicker } from "@/scripts/models/colorPicker";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import { _IpcRenderer } from "@/types/type.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
+import { setBackgroundColor } from "@/components/UI/Form/ColorPicker";
 
 export class ColorPicker extends IpcRenderer {
   constructor({ ipc, channel }: { ipc: _IpcRenderer; channel: VALIDCHANNELS }) {
     super({ ipc, channel });
+  }
+
+  sendColor(value: string) {
+    if(setBackgroundColor) setBackgroundColor(value);
+    return Promise.resolve(true);
   }
 }
 

@@ -144,7 +144,7 @@ export default new Windows([
       },
       dev: {
         devTools: {
-          open: true,
+          open: false,
           options: {
             mode: "detach",
           },
