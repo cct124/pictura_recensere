@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Style from "./index.modules.scss";
 import { classNames, throttler } from '@/utils/tool';
-import { toHex } from '@/utils/color';
+import { toHex, Color } from '@/utils/color';
 
-export default function Block({ basicColor, value, setValue, width, height, className }: { basicColor: string, setValue: React.Dispatch<React.SetStateAction<string>>, value: string, height: number, width: number, className?: string }) {
+export default function Block({ basicValue, value, setValue, width, height, className }: { value: string, setValue: React.Dispatch<React.SetStateAction<string>>, basicValue: string, height: number, width: number, className?: string }) {
 
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>(null);
-  const [block, setBlock] = useState<HTMLCanvasElement>(null);
-  
+  const [, setBlock] = useState<HTMLCanvasElement>(null);
+  const [color,] = useState(new Color());
+
   const pad = 16;
   const evenScore = pad / 2;
 
@@ -21,12 +22,49 @@ export default function Block({ basicColor, value, setValue, width, height, clas
 
   useEffect(() => {
     if (ctx) {
-      fillGradient(width, height, basicColor);
-      indicator(offset.x, offset.y);
+      fillGradient(width, height, basicValue);
+      indicator(offset.x, offset.y, basicValue);
       getBlockColor(offset.x, offset.y);
     }
+  }, [basicValue, ctx]);
 
-  }, [basicColor, ctx]);
+  useEffect(() => {
+    if (!ctx) return
+    valueColorChange(value);
+  }, [value]);
+
+  function valueColorChange(value: string) {
+    color.fromString(value);
+
+    if (color.get("saturation") !== undefined &&
+      color.get("value") !== undefined) {
+
+      // console.log(Math.round(
+      //   width * (color.get("saturation") / 100)
+      // ));
+
+      // console.log(Math.round(
+      //   height - height * (color.get("value") / 100)
+      // ));
+      const x = Math.round(
+        width * (color.get("saturation") / 100)
+      ) + evenScore - 1;
+      const y = Math.round(
+        height - height * (color.get("value") / 100)
+      ) + evenScore + 1;
+
+      fillGradient(width, height, basicValue);
+      indicator(x, y, value);
+
+      setOffset({ x, y });
+
+      getBlockColor(x, y);
+
+      // console.log(color.get("saturation"));
+      // console.log(color.get("value"));
+
+    }
+  }
 
   // 渲染色块渐变
   function fillGradient(width: number, height: number, color: string) {
@@ -42,7 +80,7 @@ export default function Block({ basicColor, value, setValue, width, height, clas
     ctx.fillStyle = grdWhite;
     ctx.fillRect(evenScore, evenScore, width, height);
 
-    const grdBlack = ctx.createLinearGradient(evenScore, evenScore, 0, height);
+    const grdBlack = ctx.createLinearGradient(evenScore, evenScore, 0, height + evenScore);
     grdBlack.addColorStop(0, "rgba(0,0,0,0)");
     grdBlack.addColorStop(1, "rgba(0,0,0,1)");
     ctx.fillStyle = grdBlack;
@@ -83,21 +121,22 @@ export default function Block({ basicColor, value, setValue, width, height, clas
   function offsetChange(e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) {
     const y = e.nativeEvent.offsetY < evenScore ? evenScore : e.nativeEvent.offsetY >= (height + evenScore) ? height + evenScore - 1 : e.nativeEvent.offsetY
     const x = e.nativeEvent.offsetX < evenScore ? evenScore : e.nativeEvent.offsetX >= (height + evenScore) ? height + evenScore - 1 : e.nativeEvent.offsetX
-    fillGradient(width, height, basicColor);
-    indicator(x, y);
-    getBlockColor(x, y);
+    fillGradient(width, height, basicValue);
     setOffset({ x, y });
+    indicator(x, y, getBlockColor(x, y));
   }
 
   function getBlockColor(x: number, y: number) {
     const data = ctx.getImageData(x, y, 1, 1).data;
-
-    setValue(toHex({
+    const colorValue = toHex({
       r: data[0],
       g: data[1],
       b: data[2],
-    }))
+    });
 
+    setValue(colorValue);
+
+    return colorValue
   }
 
   /**
@@ -119,10 +158,11 @@ export default function Block({ basicColor, value, setValue, width, height, clas
    * 指示器
    * @param y 
    */
-  function indicator(x: number, y: number) {
+  function indicator(x: number, y: number, colorValue: string) {
+    color.fromString(colorValue);
     ctx.beginPath();
-    ctx.lineWidth = 0.6;
-    ctx.strokeStyle = '#2c2e3a';
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = color.get('value') < 78 ? '#ffffff' : '#0a0505';
     ctx.arc(x, y, 5, 0, Math.PI * 2); // 绘制
     ctx.stroke();
   }

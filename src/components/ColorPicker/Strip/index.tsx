@@ -1,10 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { classNames, throttler } from '@/utils/tool';
-import { toHex } from '@/utils/color';
+import { toHex, Color } from '@/utils/color';
 
 export default function Strip({ value, setValue, width, height, className }: { setValue: React.Dispatch<React.SetStateAction<string>>, value: string, height: number, width: number, className?: string }) {
   const [ctx, setCtx] = useState<CanvasRenderingContext2D>(null);
   const [, setStrip] = useState<HTMLCanvasElement>(null);
+  const [color,] = useState(new Color());
 
   //是否按下鼠标
   const [leftMouseDown, setLeftMouseDown] = useState(false);
@@ -16,6 +17,31 @@ export default function Strip({ value, setValue, width, height, className }: { s
     fillGradient(width, height, height + evenScore - 1)
   }, [ctx]);
 
+  useEffect(() => {
+    if (ctx) valueColorChange(value)
+  }, [ctx, value]);
+
+
+  function valueColorChange(value: string) {
+    color.fromString(value);
+
+    if (color.get('hue') !== undefined) {
+      const y = hueConvertsLength(Math.round(color.get('hue')), height) + evenScore - 1;
+      arrowIndicator(y);
+      getBlockColor(width / 2, y);
+    }
+  }
+
+  /**
+   * 色相值转换为长度值
+   * @param hue 
+   * @param length 
+   * @returns 
+   */
+  function hueConvertsLength(hue: number, length: number) {
+    return length - Math.round((hue * length) / 360);
+  }
+
   /**
    * 初始化 Strip 色块
    * @param width 
@@ -25,14 +51,7 @@ export default function Strip({ value, setValue, width, height, className }: { s
    */
   function fillGradient(width: number, height: number, arrowInrY: number) {
     if (!ctx) return
-    ctx.rect(evenScore, evenScore, width - pad, height);
-
-    const clgStrip = ctx.createLinearGradient(
-      0,
-      0,
-      0,
-      height
-    );
+    const clgStrip = ctx.createLinearGradient(evenScore, evenScore + 2, width - pad, height);
 
     clgStrip.addColorStop(0, "rgba(255, 0, 0, 1)");
     clgStrip.addColorStop(0.17, "rgba(255, 0, 255, 1)");
@@ -42,7 +61,7 @@ export default function Strip({ value, setValue, width, height, className }: { s
     clgStrip.addColorStop(0.85, "rgba(255, 255, 0, 1)");
     clgStrip.addColorStop(1, "rgba(255, 0, 0, 1)");
     ctx.fillStyle = clgStrip;
-    ctx.fill();
+    ctx.fillRect(evenScore, evenScore, width, height);
 
     arrowIndicator(arrowInrY);
     getBlockColor(width / 2, arrowInrY);
