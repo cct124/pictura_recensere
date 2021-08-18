@@ -23,7 +23,7 @@ export default function Block({ basicValue, value, setValue, width, height, clas
   useEffect(() => {
     if (ctx) {
       fillGradient(width, height, basicValue);
-      indicator(offset.x, offset.y, basicValue);
+      indicator(offset.x, offset.y, getBlockColor(offset.x, offset.y));
       getBlockColor(offset.x, offset.y);
     }
   }, [basicValue, ctx]);
