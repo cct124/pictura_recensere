@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "./index.modules.scss";
+// import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 
 export function CanvasReactComponent({ width, height, className }: { width: number, height: number, className?: string }) {
