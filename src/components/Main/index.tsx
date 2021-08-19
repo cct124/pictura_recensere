@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.scss';
 import Titlebar from '@/components/Main/Frame/Titlebar'
-import WorkAreaContainer from '@/components/Main/WorkArea'
+import WorkAreaContainer from '@/components/Main/WorkAreaContainer'
+// import Welcome from '@/components/Main/Welcome'
 import APP from '@/config/APP'
 
 /**
