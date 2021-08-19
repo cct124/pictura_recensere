@@ -1,7 +1,40 @@
-.Tools {
+.tools {
   $marTop: 2px;
   width: $Main-WorkArea-Tools-width;
   margin-top: $marTop;
   height: calc(100vh - #{$titlebar-height} - #{$marTop});
   background-color: $Main-WorkArea-Tools-bgc;
+  grid-gap: $Main-WorkArea-Tools-grid-gap;
+  padding: $Main-WorkArea-Tools-grid-gap 0px;
+
+  .toolsIcon {
+    width: $Main-WorkArea-Tools-ToolsIcon-size;
+    height: $Main-WorkArea-Tools-ToolsIcon-size;
+    fill: $Main-WorkArea-Tools-ToolsIcon-fill;
+
+    svg {
+      &:hover {
+        fill: $Main-WorkArea-Tools-ToolsIcon-hover-fill;
+      }
+    }
+  }
+
+  .tools-icon-0 {
+    svg {
+      transform: rotate(342deg);
+    }
+  }
+
+  .tools-icon-1 {
+    width: $Main-WorkArea-Tools-ToolsIcon-size + 2px;
+  }
+
+  .toolsIconActive {
+    svg {
+      fill: $Main-WorkArea-Tools-ToolsIcon-active-fill;
+      &:hover {
+        fill: $Main-WorkArea-Tools-ToolsIcon-active-fill;
+      }
+    }
+  }
 }
