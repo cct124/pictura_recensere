@@ -15,19 +15,30 @@ export default function Help(): MenubarItem {
     system.reload();
   }
 
+  function openAboutMessageBox() {
+    system.openAboutMessageBox()
+  }
+  
   return {
     title: "帮助",
     children: [
       {
-        title: "Reload",
+        title: "刷新",
         onClick: Reload
       },
       {
         type: 'separator'
       },
       {
-        title: "Developer Tools",
+        title: "开发人员工具",
         onClick: openDeveloperTools
+      },
+      {
+        type: 'separator'
+      },
+      {
+        title: "关于",
+        onClick: openAboutMessageBox
       },
     ]
   }

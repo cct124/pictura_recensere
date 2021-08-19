@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
 import Titlebar from '@/components/Main/Frame/Titlebar'
+import WorkAreaContainer from '@/components/Main/WorkArea'
 import APP from '@/config/APP'
 
 /**
@@ -12,6 +13,7 @@ export default function Main() {
   return (
     <div className="frame-main">
       <Titlebar />
+      <WorkAreaContainer />
     </div>
   )
 }

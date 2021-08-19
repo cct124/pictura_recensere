@@ -1,5 +1,5 @@
 import os from "os";
-import { app, BrowserWindow } from "electron";
+import { app, dialog, BrowserWindow } from "electron";
 import IpcMain from "@/scripts/ipc/Main";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import proxyMain from "@/scripts/ipc/ProxyMain";
@@ -114,6 +114,26 @@ export class System extends IpcMain {
         color,
       },
       options: { parent },
+    });
+
+    return Promise.resolve(true);
+  }
+
+  /**
+   * 关于
+   */
+  openAboutMessageBox(event?: Electron.IpcMainEvent) {
+    const parent = BrowserWindow.fromWebContents(event.sender);
+    dialog.showMessageBox(parent, {
+      type: "info",
+      title: app.getName(),
+      message: `
+        Version ${app.getVersion()}
+        Node.js ${process.versions.node}
+        Chrome ${process.versions.chrome}
+        Electron ${process.versions.electron}
+        OS ${os.type()} ${os.arch()} ${os.release()}
+      `,
     });
 
     return Promise.resolve(true);

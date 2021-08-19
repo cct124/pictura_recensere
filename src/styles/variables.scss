@@ -150,14 +150,14 @@ $menubar-title-active-bgc: hsl(0, 0%, 90%);
 
 // ---- Menubar Children ----
 $menubar-children-title-size: 13px;
-$menubar-menu-children-padding: 5px 0px;
+$menubar-menu-children-padding: 6px 0px;
 $menubar-menu-children-bgc: #fff;
 $menubar-menu-children-title-padding: 4px 15px;
 $menubar-menu-children-title-color: $text-basic-color;
 $menubar-menu-children-title-bgc: transparent;
 $menubar-menu-children-title-active-bgc: #f3f3f3;
 
-$menubar-menu-children-separator-margin: 4px 8px;
+$menubar-menu-children-separator-margin: 6px 8px;
 
 /**
  * ------ Create Canvas ------
@@ -171,3 +171,9 @@ $create-canvas-radius: 2px;
 $create-canvas-frame-height: 30px;
 
 $create-canvas-container-padding: 20px 30px;
+
+/**
+ * ------ Main WorkArea ------
+ */
+$Main-WorkArea-Tools-width: 50px;
+$Main-WorkArea-Tools-bgc: #f5f5f5;

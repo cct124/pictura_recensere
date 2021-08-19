@@ -1,11 +1,10 @@
 import IpcRenderer from "@/scripts/ipc/Renderer";
 import { System as _System } from "@/scripts/models/system";
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
-import { _IpcRenderer , CreateCanvasInfo } from "@/types/type.d";
+import { _IpcRenderer, CreateCanvasInfo } from "@/types/type.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
 import { setIsMaximize } from "@/components/Main/Frame/Titlebar/Control/Maximize";
 import { closeAllMenusChild } from "@/components/Main/Frame/Titlebar/Menubar/menu";
-
 
 export class System extends IpcRenderer {
   constructor({ ipc, channel }: { ipc: _IpcRenderer; channel: VALIDCHANNELS }) {
@@ -31,6 +30,11 @@ export class System extends IpcRenderer {
     return Promise.resolve(true);
   }
 
+  /**
+   * 创建画布
+   * @param canvasInfo
+   * @returns
+   */
   onceCreateCanvasInfo(canvasInfo: CreateCanvasInfo) {
     console.log(canvasInfo);
     return Promise.resolve(true);

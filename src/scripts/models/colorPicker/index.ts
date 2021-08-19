@@ -10,6 +10,11 @@ export class ColorPicker extends IpcMain {
     super({ channel });
   }
 
+  /**
+   * 关闭拾色器窗口 并将选取的色值返回
+   * @param args
+   * @returns
+   */
   closeColorPicker(...args: unknown[]) {
     const event = args[0] as Electron.IpcMainEvent;
     const color = args[1] as string;

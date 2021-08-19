@@ -1,0 +1,7 @@
+.Tools {
+  $marTop: 2px;
+  width: $Main-WorkArea-Tools-width;
+  margin-top: $marTop;
+  height: calc(100vh - #{$titlebar-height} - #{$marTop});
+  background-color: $Main-WorkArea-Tools-bgc;
+}
