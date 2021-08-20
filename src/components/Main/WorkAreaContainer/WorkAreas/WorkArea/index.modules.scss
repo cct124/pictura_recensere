@@ -1,0 +1,4 @@
+.workArea {
+  width: calc(100vw - #{$Main-WorkArea-Tools-width});
+  height: calc(100vw - #{$titlebar-height} - #{$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height});
+}

@@ -163,7 +163,7 @@ export interface CreateCanvasInfo {
   color: string;
 }
 
-export interface WorkAreaType {
+export interface WorkAreaType extends CreateCanvasInfo {
   id: number;
   title: string;
   active: boolean;

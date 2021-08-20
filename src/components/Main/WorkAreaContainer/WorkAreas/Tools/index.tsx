@@ -5,6 +5,10 @@ import { classNames } from '@/utils/tool';
 import ArrowSvg from "@/assets/svg/arrow.svg";
 import TextCursorSvg from "@/assets/svg/text_cursor.svg";
 
+/**
+ * 侧边工具栏
+ * @returns 
+ */
 export default function Tools() {
 
   const toolsConfig = [

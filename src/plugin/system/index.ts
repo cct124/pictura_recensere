@@ -4,6 +4,7 @@ import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
 import { _IpcRenderer, CreateCanvasInfo } from "@/types/type.d";
 import proxyRenderer from "@/scripts/ipc/ProxyRenderer";
 import { setIsMaximize } from "@/components/Main/Frame/Titlebar/Control/Maximize";
+import { createCanvas } from "@/components/Main/WorkAreaContainer";
 import { closeAllMenusChild } from "@/components/Main/Frame/Titlebar/Menubar/menu";
 
 export class System extends IpcRenderer {
@@ -36,7 +37,7 @@ export class System extends IpcRenderer {
    * @returns
    */
   onceCreateCanvasInfo(canvasInfo: CreateCanvasInfo) {
-    console.log(canvasInfo);
+    createCanvas(canvasInfo);
     return Promise.resolve(true);
   }
 }

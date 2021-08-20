@@ -5,7 +5,7 @@ import { classNames } from '@/utils/tool';
 export default function Welcome() {
   return (
     <div className={classNames(Style.welcome)}>
-      welcome
+      <h1>Welcome Pictura Recensere</h1>
     </div>
   )
 }

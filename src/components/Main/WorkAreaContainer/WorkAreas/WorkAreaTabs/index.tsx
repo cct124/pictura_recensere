@@ -73,9 +73,9 @@ export default function WorkAreaTabs({ workAreas, setWorkAreas, tabsStack, setTa
     <div className={classNames(Style.workAreaTabs, 'flex relative select-none')}>
       {
         workAreas.map((workArea, i) => (
-          <div ref={Ref} className={classNames(Style.workArea, workArea.active ? Style.activeWorkArea : "", 'flex-center')} style={{ clipPath: clipPath, left: i * tabsWdith }} key={workArea.id} onClick={() => onClickAreaTabs(workArea.id)}>
-            {workArea.title}
-            <div className={classNames(Style.closeWorkArea, 'pad-l-5 pad-tb-5')} onClick={(e) => { e.stopPropagation(); onCloseWorkArea(workArea.id) }}>
+          <div title={workArea.title} ref={Ref} className={classNames(Style.workArea, workArea.active ? Style.activeWorkArea : "", 'flex-center')} style={{ clipPath: clipPath, left: i * tabsWdith }} key={workArea.id} onClick={() => onClickAreaTabs(workArea.id)}>
+            <div className={classNames(Style.title, 'text-center')}>{workArea.title}</div>
+            <div className={classNames(Style.closeWorkArea, 'pad-tb-5')} onClick={(e) => { e.stopPropagation(); onCloseWorkArea(workArea.id) }}>
               <CloseSvg />
             </div>
           </div>

@@ -131,6 +131,25 @@
   flex-shrink: 0;
 }
 
+@for $i from 1 through 5 {
+  .pad-#{$i} {
+    padding: #{$i}px;
+  }
+
+  .pad-l-#{$i} {
+    padding-left: #{$i}px;
+  }
+  .pad-r-#{$i} {
+    padding-right: #{$i}px;
+  }
+  .pad-t-#{$i} {
+    padding-top: #{$i}px;
+  }
+  .pad-b-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+}
+
 @for $i from 1 through 10 {
   .pad-#{$i * 5} {
     padding: $i * 5px;
@@ -303,4 +322,15 @@
   &:hover {
     color: $text-basic-color;
   }
+}
+
+/**
+ * ---- ellipsis ----
+ */
+.text-one-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
