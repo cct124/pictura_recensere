@@ -66,7 +66,7 @@ export default function WorkAreaTabs({ workAreas, setWorkAreas, tabsStack, setTa
       setTabsStack(new Set([...tabsStack]));
       setWorkAreas([...workAreas]);
     }
-    
+
   }
 
   return (
