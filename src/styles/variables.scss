@@ -9,6 +9,10 @@
  * ------ Basic ------
  */
 
+//  z-index
+$z-index-1: 1;
+$z-index-10: 10;
+
 // -- Color --
 $frame-background-color: #e4e4e4;
 $bgc-basic-primary-color: #0c98f5;
@@ -114,6 +118,12 @@ $UI-form-colorPicker-window-bgc: gray(18);
 $titlebar-logo-size: 20px;
 $titlebar-height: 30px;
 $titlebar-background-color: #f5f5f5;
+
+$titlebar-background-color-dark: scale-color(
+  $titlebar-background-color,
+  $lightness: -8%
+);
+
 // ---- Window Controls ----
 $titlebar-window-controls-size: 12px;
 
@@ -136,8 +146,8 @@ $titlebar-window-controls-minimize-bgc: $titlebar-background-color;
 $titlebar-window-controls-maximize-bgc: $titlebar-background-color;
 $titlebar-window-controls-close-bgc: $titlebar-background-color;
 
-$titlebar-window-controls-minimize-active-bgc: #e7e7e7;
-$titlebar-window-controls-maximize-active-bgc: #e7e7e7;
+$titlebar-window-controls-minimize-active-bgc: $titlebar-background-color-dark;
+$titlebar-window-controls-maximize-active-bgc: $titlebar-background-color-dark;
 $titlebar-window-controls-close-active-bgc: $bgc-basic-danger-color;
 
 // ---- Menubar ----
@@ -146,7 +156,7 @@ $menubar-title-padding: 2px 8px;
 $menubar-title-color: $text-basic-color;
 $menubar-title-active-color: $text-basic-active-color;
 $menubar-title-bgc: transparent;
-$menubar-title-active-bgc: hsl(0, 0%, 90%);
+$menubar-title-hover-bgc: $titlebar-background-color-dark;
 
 // ---- Menubar Children ----
 $menubar-children-title-size: 13px;
@@ -175,10 +185,45 @@ $create-canvas-container-padding: 20px 30px;
 /**
  * ------ Main WorkArea ------
  */
+$border-split-line-size: 1px;
+$border-split-line-color: gray(17);
+
 $Main-WorkArea-Tools-width: 50px;
-$Main-WorkArea-Tools-bgc: #f5f5f5;
+$Main-WorkArea-Tools-bgc: $titlebar-background-color;
 $Main-WorkArea-Tools-grid-gap: 16px;
 $Main-WorkArea-Tools-ToolsIcon-size: 16px;
 $Main-WorkArea-Tools-ToolsIcon-fill: gray(12);
 $Main-WorkArea-Tools-ToolsIcon-hover-fill: gray(10);
 $Main-WorkArea-Tools-ToolsIcon-active-fill: $bgc-basic-primary-color;
+$Main-WorkArea-Tools-ToolsIcon-border-top-size: $border-split-line-size;
+$Main-WorkArea-Tools-ToolsIcon-border-top: $Main-WorkArea-Tools-ToolsIcon-border-top-size
+  solid $border-split-line-color;
+/**
+ * ------ Main WorkArea WorkAreaContainer ------
+ */
+
+/**
+ * ------ Main WorkArea WorkAreaContainer WorkAreaTabs------
+ */
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height: 30px;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-bgc: $titlebar-background-color;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-border-top-size: $border-split-line-size;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-border-top: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-border-top-size
+  solid $border-split-line-color;
+
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-width: 110px;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-font-size: $font-size-sm +
+  1px;
+
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-transition: all 0.16s;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-active-bgc: $frame-background-color;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-hover-bgc: scale-color(
+  $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-active-bgc,
+  $lightness: 20%
+);
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-fill: #b1b1b1;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-hover-fill: scale-color(
+  $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-fill,
+  $lightness: -50%
+);
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-size: 8px;

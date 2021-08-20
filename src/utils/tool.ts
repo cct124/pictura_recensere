@@ -185,5 +185,5 @@ export function encode(val: string) {
 export function classNames(...args: unknown[]) {
   return args.every((str) => str === undefined)
     ? undefined
-    : args.filter((str) => typeof str === "string").join(" ");
+    : args.filter((str) => typeof str === "string" && str !== "").join(" ");
 }

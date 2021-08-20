@@ -162,3 +162,9 @@ export interface CreateCanvasInfo {
   unit: string;
   color: string;
 }
+
+export interface WorkAreaType {
+  id: number;
+  title: string;
+  active: boolean;
+}

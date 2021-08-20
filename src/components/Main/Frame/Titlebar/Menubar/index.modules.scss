@@ -16,7 +16,7 @@
 
   &:hover {
     color: $menubar-title-active-color;
-    background-color: $menubar-title-active-bgc;
+    background-color: $menubar-title-hover-bgc;
   }
 }
 
@@ -26,6 +26,7 @@
   left: 0;
   padding: $menubar-menu-children-padding;
   background-color: $menubar-menu-children-bgc;
+  z-index: $z-index-10;
 }
 
 .menubar-menu-children-title {
@@ -45,5 +46,5 @@
 }
 
 .menubar-menu-active {
-  background-color: $menubar-title-active-bgc;
+  background-color: $menubar-title-hover-bgc;
 }

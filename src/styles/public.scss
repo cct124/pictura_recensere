@@ -147,6 +147,10 @@
   .pad-b-#{$i * 5} {
     padding-bottom: $i * 5px;
   }
+  .pad-tb-#{$i * 5} {
+    padding-top: $i * 5px;
+    padding-bottom: $i * 5px;
+  }
 }
 
 /**

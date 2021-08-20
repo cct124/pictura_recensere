@@ -1,0 +1,39 @@
+.workAreaTabs {
+  height: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height;
+  background-color: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-bgc;
+  border-top: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-border-top;
+  border-left: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-border-top;
+
+  .workArea {
+    width: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-width;
+    font-size: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-font-size;
+    height: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height;
+    transition: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-transition;
+    position: absolute;
+    padding-left: 2px;
+
+    &:hover {
+      background-color: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-hover-bgc;
+      .closeWorkArea {
+        opacity: 1;
+      }
+    }
+
+    .closeWorkArea {
+      opacity: 0;
+      fill: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-fill;
+      width: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-size;
+      &:hover {
+        fill: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-hover-fill;
+      }
+    }
+  }
+
+  .activeWorkArea {
+    background-color: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-active-bgc;
+    z-index: $z-index-1;
+    &:hover {
+      background-color: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-active-bgc;
+    }
+  }
+}

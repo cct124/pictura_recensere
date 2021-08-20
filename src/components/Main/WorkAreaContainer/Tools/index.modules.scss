@@ -1,8 +1,9 @@
 .tools {
-  $marTop: 2px;
   width: $Main-WorkArea-Tools-width;
-  margin-top: $marTop;
-  height: calc(100vh - #{$titlebar-height} - #{$marTop});
+  border-top: $Main-WorkArea-Tools-ToolsIcon-border-top;
+  height: calc(
+    100vh - #{$titlebar-height} - #{$Main-WorkArea-Tools-ToolsIcon-border-top-size}
+  );
   background-color: $Main-WorkArea-Tools-bgc;
   grid-gap: $Main-WorkArea-Tools-grid-gap;
   padding: $Main-WorkArea-Tools-grid-gap 0px;
