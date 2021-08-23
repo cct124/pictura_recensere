@@ -10,7 +10,8 @@ import ConctrolMatrix from "@/plugin/canvas/conctrolMatrix";
  */
 export default function CanvasGroup({ width, height, color }: { width: number, height: number, color: string }) {
 
-  // const [canvas,] = useState(new Canvas({ width, height, color }));
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [conctrolMatrix, setConctrolMatrix] = useState(null);
   const [canvasGroup, setCanvasGroup] = useState<HTMLDivElement>(null);
   const [canvas, setCanvas] = useState<HTMLCanvasElement>(null);
@@ -37,7 +38,7 @@ export default function CanvasGroup({ width, height, color }: { width: number, h
   }, [])
 
   return (
-    <div ref={canvasGroupRef} className={classNames(Style.canvasGroup, 'wh-100p')} >
+    <div ref={canvasGroupRef} className={classNames(Style.canvasGroup)} >
       <Canvas ref={canvasRef} width={width} height={height} style={{ backgroundColor: color }} />
     </div>
   )

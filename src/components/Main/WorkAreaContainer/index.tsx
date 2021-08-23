@@ -15,7 +15,17 @@ export let createCanvas: (data: CreateCanvasInfo) => void
  */
 export default function WorkAreaContainer() {
 
-  const [workAreas, setWorkAreas] = useState<WorkAreaType[]>([]);
+  const [workAreas, setWorkAreas] = useState<WorkAreaType[]>([
+    {
+      id: 0,
+      title: "新建画布 1",
+      active: true,
+      color: "#ffffff",
+      height: 300,
+      unit: "px",
+      width: 300,
+    }
+  ]);
 
   const [tabsStack, setTabsStack] = useState(new Set<number>([0]));
 

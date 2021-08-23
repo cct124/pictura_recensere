@@ -1,3 +1,5 @@
 .canvasGroup {
   overflow: hidden;
+  width: 100%;
+  height: calc(100% - #{$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-height});
 }

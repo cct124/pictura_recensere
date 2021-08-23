@@ -215,6 +215,11 @@ $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-width: 110px;
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-font-size: $font-size-sm +
   1px;
 
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-height: 20px;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-bgc: $titlebar-background-color;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-border-left: $border-split-line-size
+  solid $border-split-line-color;
+  
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-transition: all 0.16s;
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-active-bgc: $frame-background-color;
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-hover-bgc: scale-color(

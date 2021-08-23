@@ -1,7 +1,8 @@
 import React from "react";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
-import CanvasGroup from "@/components/Main/WorkAreaContainer/WorkAreas/WorkArea/CanvasGroup";
+import CanvasGroup from "./CanvasGroup";
+import WorkAreaInfoBar from "./WorkAreaInfoBar";
 import { WorkAreaType } from "@/types/type.d";
 
 /**
@@ -14,6 +15,7 @@ export default function WorkArea({ workArea }: { workArea: WorkAreaType }) {
   return (
     <div className={classNames(Style.workArea)} style={style}>
       <CanvasGroup width={workArea.width} height={workArea.height} color={workArea.color} />
+      <WorkAreaInfoBar />
     </div>
   )
 }

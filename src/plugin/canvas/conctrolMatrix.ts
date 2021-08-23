@@ -45,6 +45,8 @@ export default class ConctrolMatrix {
     y: 0,
   };
 
+  private zoomNegative: boolean;
+
   matrix: number[];
   origin: number[];
   scaleStep;
@@ -54,6 +56,7 @@ export default class ConctrolMatrix {
     container,
     targer,
     scaleStep = 0.15,
+    zoomNegative = false,
     matrixChange,
   }: {
     /**
@@ -73,11 +76,17 @@ export default class ConctrolMatrix {
      * matrix 变化时调用此函数
      */
     matrixChange?: (matrix: number[]) => void;
+
+    /**
+     * 是否允许缩放值为负数
+     */
+    zoomNegative?: boolean;
   }) {
     this.container = container;
     this.targer = targer;
     this.scaleStep = scaleStep;
     this.matrixChange = matrixChange;
+    this.zoomNegative = zoomNegative;
 
     this.matrix = new Proxy(this.matrixOrigin, {
       get: (target: number[], p: string | symbol, receiver: number[]) =>
@@ -314,8 +323,18 @@ export default class ConctrolMatrix {
          * 缩小
          */
       } else {
-        this.matrix[0] -= this.scaleStep;
-        this.matrix[3] -= this.scaleStep;
+        if (this.zoomNegative) {
+          this.matrix[0] -= this.scaleStep;
+          this.matrix[3] -= this.scaleStep;
+        } else {
+          const x = this.matrix[0] - this.scaleStep;
+          const y = this.matrix[3] - this.scaleStep;
+
+          if (x > 0) {
+            this.matrix[0] = x;
+            this.matrix[3] = y;
+          }
+        }
       }
 
       this.matrix[4] = ev.layerX - ratioX * this.targer.offsetWidth;
