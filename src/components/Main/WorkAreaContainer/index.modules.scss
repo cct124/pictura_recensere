@@ -1,0 +1,4 @@
+.workAreaContainer {
+  width: 100vw;
+  height: calc(100vh - #{$titlebar-height});
+}

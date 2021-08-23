@@ -1,2 +1,2 @@
 # pictura_recensere
-pictura_recensere
+基于Electron、TypeScript和React的桌面端应用程序

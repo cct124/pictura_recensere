@@ -12,7 +12,7 @@ import APP from '@/config/APP'
 export default function Main() {
   document.title = APP.name;
   return (
-    <div className="frame-main">
+    <div className="frame-main wh-100p">
       <Titlebar />
       <WorkAreaContainer />
     </div>

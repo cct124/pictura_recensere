@@ -15,12 +15,12 @@ import WorkAreaTabs from '@/components/Main/WorkAreaContainer/WorkAreas/WorkArea
 export default function WorkAreas({ workAreas, setWorkAreas, tabsStack, setTabsStack }: { tabsStack: Set<number>, setTabsStack: React.Dispatch<React.SetStateAction<Set<number>>>, workAreas: WorkAreaType[], setWorkAreas: React.Dispatch<React.SetStateAction<WorkAreaType[]>> }) {
 
   return (
-    <div className={classNames(Style.workAreas, 'flex')}>
+    <div className={classNames(Style.workAreas, 'flex wh100p')}>
       <Tools />
       <div className={classNames(Style.WorkAreaTabs)}>
         <WorkAreaTabs workAreas={workAreas} setWorkAreas={setWorkAreas} tabsStack={tabsStack} setTabsStack={setTabsStack} />
         {
-          workAreas.map(workArea => <WorkArea key={workArea.id} />)
+          workAreas.map((workArea) => <WorkArea workArea={workArea} key={workArea.id} />)
         }
       </div>
     </div>
