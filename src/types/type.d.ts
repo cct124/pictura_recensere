@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
-
+import { LayerType } from "@/plugin/canvas/canvasConctrol";
 export interface _IpcRenderer {
   /**
    * 发送IPC消息
@@ -167,4 +167,61 @@ export interface WorkAreaType extends CreateCanvasInfo {
   id: number;
   title: string;
   active: boolean;
+}
+
+export namespace Layer {
+  /**
+   * 背景图层
+   */
+  interface BackgroundLayer {
+    color: string;
+  }
+
+  interface ImageLayer {
+    name: string;
+    type: string;
+    path: string;
+    size: number;
+    blob: Blob;
+  }
+
+  /**
+   * 文本图层
+   */
+  interface TextLayer {
+    /**
+     * 填充或描边文本
+     */
+    draw: "fill" | "stroke";
+    /**
+     * 文本内容
+     */
+    text: string;
+    size: number;
+    color: string;
+    translateX: number;
+    translateY: number;
+    width: number;
+    height: number;
+    style: string;
+    weight: number | string;
+    variant: string;
+    align: "start" | "end" | "left" | "right" | "center";
+    baseline:
+      | "top"
+      | " hanging"
+      | " middle"
+      | " alphabetic"
+      | " ideographic"
+      | " bottom";
+    direction: "ltr" | "rtl" | "inherit";
+  }
+
+  interface LayerMeta {
+    name: string;
+    index: number;
+    type: LayerType;
+    active: boolean;
+    meta: BackgroundLayer | TextLayer | ImageLayer;
+  }
 }

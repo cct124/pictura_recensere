@@ -17,7 +17,7 @@ interface WebkitWheelEvent extends WheelEvent {
   layerY: number;
 }
 
-export default class ConctrolMatrix {
+export default class MatrixConctrol {
   private container: HTMLElement;
   private targer: HTMLElement;
   private matrixOrigin = [1, 0, 0, 1, 0, 0];
@@ -388,7 +388,7 @@ export default class ConctrolMatrix {
     if (!this.keyboard.mousedown) {
       this.mouseover.x = this.mouseover.y = 0;
     }
-  }
+  } 
 
   private mouseoverHandle(ev: MouseEvent) {
     if (this.keyboard.mousedown && this.keyboard.space) {

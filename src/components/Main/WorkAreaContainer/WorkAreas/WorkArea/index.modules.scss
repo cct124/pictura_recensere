@@ -1,4 +1,21 @@
 .workArea {
   width: calc(100vw - #{$Main-WorkArea-Tools-width});
-  height: calc(100vh - #{$titlebar-height} - #{$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height} - 1px);
+  height: calc(
+    100vh - #{$titlebar-height} - #{$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height} -
+      1px
+  );
+
+  .leftPartition {
+    flex: 1;
+    height: calc(
+      100vh - #{$titlebar-height} - #{$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-height} -
+        1px
+    );
+  }
+
+  .rightPartition {
+    width: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-Right-Partition-width;
+    background-color: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-Right-Partition-bgc;
+    border-top: $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-Right-Partition-border-top;
+  }
 }

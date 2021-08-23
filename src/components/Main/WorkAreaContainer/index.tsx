@@ -20,7 +20,7 @@ export default function WorkAreaContainer() {
       id: 0,
       title: "新建画布 1",
       active: true,
-      color: "#ffffff",
+      color: "#eccaeb",
       height: 300,
       unit: "px",
       width: 300,

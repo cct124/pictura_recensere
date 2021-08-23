@@ -219,7 +219,7 @@ $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-height: 2
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-bgc: $titlebar-background-color;
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-WorkAreaInfoBar-border-left: $border-split-line-size
   solid $border-split-line-color;
-  
+
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-transition: all 0.16s;
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-active-bgc: $frame-background-color;
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-hover-bgc: scale-color(
@@ -232,3 +232,8 @@ $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-hover-fill: sca
   $lightness: -50%
 );
 $Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-close-svg-size: 8px;
+
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-Right-Partition-width: 250px;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-Right-Partition-bgc: $titlebar-background-color;
+$Main-WorkArea-WorkAreaContainer-WorkAreaTabs-WorkArea-Right-Partition-border-top: $border-split-line-size
+  solid $border-split-line-color;
