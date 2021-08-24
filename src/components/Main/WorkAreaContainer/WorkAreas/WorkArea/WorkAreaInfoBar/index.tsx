@@ -3,7 +3,7 @@ import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 
 /**
- * 工作区
+ * 工作区画布信息
  * @returns 
  */
 export default function WorkAreaInfoBar({ zoomPercent }: { zoomPercent: string }) {

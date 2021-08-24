@@ -4,7 +4,7 @@ import { classNames } from '@/utils/tool';
 import Canvas from "./Canvas";
 
 /**
- * 工作区
+ * 画布组
  * @returns 
  */
 export default function CanvasGroup({ width, height, canvasRef, canvasGroupRef }: { canvasGroupRef: (node: HTMLDivElement) => void, canvasRef: (node: HTMLCanvasElement) => void, width: number, height: number }) {

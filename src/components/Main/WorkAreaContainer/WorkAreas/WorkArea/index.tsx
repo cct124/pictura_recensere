@@ -3,6 +3,7 @@ import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 import CanvasGroup from "./CanvasGroup";
 import WorkAreaInfoBar from "./WorkAreaInfoBar";
+import Layer from "./Layer";
 import { WorkAreaType } from "@/types/type.d";
 import MatrixConctrol from "@/plugin/canvas/matrixConctrol";
 import CanvasConctrol from "@/plugin/canvas/canvasConctrol";
@@ -17,7 +18,7 @@ export default function WorkArea({ workArea }: { workArea: WorkAreaType }) {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [matrixConctrol, setConctrolMatrix] = useState<MatrixConctrol>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [canvasConctrol, setCanvasConctrol] = useState<CanvasConctrol>(null);
 
   const [canvasGroup, setCanvasGroup] = useState<HTMLDivElement>(null);
@@ -60,7 +61,7 @@ export default function WorkArea({ workArea }: { workArea: WorkAreaType }) {
         <WorkAreaInfoBar zoomPercent={zoomPercent} />
       </div>
       <div className={classNames(Style.rightPartition)}>
-
+        <Layer canvasConctrol={canvasConctrol} />
       </div>
     </div>
   )

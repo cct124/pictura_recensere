@@ -33,13 +33,13 @@ export default class CanvasConctrol {
   backgroundRender(color: string) {
     this.ctx.fillStyle = color;
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    console.log(color);
 
     this.layer.add({
       index: 0,
-      name: "背景",
+      name: "背景 1",
       type: LayerType.background,
-      active: true,
+      active: false,
+      visibility: true,
       meta: {
         color,
       },

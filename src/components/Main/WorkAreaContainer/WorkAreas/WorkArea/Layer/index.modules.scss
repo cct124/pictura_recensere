@@ -1,0 +1,46 @@
+.layerContainer {
+  height: 100%;
+
+  .header {
+    height: 30px;
+    padding: 6px 10px;
+    border-bottom: 1px solid gray(14);
+  }
+
+  .layers {
+    .layer {
+      $h: 30px;
+      $layer-border-split-line: 1px solid #e7e7e7;
+
+      height: $h;
+
+      border: {
+        bottom: $layer-border-split-line;
+      }
+
+      .view {
+        width: 25px;
+        height: $h;
+        border: {
+          right: $layer-border-split-line;
+        }
+
+        svg {
+          width: 18px;
+          fill: $text-basic-color;
+        }
+      }
+
+      .right {
+        flex: 1;
+        height: $h;
+        padding: 0px 5px;
+      }
+    }
+
+    .activeLayer {
+      border-bottom: 1px solid #71c5ff;
+      background-color: #fff;
+    }
+  }
+}

@@ -187,6 +187,9 @@ $create-canvas-container-padding: 20px 30px;
  */
 $border-split-line-size: 1px;
 $border-split-line-color: gray(17);
+$border-split-line-style: solid;
+$border-split-line: $border-split-line-size $border-split-line-style
+  $border-split-line-color;
 
 $Main-WorkArea-Tools-width: 50px;
 $Main-WorkArea-Tools-bgc: $titlebar-background-color;

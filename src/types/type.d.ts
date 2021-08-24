@@ -223,5 +223,16 @@ export namespace Layer {
     type: LayerType;
     active: boolean;
     meta: BackgroundLayer | TextLayer | ImageLayer;
+    visibility: boolean;
+  }
+}
+
+export namespace WorkAreas {
+  interface Layer {
+    id: number;
+    name: string;
+    type: LayerType;
+    active: boolean;
+    visibility: boolean;
   }
 }
