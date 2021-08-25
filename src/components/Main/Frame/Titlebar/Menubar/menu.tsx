@@ -1,6 +1,5 @@
 import React from "react";
 import { MenubarItem } from '@/types/type.d'
-import { Ev } from './index'
 import Style from './index.modules.scss';
 import { classNames } from '@/utils/tool';
 
@@ -33,7 +32,7 @@ export default function Menu({ menu, name, control, setControl }: {
   )
 
   function onClick(ev: React.MouseEvent) {
-    (ev.nativeEvent as Ev).menus = true;
+    ev.stopPropagation();
     targer.childView = !targer.childView;
     setControl([...control]);
   }

@@ -70,7 +70,7 @@ export default function WorkAreaTabs({ workAreas, setWorkAreas, tabsStack, setTa
   }
 
   return (
-    <div className={classNames(Style.workAreaTabs, 'flex relative select-none')}>
+    <div className={classNames(Style.workAreaTabs, 'flex relative')}>
       {
         workAreas.map((workArea, i) => (
           <div title={workArea.title} ref={Ref} className={classNames(Style.workArea, workArea.active ? Style.activeWorkArea : "", 'flex-center')} style={{ clipPath: clipPath, left: i * tabsWdith }} key={workArea.id} onClick={() => onClickAreaTabs(workArea.id)}>

@@ -31,6 +31,10 @@
     width: $Main-WorkArea-Tools-ToolsIcon-size + 2px;
   }
 
+  .tools-icon-2 {
+    width: $Main-WorkArea-Tools-ToolsIcon-size + 8px;
+  }
+
   .toolsIconActive {
     svg {
       fill: $Main-WorkArea-Tools-ToolsIcon-active-fill;

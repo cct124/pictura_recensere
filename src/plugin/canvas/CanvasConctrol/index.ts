@@ -1,13 +1,30 @@
 import RenderStack, { RenderStackEventName } from "./RenderStack";
 import Rect from "./RenderStacks/Rect";
+import Observer from "@/plugin/observer";
 
-export enum layerType {
+export enum renderStackType {
   rect = "rect",
   image = "image",
   text = "text",
 }
 
-export default class CanvasConctrol {
+export enum CanvasConctrolEventName {
+  /**
+   * 画布初始化完成
+   */
+  init = "init",
+}
+
+export type CanvasConctrolEvent = {
+  type: CanvasConctrolEventName;
+  targer: RenderStack;
+  sender: CanvasConctrol;
+};
+
+export default class CanvasConctrol extends Observer<
+  CanvasConctrolEventName,
+  CanvasConctrolEvent
+> {
   canvas: HTMLCanvasElement;
   options: { backgroundColor?: string };
   ctx: CanvasRenderingContext2D;
@@ -17,15 +34,15 @@ export default class CanvasConctrol {
     canvas: HTMLCanvasElement,
     options: { backgroundColor?: string } = {}
   ) {
+    super();
     const { backgroundColor } = options;
     this.options = options;
     this.options.backgroundColor = backgroundColor || "#ffffff";
     this.canvas = canvas;
     this.renderStack = new Set();
-    this.init();
   }
 
-  init() {
+  createCanvas() {
     this.ctx = this.canvas.getContext("2d");
 
     const rect = new Rect(this.ctx, {
@@ -37,29 +54,17 @@ export default class CanvasConctrol {
       cw: this.canvas.width,
       ch: this.canvas.height,
       fill: this.options.backgroundColor,
+      type: renderStackType.rect,
     });
 
     this.pushStack(rect);
-
-    rect.rotate(45);
-
-    const rect2 = new Rect(this.ctx, {
-      id: 0,
-      x: 0,
-      y: 0,
-      w: 100,
-      h: 100,
-      cw: this.canvas.width,
-      ch: this.canvas.height,
-      fill: "red",
-    });
-    this.pushStack(rect2);
-
-    rect2.scale(2, 2);
-
-    rect2.rotate(10);
-    
     this.render();
+
+    this.send(CanvasConctrolEventName.init, {
+      type: CanvasConctrolEventName.init,
+      targer: rect,
+      sender: this,
+    });
   }
 
   pushStack(stack: RenderStack) {

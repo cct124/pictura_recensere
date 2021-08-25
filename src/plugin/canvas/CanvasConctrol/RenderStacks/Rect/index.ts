@@ -10,17 +10,36 @@ export default class Rect extends RenderStack {
    */
   h: number;
 
+  /**
+   * 画布尺寸 width
+   */
   cw: number;
+  /**
+   * 画布尺寸 height
+   */
   ch: number;
 
+  /**
+   * x轴缩放
+   */
   sx = 1;
+  /**
+   * y轴缩放
+   */
   sy = 1;
 
+  /**
+   * 旋转角度
+   */
   deg = 0;
 
+  /**
+   * 填充颜色
+   */
   fill: string;
 
   path2D: Path2D;
+
   constructor(
     ctx: CanvasRenderingContext2D,
     {
@@ -32,6 +51,7 @@ export default class Rect extends RenderStack {
       cw,
       ch,
       fill,
+      type,
     }: {
       id: number;
       cw: number;
@@ -41,9 +61,10 @@ export default class Rect extends RenderStack {
       w: number;
       h: number;
       fill: string;
+      type: unknown;
     }
   ) {
-    super(ctx, { id, x, y });
+    super(ctx, { id, x, y, type });
     this.w = w;
     this.h = h;
     this.cw = cw;
@@ -93,6 +114,10 @@ export default class Rect extends RenderStack {
     return Reflect.set(target, p, value, receiver);
   }
 
+  /**
+   * rect 旋转角度
+   * @param deg
+   */
   rotate(deg: number) {
     const max = 360;
     const min = 0;
@@ -109,12 +134,29 @@ export default class Rect extends RenderStack {
     this.send(RenderStackEventName.change, { type: "rotate", targer: this });
   }
 
+  /**
+   * rect 缩放
+   * @param sx
+   * @param sy
+   */
   scale(sx: number, sy: number) {
     this.sx = sx;
     this.sy = sy;
 
     this.changeTransform();
     this.send(RenderStackEventName.change, { type: "scale", targer: this });
+  }
+
+  /**
+   * 移动
+   * @param x
+   * @param y
+   */
+  move(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+
+    this.send(RenderStackEventName.change, { type: "move", targer: this });
   }
 
   changeTransform() {
@@ -127,7 +169,12 @@ export default class Rect extends RenderStack {
     this.matrix[3] = Number(cos.toFixed(6)) * this.sy;
   }
 
+  /**
+   * 渲染
+   */
   render() {
+    if (!this.visibility) return;
+
     const w = this.cw / 2;
     const h = this.ch / 2;
 

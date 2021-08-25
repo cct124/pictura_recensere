@@ -4,10 +4,6 @@ import file from '@/components/Main/Frame/Titlebar/Menubar/File';
 import help from '@/components/Main/Frame/Titlebar/Menubar/Help';
 import Style from './index.modules.scss';
 
-export interface Ev {
-  menus?: true
-}
-
 /**
  * 窗口顶部菜单
  * @returns 
@@ -21,11 +17,9 @@ export default function Menubar() {
   const [control, setControl] = useState(menusControl)
 
 
-  function registered(ev: MouseEvent) {
-    if (!(ev as Ev).menus) {
-      control.forEach(m => m.childView = false);
-      setControl([...control]);
-    }
+  function registered() {
+    control.forEach(m => m.childView = false);
+    setControl([...control]);
   }
 
   useEffect(() => {

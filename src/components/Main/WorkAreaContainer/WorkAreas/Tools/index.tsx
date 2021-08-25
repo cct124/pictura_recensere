@@ -2,47 +2,27 @@ import React, { useState } from "react";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 
-import ArrowSvg from "@/assets/svg/arrow.svg";
-import TextCursorSvg from "@/assets/svg/text_cursor.svg";
+import ToolsConctrol from '@/plugin/canvas/toolsConctrol';
 
 /**
  * 侧边工具栏
  * @returns 
  */
-export default function Tools() {
+export default function Tools({ toolsConctrol }: { toolsConctrol: ToolsConctrol }) {
 
-  const toolsConfig = [
-    {
-      id: 0,
-      icon: <ArrowSvg />,
-      active: true
-    },
-    {
-      id: 1,
-      icon: <TextCursorSvg />,
-      active: false
-    }
-  ]
+  const [tools, setTools] = useState([...toolsConctrol.tools]);
 
-  const [tools, setTools] = useState(toolsConfig);
-
-  const defaultIndex = toolsConfig.findIndex(tool => tool.active);
-  const [currentActiveTool, setCurrentActiveTool] = useState(defaultIndex);
-
-  function onClick(i: number) {
-    tools[i].active = true;
-    if (currentActiveTool !== null) tools[currentActiveTool].active = false;
-    setCurrentActiveTool(i);
-
-    setTools([...tools]);
+  function onClick(id: number) {
+    toolsConctrol.active(id);
+    setTools([...toolsConctrol.tools]);
   }
 
   return (
     <div className={classNames(Style.tools, 'flex-jcfs-aic flex-column')}>
       {
-        tools.map((tool, i) => {
+        tools.map(tool => {
           return (
-            <div className={classNames(Style.toolsIcon, Style[`tools-icon-${tool.id}`], 'pointer', tool.active ? Style.toolsIconActive : '',)} key={tool.id} onClick={() => onClick(i)}>
+            <div className={classNames(Style.toolsIcon, Style[`tools-icon-${tool.id}`], 'pointer', tool.active ? Style.toolsIconActive : '',)} key={tool.id} onClick={() => onClick(tool.id)}>
               {tool.icon}
             </div>
           )

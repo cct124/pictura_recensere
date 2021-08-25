@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
-import { LayerType } from "@/plugin/canvas/CanvasConctrol";
+import { LayerType } from "@/plugin/canvas/layerConctrol";
 export interface _IpcRenderer {
   /**
    * 发送IPC消息

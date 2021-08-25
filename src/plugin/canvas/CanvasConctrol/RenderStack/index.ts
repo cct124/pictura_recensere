@@ -36,9 +36,16 @@ export default class RenderStack extends Observer<
    */
   matrix: Matrix;
 
+  /**
+   * 是否渲染
+   */
+  visibility = true;
+
+  type: unknown;
+
   constructor(
     ctx: CanvasRenderingContext2D,
-    { id, x, y }: { id: number; x: number; y: number }
+    { id, x, y, type }: { type: unknown; id: number; x: number; y: number }
   ) {
     super();
     this.id = id;
@@ -46,6 +53,8 @@ export default class RenderStack extends Observer<
     this.y = y;
 
     this.ctx = ctx;
+
+    this.type = type;
   }
   render() {
     console.log("render");

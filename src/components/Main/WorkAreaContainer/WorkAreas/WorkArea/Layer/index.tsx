@@ -25,10 +25,22 @@ export default function Layers({ canvasConctrol }: { canvasConctrol: LayerConctr
     if (canvasConctrol) {
       setLayers([...canvasConctrol.layers])
     }
-  }, [canvasConctrol])
+  }, [canvasConctrol]);
+
+  useEffect(() => {
+    document.addEventListener('click', unOnClickLayer);
+    return () => document.removeEventListener('click', unOnClickLayer)
+  })
+
+  function unOnClickLayer() {
+    canvasConctrol.layers.forEach(item => {
+      item.active = false
+    });
+    setLayers([...canvasConctrol.layers]);
+  }
 
   function onClickLayerVisibility(layer: WorkAreas.Layer) {
-    layer.visibility = !layer.visibility;
+    canvasConctrol.visibility(layer.id);
     setLayers([...canvasConctrol.layers]);
   }
 
@@ -44,7 +56,10 @@ export default function Layers({ canvasConctrol }: { canvasConctrol: LayerConctr
               <div className={classNames(Style.view, 'flex-center')} onClick={() => onClickLayerVisibility(layer)}>
                 {layer.visibility ? <EyesSvg /> : ""}
               </div>
-              <div className={classNames(Style.right, 'ft-sm flex-jcfs-aic')} onClick={() => onClickLayer(layer)}>{layer.name}</div>
+              <div className={classNames(Style.right, 'ft-sm flex-jcfs-aic')} onClick={(ev) => {
+                ev.stopPropagation();
+                onClickLayer(layer);
+              }}>{layer.name}</div>
             </div>
           ))
         }
