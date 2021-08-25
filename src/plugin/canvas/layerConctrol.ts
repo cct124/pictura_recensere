@@ -1,7 +1,7 @@
 import Observer from "@/plugin/observer";
 import { WorkAreas } from "@/types/type.d";
 
-export enum LayerEvent {
+export enum layerEvent {
   /**
    * 新建图层
    */
@@ -10,23 +10,30 @@ export enum LayerEvent {
 }
 
 export default class LayerConctrol extends Observer<
-  LayerEvent,
+  layerEvent,
   WorkAreas.Layer
 > {
-  layer: Set<WorkAreas.Layer>;
+  layers: Set<WorkAreas.Layer>;
 
-  constructor() {
+  constructor(layers?: WorkAreas.Layer[]) {
     super();
-    this.layer = new Set();
+    this.layers = new Set();
+    this.init(layers);
+  }
+
+  init(layers?: WorkAreas.Layer[]) {
+    layers.forEach((layer) => {
+      this.push(layer);
+    });
   }
 
   push(layer: WorkAreas.Layer) {
-    this.send(LayerEvent.push, layer);
-    this.layer.add(layer);
+    this.send(layerEvent.push, layer);
+    this.layers.add(layer);
   }
 
   delete(layer: WorkAreas.Layer) {
-    this.send(LayerEvent.delete, layer);
-    this.layer.delete(layer);
+    this.send(layerEvent.delete, layer);
+    this.layers.delete(layer);
   }
 }

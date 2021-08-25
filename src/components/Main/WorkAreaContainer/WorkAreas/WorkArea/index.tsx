@@ -6,7 +6,8 @@ import WorkAreaInfoBar from "./WorkAreaInfoBar";
 import Layer from "./Layer";
 import { WorkAreaType } from "@/types/type.d";
 import MatrixConctrol from "@/plugin/canvas/matrixConctrol";
-import CanvasConctrol from "@/plugin/canvas/canvasConctrol";
+import CanvasConctrol, { layerType } from "@/plugin/canvas/CanvasConctrol";
+import LayerConctrol, { layerEvent } from "@/plugin/canvas/layerConctrol";
 
 /**
  * 工作区
@@ -20,6 +21,9 @@ export default function WorkArea({ workArea }: { workArea: WorkAreaType }) {
   const [matrixConctrol, setConctrolMatrix] = useState<MatrixConctrol>(null);
 
   const [canvasConctrol, setCanvasConctrol] = useState<CanvasConctrol>(null);
+
+  const [layerConctrol, setLayerConctrol] = useState<LayerConctrol>(null);
+
 
   const [canvasGroup, setCanvasGroup] = useState<HTMLDivElement>(null);
   const [canvas, setCanvas] = useState<HTMLCanvasElement>(null);
@@ -35,6 +39,15 @@ export default function WorkArea({ workArea }: { workArea: WorkAreaType }) {
       setCanvasConctrol(new CanvasConctrol(canvas, {
         backgroundColor: workArea.color
       }))
+
+      setLayerConctrol(new LayerConctrol([{
+        id: 0,
+        name: "背景",
+        type: layerType.rect,
+        active: false,
+        visibility: true
+      }]))
+
     }
   }, [canvas, canvasGroup])
 
@@ -61,7 +74,7 @@ export default function WorkArea({ workArea }: { workArea: WorkAreaType }) {
         <WorkAreaInfoBar zoomPercent={zoomPercent} />
       </div>
       <div className={classNames(Style.rightPartition)}>
-        <Layer canvasConctrol={canvasConctrol} />
+        <Layer canvasConctrol={layerConctrol} />
       </div>
     </div>
   )

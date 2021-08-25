@@ -1,50 +1,50 @@
 import React, { useEffect, useState } from "react";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
-import CanvasConctrol from "@/plugin/canvas/canvasConctrol";
+import LayerConctrol from "@/plugin/canvas/layerConctrol";
 
 import EyesSvg from "@/assets/svg/eyes.svg";
-import { Layer } from "@/types/type.d";
+import { WorkAreas } from "@/types/type.d";
 
 /**
  * 图层
  * @returns 
  */
-export default function Layer({ canvasConctrol }: { canvasConctrol: CanvasConctrol }) {
+export default function Layers({ canvasConctrol }: { canvasConctrol: LayerConctrol }) {
 
-  const [layers, setLayers] = useState<Layer.LayerMeta[]>([]);
+  const [layers, setLayers] = useState<WorkAreas.Layer[]>([]);
 
-  function onClickLayer(layer: Layer.LayerMeta) {
-    canvasConctrol.layer.forEach(item => {
-      item.active = layer.index === item.index
+  function onClickLayer(layer: WorkAreas.Layer) {
+    canvasConctrol.layers.forEach(item => {
+      item.active = layer.id === item.id
     });
-    setLayers([...canvasConctrol.layer]);
+    setLayers([...canvasConctrol.layers]);
   }
 
   useEffect(() => {
     if (canvasConctrol) {
-      setLayers([...canvasConctrol.layer])
+      setLayers([...canvasConctrol.layers])
     }
   }, [canvasConctrol])
 
-  function onClickLayerVisibility(layer: Layer.LayerMeta) {
+  function onClickLayerVisibility(layer: WorkAreas.Layer) {
     layer.visibility = !layer.visibility;
-    setLayers([...canvasConctrol.layer]);
+    setLayers([...canvasConctrol.layers]);
   }
 
   return (
     <div className={classNames(Style.layerContainer, 'select-none')} >
       <div className={classNames(Style.header, 'border-box')}>
-        <div className={classNames('mar ft-md')}>图层</div>
+        <div className={classNames('mar ft-bs')}>图层</div>
       </div>
       <div className={classNames(Style.layers)}>
         {
           layers.map(layer => (
-            <div className={classNames(Style.layer, layer.active ? Style.activeLayer : '', 'flex-jcfs-aic pointer')} key={layer.index}>
+            <div className={classNames(Style.layer, layer.active ? Style.activeLayer : '', 'flex-jcfs-aic pointer')} key={layer.id}>
               <div className={classNames(Style.view, 'flex-center')} onClick={() => onClickLayerVisibility(layer)}>
                 {layer.visibility ? <EyesSvg /> : ""}
               </div>
-              <div className={classNames(Style.right, 'ft-bs flex-jcfs-aic')} onClick={() => onClickLayer(layer)}>{layer.name}</div>
+              <div className={classNames(Style.right, 'ft-sm flex-jcfs-aic')} onClick={() => onClickLayer(layer)}>{layer.name}</div>
             </div>
           ))
         }

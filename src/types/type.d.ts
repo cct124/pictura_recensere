@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { VALIDCHANNELS } from "@/config/VALIDCHANNELS";
-import { LayerType } from "@/plugin/canvas/canvasConctrol";
+import { LayerType } from "@/plugin/canvas/CanvasConctrol";
 export interface _IpcRenderer {
   /**
    * 发送IPC消息
@@ -234,5 +234,46 @@ export namespace WorkAreas {
     type: LayerType;
     active: boolean;
     visibility: boolean;
+  }
+
+  namespace RenderStack {
+    interface Rect {
+      x: number;
+      y: number;
+      w: number;
+      h: number;
+    }
+    /**
+     * 文本
+     */
+    interface Text {
+      id: number;
+      /**
+       * 填充或描边文本
+       */
+      draw: "fill" | "stroke";
+      /**
+       * 文本内容
+       */
+      text: string;
+      size: number;
+      color: string;
+      translateX: number;
+      translateY: number;
+      width: number;
+      height: number;
+      style: string;
+      weight: number | string;
+      variant: string;
+      align: "start" | "end" | "left" | "right" | "center";
+      baseline:
+        | "top"
+        | " hanging"
+        | " middle"
+        | " alphabetic"
+        | " ideographic"
+        | " bottom";
+      direction: "ltr" | "rtl" | "inherit";
+    }
   }
 }
