@@ -12,6 +12,7 @@ import RectSvg from "@/assets/svg/rect.svg";
 import Tools from '@/components/Main/WorkAreaContainer/WorkAreas/Tools';
 import WorkArea from '@/components/Main/WorkAreaContainer/WorkAreas/WorkArea';
 import WorkAreaTabs from '@/components/Main/WorkAreaContainer/WorkAreas/WorkAreaTabs';
+import { InteractiveType } from "@/plugin/canvas/interactiveConctrol";
 
 
 /**
@@ -25,17 +26,20 @@ export default function WorkAreas({ workAreas, setWorkAreas, tabsStack, setTabsS
     {
       id: 0,
       icon: <ArrowSvg />,
-      active: true
+      active: true,
+      type: InteractiveType.pointer
     },
     {
       id: 1,
       icon: <TextCursorSvg />,
-      active: false
+      active: false,
+      type: InteractiveType.text
     },
     {
       id: 2,
       icon: <RectSvg />,
-      active: false
+      active: false,
+      type: InteractiveType.rect
     }
   ]);
 

@@ -4,6 +4,9 @@ import { classNames } from '@/utils/tool';
 
 import ToolsConctrol from '@/plugin/canvas/toolsConctrol';
 
+import { ColorPicker } from "@/components/UI";
+
+
 /**
  * 侧边工具栏
  * @returns 
@@ -17,6 +20,9 @@ export default function Tools({ toolsConctrol }: { toolsConctrol: ToolsConctrol 
     setTools([...toolsConctrol.tools]);
   }
 
+  const [color, setColor] = useState('#ffffff');
+
+
   return (
     <div className={classNames(Style.tools, 'flex-jcfs-aic flex-column')}>
       {
@@ -28,6 +34,7 @@ export default function Tools({ toolsConctrol }: { toolsConctrol: ToolsConctrol 
           )
         })
       }
+      <ColorPicker value={color} setValue={setColor} />
     </div>
   )
 }

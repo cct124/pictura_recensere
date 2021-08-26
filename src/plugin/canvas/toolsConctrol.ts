@@ -1,9 +1,11 @@
 import Observer from "@/plugin/observer";
+import { InteractiveType } from "./interactiveConctrol";
 
 export type Tool = {
   id: number;
   icon: JSX.Element;
   active: boolean;
+  type: InteractiveType;
 };
 
 export enum ToolsConctrolEventName {

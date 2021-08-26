@@ -4,7 +4,7 @@ enum EventType {
   keyup = "keyup",
   mousedown = "mousedown",
   mouseup = "mouseup",
-  mouseover = "mouseover",
+  mousemove = "mousemove",
 }
 
 enum CursorStyle {
@@ -35,7 +35,7 @@ export default class MatrixConctrol {
     remove?: () => void;
   }[] = [];
   private floatPrecision = 100;
-  private mouseover = {
+  private mousemove = {
     x: 0,
     y: 0,
   };
@@ -247,31 +247,15 @@ export default class MatrixConctrol {
     this.listeners(window, EventType.keyup, this.KeyboardInputHandle);
     this.listeners(this.container, EventType.mousedown, this.mousedownHandle);
     this.listeners(this.container, EventType.mouseup, this.mousedownHandle);
-    this.listeners(this.container, EventType.mouseover, this.mouseoverHandle);
+    this.listeners(this.container, EventType.mousemove, this.mouseoverHandle);
 
     for (const iterator of this.deviceListener) {
-      switch (iterator.type) {
-        case EventType.mouseover:
-          iterator.target.addEventListener("mousemove", (...args) => {
-            iterator.listener.apply(this, args);
-          });
-          iterator.remove = () => {
-            iterator.target.removeEventListener("mousemove", iterator.listener);
-          };
-          break;
-
-        default:
-          iterator.target.addEventListener(iterator.type, (...args) => {
-            iterator.listener.apply(this, args);
-          });
-          iterator.remove = () => {
-            iterator.target.removeEventListener(
-              iterator.type,
-              iterator.listener
-            );
-          };
-          break;
-      }
+      iterator.target.addEventListener(iterator.type, (...args) => {
+        iterator.listener.apply(this, args);
+      });
+      iterator.remove = () => {
+        iterator.target.removeEventListener(iterator.type, iterator.listener);
+      };
     }
   }
 
@@ -386,28 +370,28 @@ export default class MatrixConctrol {
     if (this.keyboard.mousedown === (ev.type === EventType.mousedown)) return;
     this.keyboard.mousedown = ev.type === EventType.mousedown;
     if (!this.keyboard.mousedown) {
-      this.mouseover.x = this.mouseover.y = 0;
+      this.mousemove.x = this.mousemove.y = 0;
     }
-  } 
+  }
 
   private mouseoverHandle(ev: MouseEvent) {
     if (this.keyboard.mousedown && this.keyboard.space) {
-      if (this.mouseover.x !== 0) {
-        const x = this.mouseover.x - ev.x;
-        this.mouseover.x = ev.x;
+      if (this.mousemove.x !== 0) {
+        const x = this.mousemove.x - ev.x;
+        this.mousemove.x = ev.x;
         this.matrix[4] -= x;
         this.translate.x -= x;
       } else {
-        this.mouseover.x = ev.x;
+        this.mousemove.x = ev.x;
       }
 
-      if (this.mouseover.y !== 0) {
-        const y = this.mouseover.y - ev.y;
-        this.mouseover.y = ev.y;
+      if (this.mousemove.y !== 0) {
+        const y = this.mousemove.y - ev.y;
+        this.mousemove.y = ev.y;
         this.matrix[5] -= y;
         this.translate.y -= y;
       } else {
-        this.mouseover.y = ev.y;
+        this.mousemove.y = ev.y;
       }
 
       if (this.matrixChange) this.matrixChange(this.matrix);

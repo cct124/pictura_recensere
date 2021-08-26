@@ -12,7 +12,8 @@ function useQuery() {
 }
 
 export default function ColorPickerWindow() {
-  const color = useQuery().get('color')
+  const color = useQuery().get('color');
+  const id = useQuery().get('id');
 
   const blockSize = 300;
   const stripSize = {
@@ -30,7 +31,7 @@ export default function ColorPickerWindow() {
   }, [])
 
   function submitColor() {
-    colorPicker.closeColorPicker(blockColor)
+    colorPicker.closeColorPicker(blockColor, id)
   }
 
   return (

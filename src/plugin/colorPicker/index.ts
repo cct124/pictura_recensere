@@ -10,8 +10,8 @@ export class ColorPicker extends IpcRenderer {
     super({ ipc, channel });
   }
 
-  sendColor(value: string) {
-    if(setBackgroundColor) setBackgroundColor(value);
+  sendColor(value: string, id: number) {
+    if (setBackgroundColor) setBackgroundColor(value, Number(id));
     return Promise.resolve(true);
   }
 }

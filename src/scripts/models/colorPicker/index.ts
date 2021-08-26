@@ -18,8 +18,9 @@ export class ColorPicker extends IpcMain {
   closeColorPicker(...args: unknown[]) {
     const event = args[0] as Electron.IpcMainEvent;
     const color = args[1] as string;
+    const id = args[2] as number;
     BrowserWindow.fromWebContents(event.sender).close();
-    colorPicker.sendColor(color);
+    colorPicker.sendColor(color, id);
     return Promise.resolve(true);
   }
 }

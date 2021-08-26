@@ -9,6 +9,7 @@ import MatrixConctrol from "@/plugin/canvas/matrixConctrol";
 import CanvasConctrol, { CanvasConctrolEvent, CanvasConctrolEventName } from "@/plugin/canvas/CanvasConctrol";
 import LayerConctrol, { layerEvent, LayerType } from "@/plugin/canvas/layerConctrol";
 import ToolsConctrol, { ToolsConctrolEventName } from "@/plugin/canvas/toolsConctrol";
+import InteractiveConctrol from "@/plugin/canvas/interactiveConctrol";
 
 /**
  * 工作区
@@ -28,15 +29,18 @@ export default function WorkArea({ workArea, toolsConctrol }: { toolsConctrol: T
 
   const [layerConctrol, setLayerConctrol] = useState<LayerConctrol>(null);
 
+  const [interactiveConctrol, setInteractiveConctrol] = useState<InteractiveConctrol>(null);
 
   const [canvasGroup, setCanvasGroup] = useState<HTMLDivElement>(null);
   const [canvas, setCanvas] = useState<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    toolsConctrol.on(ToolsConctrolEventName.active, (ev) => {
-      console.log(ev);
-    })
-  }, [])
+    if (interactiveConctrol) {
+      toolsConctrol.on(ToolsConctrolEventName.active, (ev) => {
+        interactiveConctrol.interactiveType = ev.targer.type;
+      })
+    }
+  }, [interactiveConctrol])
 
   useEffect(() => {
     if (canvas && canvasGroup) {
@@ -54,6 +58,9 @@ export default function WorkArea({ workArea, toolsConctrol }: { toolsConctrol: T
 
       _canvasConctrol.createCanvas();
 
+      const _interactiveConctrol = new InteractiveConctrol({ container: canvasGroup })
+
+      setInteractiveConctrol(_interactiveConctrol)
       setCanvasConctrol(_canvasConctrol);
     }
   }, [canvas, canvasGroup]);

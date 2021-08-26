@@ -108,10 +108,13 @@ export class System extends IpcMain {
   openColorPickerWindow(...args: unknown[]) {
     const event = args[0] as Electron.IpcMainEvent;
     const color = args[1] as string;
+    const id = args[2] as number;
     const parent = BrowserWindow.fromWebContents(event.sender);
+
     windowManager.createWindow(WINDOWS.COLOR_PICKER, {
       query: {
         color,
+        id,
       },
       options: { parent },
     });
