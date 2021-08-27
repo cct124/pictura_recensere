@@ -69,7 +69,7 @@ export default class InteractiveConctrol extends InputDeviceEvent<
   selectAreaEleNodeID: string;
   selectAreaEleNodeAppend = false;
   saenCtx: CanvasRenderingContext2D;
-  enlarge = 2;
+  enlarge = 1;
   colorPicker = "#ffffff";
   createRectFillOpacity = 0.5;
   selectAreaInfo: [number, number, number, number];
@@ -195,11 +195,11 @@ export default class InteractiveConctrol extends InputDeviceEvent<
 
     this.selectAreaEleNode.width = this.container.offsetWidth * this.enlarge;
     this.selectAreaEleNode.height = this.container.offsetHeight * this.enlarge;
-    this.selectAreaEleNode.style.transform = `scale(${
-      1 / this.enlarge
-    }) translate(-${this.container.offsetWidth}px, -${
-      this.container.offsetHeight
-    }px)`;
+    // this.selectAreaEleNode.style.transform = `scale(${
+    //   1 / this.enlarge
+    // }) translate(-${this.container.offsetWidth}px, -${
+    //   this.container.offsetHeight
+    // }px)`;
     this.saenCtx = this.selectAreaEleNode.getContext("2d");
 
     this.container.appendChild(this.selectAreaEleNode);

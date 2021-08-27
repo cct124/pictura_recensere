@@ -43,11 +43,11 @@ export default function WorkArea({ workArea, toolsConctrol }: { toolsConctrol: T
       toolsConctrol.on(ToolsConctrolEventName.colorChange, (ev) => {
         interactiveConctrol.colorPicker = ev.targer as string;
       })
-
+         
       interactiveConctrol.on(InteractiveEventName.rect, (ev) => {
         const data = ev as RectParamsType
         const l = data.params.rect
-        canvasConctrol.createRect({ x: l.sx, y: l.sy, w: l.sx - l.ex, h: l.sy - l.ey, fill: data.params.color })
+        canvasConctrol.createRect({ x: 0, y: 0, w: l.sx - l.ex, h: l.sy - l.ey, fill: data.params.color })
       })
     }
   }, [interactiveConctrol])

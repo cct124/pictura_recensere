@@ -185,12 +185,13 @@ export default class MatrixConctrol {
     this.setTargerMatrix(receiver);
     return Result;
   }
-
+ 
   /**
    * 设置 Matrix 元素的 style 属性上
    * @param matrix
    */
   private setTargerMatrix(matrix: number[]) {
+    console.dir(this.targer);
     this.targer.style.transform = `matrix(${matrix.join()})`;
   }
 
