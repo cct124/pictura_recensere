@@ -8,8 +8,8 @@ import { WorkAreaType } from "@/types/type.d";
 import MatrixConctrol from "@/plugin/canvas/matrixConctrol";
 import CanvasConctrol, { CanvasConctrolEvent, CanvasConctrolEventName } from "@/plugin/canvas/CanvasConctrol";
 import LayerConctrol, { layerEvent, LayerType } from "@/plugin/canvas/layerConctrol";
-import ToolsConctrol, { ToolsConctrolEventName } from "@/plugin/canvas/toolsConctrol";
-import InteractiveConctrol from "@/plugin/canvas/interactiveConctrol";
+import ToolsConctrol, { Tool, ToolsConctrolEventName } from "@/plugin/canvas/toolsConctrol";
+import InteractiveConctrol, { InteractiveEventName, RectParamsType } from "@/plugin/canvas/interactiveConctrol";
 
 /**
  * 工作区
@@ -37,7 +37,17 @@ export default function WorkArea({ workArea, toolsConctrol }: { toolsConctrol: T
   useEffect(() => {
     if (interactiveConctrol) {
       toolsConctrol.on(ToolsConctrolEventName.active, (ev) => {
-        interactiveConctrol.interactiveType = ev.targer.type;
+        interactiveConctrol.interactiveType = (ev.targer as Tool).type;
+      })
+
+      toolsConctrol.on(ToolsConctrolEventName.colorChange, (ev) => {
+        interactiveConctrol.colorPicker = ev.targer as string;
+      })
+
+      interactiveConctrol.on(InteractiveEventName.rect, (ev) => {
+        const data = ev as RectParamsType
+        const l = data.params.rect
+        canvasConctrol.createRect({ x: l.sx, y: l.sy, w: l.sx - l.ex, h: l.sy - l.ey, fill: data.params.color })
       })
     }
   }, [interactiveConctrol])

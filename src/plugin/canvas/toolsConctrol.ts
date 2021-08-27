@@ -6,15 +6,23 @@ export type Tool = {
   icon: JSX.Element;
   active: boolean;
   type: InteractiveType;
+  title: string;
 };
 
 export enum ToolsConctrolEventName {
+  /**
+   * tool被选中
+   */
   active = "active",
+  /**
+   * 拾色器组件色值发生变化
+   */
+  colorChange = "colorChange",
 }
 
 export type Event = {
   type: ToolsConctrolEventName;
-  targer: Tool;
+  targer: Tool | string;
   sender: ToolsConctrol;
 };
 
@@ -23,6 +31,7 @@ export default class ToolsConctrol extends Observer<
   Event
 > {
   tools: Set<Tool>;
+  colorPicker = "#ffffff";
 
   constructor(tools: Tool[]) {
     super();

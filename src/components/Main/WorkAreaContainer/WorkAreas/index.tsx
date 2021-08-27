@@ -27,19 +27,22 @@ export default function WorkAreas({ workAreas, setWorkAreas, tabsStack, setTabsS
       id: 0,
       icon: <ArrowSvg />,
       active: true,
-      type: InteractiveType.pointer
+      type: InteractiveType.pointer,
+      title: "选择"
     },
     {
       id: 1,
       icon: <TextCursorSvg />,
       active: false,
-      type: InteractiveType.text
+      type: InteractiveType.text,
+      title: "文本"
     },
     {
       id: 2,
       icon: <RectSvg />,
       active: false,
-      type: InteractiveType.rect
+      type: InteractiveType.rect,
+      title: "矩形"
     }
   ]);
 

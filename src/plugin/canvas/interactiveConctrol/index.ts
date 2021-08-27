@@ -12,6 +12,8 @@ export enum InteractiveType {
   text = "text",
 }
 
+type CreateAreaParams = [number, number, number, number];
+
 interface MouseLocations {
   sx: number;
   sy: number;
@@ -24,7 +26,26 @@ interface MouseDownEvent extends MouseEvent {
   layerY: number;
 }
 
-export default class InteractiveConctrol extends InputDeviceEvent {
+export enum InteractiveEventName {
+  rect = "rect",
+}
+
+interface Event {
+  type: InteractiveEventName;
+  params: unknown;
+}
+
+export interface RectParamsType {
+  params: {
+    color: string;
+    rect: MouseLocations;
+  };
+}
+
+export default class InteractiveConctrol extends InputDeviceEvent<
+  InteractiveEventName,
+  Event
+> {
   private interactiveStatus = {
     mouseLeftDown: false,
     mouseRightDown: false,
@@ -49,6 +70,9 @@ export default class InteractiveConctrol extends InputDeviceEvent {
   selectAreaEleNodeAppend = false;
   saenCtx: CanvasRenderingContext2D;
   enlarge = 2;
+  colorPicker = "#ffffff";
+  createRectFillOpacity = 0.5;
+  selectAreaInfo: [number, number, number, number];
   constructor({ container }: { container: HTMLElement }) {
     super();
     this.container = container;
@@ -87,7 +111,10 @@ export default class InteractiveConctrol extends InputDeviceEvent {
         this.mouseLocations.ex = ev.layerX;
         this.mouseLocations.ey = ev.layerY;
 
-        this.clearCtxRect();
+        if (!this.interactiveStatus.keydownSpace) {
+          this.clearCtxRect();
+          this.sendRectCreateMsg();
+        }
 
         break;
       case 2:
@@ -129,7 +156,10 @@ export default class InteractiveConctrol extends InputDeviceEvent {
   }
 
   mousemove(ev: MouseDownEvent) {
-    if (this.interactiveStatus.mouseLeftDown) {
+    if (
+      this.interactiveStatus.mouseLeftDown &&
+      !this.interactiveStatus.keydownSpace
+    ) {
       this.mouseLocations.ex = ev.layerX;
       this.mouseLocations.ey = ev.layerY;
 
@@ -140,7 +170,8 @@ export default class InteractiveConctrol extends InputDeviceEvent {
       const h =
         (this.mouseLocations.ey - this.mouseLocations.sy) * this.enlarge;
 
-      this.createSelectArea([x, y, w, h]);
+      this.selectAreaInfo = [x, y, w, h];
+      this.createSelectArea(this.selectAreaInfo);
     }
   }
 
@@ -177,14 +208,17 @@ export default class InteractiveConctrol extends InputDeviceEvent {
   /**
    * 创建选择区域
    */
-  createSelectArea(params?: [number, number, number, number]) {
+  createSelectArea(params?: CreateAreaParams) {
     if (params) {
       this.clearCtxRect();
 
       switch (this.interactiveType) {
         case InteractiveType.rect:
-          this.saenCtx.fillStyle = "#000";
+          this.saenCtx.fillStyle =
+            this.colorPicker +
+            Math.round(this.createRectFillOpacity * 255).toString(16);
           this.saenCtx.fillRect(...params);
+
           break;
 
         default:
@@ -193,6 +227,23 @@ export default class InteractiveConctrol extends InputDeviceEvent {
           this.saenCtx.strokeRect(...params);
           break;
       }
+    }
+  }
+
+  sendRectCreateMsg() {
+    switch (this.interactiveType) {
+      case InteractiveType.rect:
+        this.send(InteractiveEventName.rect, {
+          type: InteractiveEventName.rect,
+          params: {
+            color: this.colorPicker,
+            rect: this.mouseLocations,
+          },
+        });
+        break;
+
+      default:
+        break;
     }
   }
 }

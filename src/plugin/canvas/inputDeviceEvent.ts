@@ -1,3 +1,5 @@
+import Observer from "../observer";
+
 export enum EventType {
   wheel = "wheel",
   keydown = "keydown",
@@ -24,7 +26,7 @@ export type DeviceListener = {
   remove?: () => void;
 };
 
-export default class InputDeviceEvent {
+export default class InputDeviceEvent<T, E> extends Observer<T, E> {
   private deviceListeners = new Set<DeviceListener>();
 
   /**
@@ -36,7 +38,6 @@ export default class InputDeviceEvent {
     // eslint-disable-next-line
     listener: (ev: any) => void
   ) {
-    
     target.addEventListener(type, (...args) => {
       listener.apply(this, args);
     });

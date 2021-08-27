@@ -9,7 +9,7 @@ export function ColorPicker({ value, setValue, className, size, title }: { title
   size = size || 'def' as 'mini';
   title = title || '拾色器'
 
-  const [colorPickerId, setColorPickerId] = useState(random())
+  const [colorPickerId] = useState(random())
 
   setBackgroundColor = (value: string, id: number) => {
     if (colorPickerId === id) {
