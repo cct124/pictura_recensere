@@ -51,9 +51,9 @@ export default function WorkAreas({ workAreas, setWorkAreas, tabsStack, setTabsS
       <Tools toolsConctrol={toolsConctrol} />
       <div className={classNames(Style.WorkAreaTabs)}>
         <WorkAreaTabs workAreas={workAreas} setWorkAreas={setWorkAreas} tabsStack={tabsStack} setTabsStack={setTabsStack} />
-        {/* {
-          workAreas.map((canvasInfo) => <WorkArea toolsConctrol={toolsConctrol} canvasInfo={canvasInfo} key={canvasInfo.id} />)
-        } */}
+        {
+          workAreas.map((canvasInfo) => <WorkArea key={canvasInfo.id} />)
+        }
       </div>
     </div>
   )
