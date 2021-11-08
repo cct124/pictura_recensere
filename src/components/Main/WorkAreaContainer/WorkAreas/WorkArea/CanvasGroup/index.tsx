@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
-import Canvas from "./Canvas";
 
 /**
  * 画布组
  * @returns 
  */
-export default function CanvasGroup({ width, height, canvasRef, canvasGroupRef }: { canvasGroupRef: (node: HTMLDivElement) => void, canvasRef: (node: HTMLCanvasElement) => void, width: number, height: number }) {
+export default function CanvasGroup() {
+
+  const [canvasGroup, setCanvasGroup] = useState<HTMLDivElement>(null);
+
+  const canvasGroupRef = useCallback((node: HTMLDivElement) => {
+    if (node) {
+      setCanvasGroup(node)
+    }
+  }, []);
 
   return (
     <div ref={canvasGroupRef} className={classNames(Style.canvasGroup)} >
-      <Canvas ref={canvasRef} width={width} height={height} />
+      {canvasGroup ? <canvas width={canvasGroup.offsetWidth} height={canvasGroup.offsetHeight}></canvas> : ''}
     </div>
   )
 }
