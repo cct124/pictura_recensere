@@ -262,7 +262,7 @@
   height: 100vh;
 }
 
-.wh-100p{
+.wh-100p {
   width: 100%;
   height: 100%;
 }
@@ -338,4 +338,11 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+/**
+ * ---- overflow ----
+ */
+.hidden {
+  overflow: hidden;
 }

@@ -187,3 +187,68 @@ export function classNames(...args: unknown[]) {
     ? undefined
     : args.filter((str) => typeof str === "string" && str !== "").join(" ");
 }
+
+/**
+ * 合并两个参数对象
+ * @param param1 参数对象1
+ * @param param2 参数对象2 此对象会覆盖对象1、3
+ * @param param3 参数对象3 此对象的属性将在返回的合并对象 0 中删除
+ * @returns
+ */
+export function paramMixin<E, T>(
+  param1: E,
+  param2: T,
+  param3: { [key: string]: any } = {}
+): [T, T] {
+  const native = Object.assign(param1, param3, param2);
+  const config = JSON.parse(JSON.stringify(native));
+  for (const key in param3) {
+    delete native[key];
+  }
+  return [native, config];
+}
+
+/**
+ * 生成一段增长的数字数组
+ * @param end
+ * @param start
+ * @returns
+ */
+export function genArr(end: number, start: number = 0) {
+  return Array.from(new Array(end + 1).keys()).slice(start);
+}
+
+/**
+ * 程序运行时间记录
+ */
+export class RunTime {
+  times: {
+    id: number;
+    start: number;
+    end: number;
+    runTime: number;
+  }[] = [];
+
+  constructor() {}
+
+  start(id: number) {
+    const target = this.times.find((t) => t.id === id);
+    if (target) {
+      target.start = Date.now();
+    } else {
+      this.times.push({
+        id,
+        start: Date.now(),
+        end: 0,
+        runTime: 0,
+      });
+    }
+  }
+
+  end(id: number) {
+    const target = this.times.find((t) => t.id === id);
+    target.end = Date.now();
+    target.runTime = target.end - target.start;
+    console.log(`id: ${id}  time: ${target.runTime}`);
+  }
+}
