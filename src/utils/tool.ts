@@ -192,7 +192,7 @@ export function classNames(...args: unknown[]) {
  * 合并两个参数对象
  * @param param1 参数对象1
  * @param param2 参数对象2 此对象会覆盖对象1、3
- * @param param3 参数对象3 此对象的属性将在返回的合并对象 0 中删除
+ * @param param3 参数对象3 此对象的属性将在返回的合并对象 1 中删除
  * @returns
  */
 export function paramMixin<E, T>(
@@ -251,4 +251,20 @@ export class RunTime {
     target.runTime = target.end - target.start;
     console.log(`id: ${id}  time: ${target.runTime}`);
   }
+}
+
+export function loadImg(src: string) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    try {
+      const image = new Image();
+      image.onload = function () {
+        resolve(image);
+      };
+      image.src = src;
+    } catch (error) {
+      console.log(error);
+
+      reject(error);
+    }
+  });
 }

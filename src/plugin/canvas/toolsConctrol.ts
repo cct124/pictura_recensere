@@ -1,5 +1,16 @@
 import Observer from "@/plugin/observer";
-import { InteractiveType } from "./interactiveConctrol";
+
+export enum InteractiveType {
+  pointer = "pointer",
+  /**
+   * 创建矩形
+   */
+  rect = "rect",
+  /**
+   * 字符串
+   */
+  text = "text",
+}
 
 export type Tool = {
   id: number;

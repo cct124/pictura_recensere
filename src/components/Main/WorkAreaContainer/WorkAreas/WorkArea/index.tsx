@@ -3,7 +3,10 @@ import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 import { WorkAreaType } from "@/types/type.d";
 import ToolsConctrol from "@/plugin/canvas/toolsConctrol";
-import Canvas from "@/plugin/canvas";
+import Work from "@/plugin/konva/work";
+import Canvas from '@/plugin/konva/canvas';
+import symbol from "@/plugin/symbol";
+import InteractiveConctrol, { ICEventType } from "@/plugin/canvas/interactiveConctrol";
 
 /**
  * 工作区
@@ -12,25 +15,28 @@ import Canvas from "@/plugin/canvas";
 export default function WorkArea({ canvasInfo, toolsConctrol }: { toolsConctrol: ToolsConctrol, canvasInfo: WorkAreaType }) {
 
   const style = canvasInfo.active ? {} : { display: 'none' };
-  const [canvas, setCanvas] = useState<Canvas>(null)
+  const [work, setWork] = useState<Work>(null)
 
   const canvasContainer = useCallback((node: HTMLDivElement) => {
     if (node) {
-      const canvas = new Canvas({
+      const { width, height } = canvasInfo;
+      node.focus();
+      const work = new Work({
         container: node,
         width: node.offsetWidth,
-        height: node.offsetHeight
+        height: node.offsetHeight,
       })
-      setCanvas(canvas);
+      setWork(work);
+      const interactiveConctrol = new InteractiveConctrol({
+        container: node
+      });
+      interactiveConctrol.on(ICEventType.spaceMouseLeftDownMove, (ev) => {
+        console.log(ev);
+      })
+      const canvas = new Canvas({ width, height, id: symbol.canvas.id(work.canvas.size), x: work.width / 2, y: work.height / 2 });
+      work.add(canvas);
     }
   }, []);
-
-  useEffect(() => {
-    if (canvas) {
-      const { width, height } = canvasInfo;
-      canvas.createCanvas({ width, height, id: 'canvas_01', x: canvas.statg.width() / 2, y: canvas.statg.height() / 2 });
-    }
-  }, [canvas])
 
   return (
     <div className={classNames(Style.workArea, 'flex', 'hidden')} ref={canvasContainer} style={style}>

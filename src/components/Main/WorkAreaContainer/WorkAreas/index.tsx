@@ -3,7 +3,7 @@ import Style from "./index.modules.scss";
 import { classNames } from '@/utils/tool';
 import { WorkAreaType } from "@/types/type.d";
 
-import ToolsConctrol from '@/plugin/canvas/toolsConctrol';
+import ToolsConctrol, { InteractiveType } from '@/plugin/canvas/toolsConctrol';
 
 import ArrowSvg from "@/assets/svg/arrow.svg";
 import TextCursorSvg from "@/assets/svg/text_cursor.svg";
@@ -12,7 +12,7 @@ import RectSvg from "@/assets/svg/rect.svg";
 import Tools from '@/components/Main/WorkAreaContainer/WorkAreas/Tools';
 import WorkArea from '@/components/Main/WorkAreaContainer/WorkAreas/WorkArea';
 import WorkAreaTabs from '@/components/Main/WorkAreaContainer/WorkAreas/WorkAreaTabs';
-import { InteractiveType } from "@/plugin/canvas/interactiveConctrol";
+
 
 
 /**
