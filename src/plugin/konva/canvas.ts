@@ -10,12 +10,12 @@ export enum EventType {
 
 export type Event = {
   type: EventType;
-  targer: Konva.Layer;
+  targer: Konva.Group;
   sender: Canvas;
 };
 
 export default class Canvas extends Observer<EventType, Event> {
-  layer: Konva.Layer;
+  group: Konva.Group;
   id: string;
 
   constructor({
@@ -39,7 +39,7 @@ export default class Canvas extends Observer<EventType, Event> {
   }) {
     super();
     this.id = id;
-    this.layer = new Konva.Layer({
+    this.group = new Konva.Group({
       width,
       height,
       x,
@@ -51,10 +51,10 @@ export default class Canvas extends Observer<EventType, Event> {
         y: 0,
       },
     });
-    this.layer.offsetX(width / 2);
-    this.layer.offsetY(height / 2);
+    this.group.offsetX(width / 2);
+    this.group.offsetY(height / 2);
     this.alternatingRectangleMatrix(width, height).then((image) => {
-      this.layer.add(image);
+      this.group.add(image);
     });
   }
 

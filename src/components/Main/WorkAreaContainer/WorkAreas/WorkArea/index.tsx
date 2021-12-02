@@ -7,6 +7,7 @@ import Work from "@/plugin/konva/work";
 import Canvas from '@/plugin/konva/canvas';
 import symbol from "@/plugin/symbol";
 import InteractiveConctrol, { ICEventType } from "@/plugin/canvas/interactiveConctrol";
+import { KonvaEventObject } from "konva/lib/Node";
 
 /**
  * 工作区
@@ -19,17 +20,20 @@ export default function WorkArea({ canvasInfo, toolsConctrol }: { toolsConctrol:
 
   const canvasContainer = useCallback((node: HTMLDivElement) => {
     if (node) {
-      const { width, height } = canvasInfo;
+      const { width, height, id } = canvasInfo;
       node.focus();
       const work = new Work({
         container: node,
         width: node.offsetWidth,
         height: node.offsetHeight,
+        tabIndex: id,
       })
       setWork(work);
       const interactiveConctrol = new InteractiveConctrol({
-        container: node
+        container: node,
+        work,
       });
+      interactiveConctrol.on(ICEventType.mousewheelAltLeft, (ev) => work.mousewheelScale(ev.targer as KonvaEventObject<WheelEvent>));
       interactiveConctrol.on(ICEventType.spaceMouseLeftDownMove, (ev) => {
         console.log(ev);
       })

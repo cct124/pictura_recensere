@@ -5,6 +5,10 @@
       1px
   );
 
+  &:focus-visible {
+    outline: none;
+  }
+
   .leftPartition {
     flex: 1;
     height: calc(

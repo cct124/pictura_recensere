@@ -1,3 +1,6 @@
+import Work from "@/plugin/konva/work";
+import Konva from "konva";
+import { KonvaEventObject } from "konva/lib/Node";
 import InputDeviceEvent, { EventType } from "../inputDeviceEvent";
 
 interface MouseLocations {
@@ -21,6 +24,10 @@ export enum ICEventType {
    * 空格键和鼠标左键按下拖动
    */
   mouseLeftDownMove = "mouseLeftDownMove",
+  /**
+   * 左Alt键按下&鼠标滚轮滑动
+   */
+  mousewheelAltLeft = "mousewheelAltLeft",
 }
 
 export type Event = {
@@ -58,16 +65,12 @@ export default class InteractiveConctrol extends InputDeviceEvent<
   };
 
   container: HTMLElement;
-  selectAreaEleNode: HTMLCanvasElement;
-  selectAreaEleNodeID: string;
-  selectAreaEleNodeAppend = false;
-  enlarge = 1;
-  colorPicker = "#ffffff";
-  createRectFillOpacity = 0.5;
+  work: Work;
   selectAreaInfo: [number, number, number, number];
-  constructor({ container }: { container: HTMLElement }) {
+  constructor({ container, work }: { container: HTMLElement; work: Work }) {
     super();
     this.container = container;
+    this.work = work;
     this.init();
   }
 
@@ -75,9 +78,13 @@ export default class InteractiveConctrol extends InputDeviceEvent<
     this.container.style.position = "relative";
     this.listeners(this.container, EventType.mousedown, this.mousedown);
     this.listeners(this.container, EventType.mouseup, this.mouseup);
-    this.listeners(window, EventType.keydown, this.keydown);
-    this.listeners(window, EventType.keyup, this.keyup);
+    this.listeners(this.container, EventType.keydown, this.keydown);
+    this.listeners(this.container, EventType.keyup, this.keyup);
     this.listeners(this.container, EventType.mousemove, this.mousemove);
+    // this.listeners(this.container, EventType.wheel, this.mousewheel);
+    this.work.layer.on(EventType.wheel, (ev) => {
+      this.mousewheel(ev);
+    });
   }
 
   mousedown(ev: MouseDownEvent) {
@@ -158,6 +165,16 @@ export default class InteractiveConctrol extends InputDeviceEvent<
     ) {
       this.send(ICEventType.mouseLeftDownMove, {
         type: ICEventType.mouseLeftDownMove,
+        targer: ev,
+        sender: this,
+      });
+    }
+  }
+
+  mousewheel(ev: KonvaEventObject<WheelEvent>) {
+    if (this.interactiveStatus.keydownAltLeft) {
+      this.send(ICEventType.mousewheelAltLeft, {
+        type: ICEventType.mousewheelAltLeft,
         targer: ev,
         sender: this,
       });

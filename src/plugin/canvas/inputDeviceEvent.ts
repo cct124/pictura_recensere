@@ -1,7 +1,6 @@
 import Observer from "../observer";
 
 export enum EventType {
-  wheel = "wheel",
   keydown = "keydown",
   keyup = "keyup",
   /**
@@ -16,6 +15,8 @@ export enum EventType {
    * 鼠标移动
    */
   mousemove = "mousemove",
+
+  wheel = "wheel",
 }
 
 export type DeviceListener = {
