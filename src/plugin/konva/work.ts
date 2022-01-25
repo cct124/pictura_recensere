@@ -158,24 +158,17 @@ export default class Work extends Observer<EventType, Event> {
   }
 
   mousewheelScale(ev: KonvaEventObject<WheelEvent>) {
-    console.log(ev);
-
-    // this.offset(ev.evt.offsetX, ev.evt.offsetY);
-    // this.setScale(2);
-
     if (ev.evt.deltaY < 0) {
       const scale = this.scale + this.scaleCoe;
       this.setScale(scale);
-      const x = ev.evt.offsetX * scale - ev.evt.offsetX;
-      const y = ev.evt.offsetY * scale - ev.evt.offsetY;
-      console.log(ev.evt.offsetX, x, y, ev.evt.offsetY);
-
+      const x = ev.evt.offsetX - ev.evt.offsetX / scale;
+      const y = ev.evt.offsetY - ev.evt.offsetY / scale;
       this.offset(x, y);
     } else {
       const scale = this.scale - this.scaleCoe;
       this.setScale(scale);
-      const x = ev.evt.offsetX * scale - ev.evt.offsetX;
-      const y = ev.evt.offsetY * scale - ev.evt.offsetY;
+      const x = ev.evt.offsetX - ev.evt.offsetX / scale;
+      const y = ev.evt.offsetY - ev.evt.offsetY / scale;
       this.offset(x, y);
     }
   }
